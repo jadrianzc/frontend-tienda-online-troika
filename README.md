@@ -1,70 +1,60 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📜 Pasos para empezar a desarrollar
 
-## Available Scripts
+Primero, para este proyecto se utilizará [yarn](https://yarnpkg.com/) como administrador de paquetes. En teoría no habría problema si se utiliza simplemente [npm](https://www.npmjs.com/); pero por convención para todos los integrantes del proyecto, se pedirá que tengan yarn.
 
-In the project directory, you can run:
+### 💻 Instalación de Yarn
 
-### `yarn start`
+Para las personas que aún no tengan yarn, lo pueden instalar fácilmente si ya poseen npm. Utilicen el siguiente comando:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+# npm i yarn -g
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 📝 Pequeño resumen de Yarn
 
-### `yarn test`
+Yarn es un administrador de paquetes _rápido_ y _eficiente_ mantenido por **Facebook**, es realmente parecido en su uso a npm. Aquí dejaré algunos comandos de yarn, y lo que hacen:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `$ yarn install` (Instalar todos los paquetes presentes en un proyecto).
+- `$ yarn add [paquete]` (Agregar un paquete a un proyecto).
+- `$ yarn remove [paquete]` (Remover un paquete de un proyecto).
+- `$ yarn [start | dev | build]` (Ejecutar el script correspondiente presente en el _package.json_, en el caso de que exista).
+- `$ yarn cache clean` (Limpiar la caché de archivos de yarn).
 
-### `yarn build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para conocer más comandos, pueden ir a la [documentación](https://yarnpkg.com/cli/install).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🐛 Utilizar el proyecto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Una vez _clonado_ el repositorio, utilizar el siguiente comando para instalar los paquetes necesarios:
 
-### `yarn eject`
+```
+$ yarn install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Una vez finalice la instalación, puede probar la aplicación en modo desarrollo ejecutando el script `start`, de la siguiente manera:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+$ yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Y les mostrará la aplicación, y cada cambio que hagan cambiará en tiempo real.
+Ejecuta la aplicación en el modo de desarrollo. \
+Abra [http: // localhost: 3000] (http: // localhost: 3000) para verlo en el navegador.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 🔨 Desplegar la aplicación
 
-## Learn More
+Para generar los ejecutables para la aplicación, se debe usar el script `package`, de la siguiente manera:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+$ yarn package
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Los archivos generados se encuentran dentro de la carpeta `dist`.
 
-### Code Splitting
+### ⚖️ Licencia
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Este proyecto no está licenciado.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
