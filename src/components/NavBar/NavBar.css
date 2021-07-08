@@ -1,0 +1,56 @@
+.NavBar{
+    background-color: #191919;
+}
+.ContNavBar {
+    display: grid;
+    height: 83px;
+    grid-template-columns: auto 2fr 1fr 1fr 0.5fr;
+    justify-items: start;
+    align-content: center;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.navbar-logo{
+    height: 83px;
+    margin-right: 22px;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-self: start;
+    padding: 0;
+}
+.gripi{
+    display: grid;
+    height: 83px;
+    grid-auto-flow: column;
+    justify-items: center;
+    margin: 0;
+}
+.nav-item {
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+
+.nav-item:hover {
+  border-bottom: 5px solid #F2F2F2;
+}
+.nav-links {
+  color: #F2F2F2;
+  font-family: 'DM Sans';
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 0.5rem;
+  margin: 0;
+  height: 100%;
+}
+.NavLink-Active{
+    border-bottom: 5px solid #F2F2F2;
+}
+@media (max-width: 1200px){
+    .nav-links {
+        font-size: 16px;
+      }
+}
