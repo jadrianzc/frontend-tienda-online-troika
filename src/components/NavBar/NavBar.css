@@ -1,32 +1,35 @@
-.NavBar{
-    background-color: #191919;
+.NavBar {
+  background-color: #191919;
 }
 .ContNavBar {
-    display: grid;
-    height: 83px;
-    grid-template-columns: auto 2fr 1fr 1fr 0.5fr;
-    justify-items: start;
-    align-content: center;
-    margin-right: 30px;
-    margin-left: 30px;
+  display: grid;
+  height: 63px;
+  grid-template-columns: auto auto auto auto auto;
+  justify-items: start;
+  align-content: center;
+  margin-right: 30px;
+  margin-left: 30px;
 }
-.navbar-logo{
-    height: 83px;
-    margin-right: 22px;
+.navbar-logo {
+  height: 63px;
+  margin-right: 22px;
+}
+.navbar-logo img {
+  height: 63px;
 }
 .nav-menu {
-    display: flex;
-    list-style: none;
-    text-align: center;
-    justify-self: start;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  justify-self: start;
+  padding: 0;
 }
-.gripi{
-    display: grid;
-    height: 83px;
-    grid-auto-flow: column;
-    justify-items: center;
-    margin: 0;
+.gripi {
+  display: grid;
+  height: 63px;
+  grid-auto-flow: column;
+  justify-items: center;
+  margin: 0;
 }
 .nav-item {
   border-bottom: 5px solid transparent;
@@ -34,23 +37,109 @@
 }
 
 .nav-item:hover {
-  border-bottom: 5px solid #F2F2F2;
+  border-bottom: 5px solid #f2f2f2;
 }
 .nav-links {
-  color: #F2F2F2;
-  font-family: 'DM Sans';
+  color: #f2f2f2;
+  font-family: "DM Sans";
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 0.5rem;
   margin: 0;
   height: 100%;
+  font-size: 16px;
 }
-.NavLink-Active{
-    border-bottom: 5px solid #F2F2F2;
+.NavLink-Active {
+  border-bottom: 5px solid #f2f2f2;
 }
-@media (max-width: 1200px){
-    .nav-links {
-        font-size: 16px;
-      }
+
+.NavBuscador {
+  padding: 0 2em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.buscador {
+  outline: none;
+  border: none;
+  padding: 0.5em 0.6em 0.5em 2em;
+  height: 16px;
+  border-radius: 1em;
+  width: 391px;
+  font-size: 16px;
+  background-color: #25a6d9;
+  color: #f2f2f2;
+}
+.buscador::placeholder {
+  color: #f2f2f2;
+}
+.iconBuscar {
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+  padding-left: 2.6em;
+  color: #f2f2f2;
+}
+
+.NavBotones {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2em;
+}
+.btnNav {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 1em;
+  font-size: 16px;
+  padding: 0em 1em;
+  width: 144px;
+  height: 32px;
+  color: #f2f2f2;
+}
+.btnNavIni {
+  background-color: #3e3f40;
+  margin-right: 1em;
+}
+.btnNavRegi {
+  background-color: #25a6d9;
+}
+
+.NavCar {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5em;
+  color: #f2f2f2;
+  font-size: 32px;
+  justify-self: end;
+}
+
+/***responsive***/
+/* Si el tamaño de la pantalla es de 1920 px de ancho o más, establezca el tamaño de fuente de 23 px */
+@media all and (min-width: 1920px) {
+  .ContNavBar,
+  .navbar-logo,
+  .gripi,
+  .navbar-logo img {
+    height: 83px;
+  }
+  .nav-links {
+    font-size: 23px;
+  }
+  .buscador {
+    font-size: 20px;
+    width: 491px;
+    padding-left: 2.5em;
+  }
+  .iconBuscar {
+    font-size: 23px;
+    padding-left: 2em;
+  }
 }
