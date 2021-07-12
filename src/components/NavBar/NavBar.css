@@ -1,10 +1,11 @@
 .NavBar {
   background-color: #191919;
+  width: 100%;
+  height: 63px;
 }
 .ContNavBar {
   display: grid;
-  height: 63px;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   justify-items: start;
   align-content: center;
   margin-right: 30px;
@@ -26,7 +27,6 @@
 }
 .gripi {
   display: grid;
-  height: 63px;
   grid-auto-flow: column;
   justify-items: center;
   margin: 0;
@@ -121,6 +121,21 @@
   justify-self: end;
 }
 
+/***icon resposive**/
+.ContIconMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconMenu {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  right: 5%;
+  color: #f2f2f2;
+  font-size: 32px;
+}
+
 /***responsive***/
 /* Si el tamaño de la pantalla es de 1920 px de ancho o más, establezca el tamaño de fuente de 23 px */
 @media all and (min-width: 1920px) {
@@ -141,5 +156,59 @@
   .iconBuscar {
     font-size: 23px;
     padding-left: 2em;
+  }
+}
+/**/
+@media (max-width: 900px) {
+  .NavBar {
+    display: flex;
+    list-style: none;
+  }
+  .ContNavBar {
+    list-style: none;
+    position: fixed;
+    margin: 0;
+    top: 60px;
+    left: -100%;
+    background-color: #191919;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+    transition: 0.5s all ease-in;
+  }
+  .toggle {
+    left: 0;
+    transition: 0.5s all ease-in;
+  }
+  .navbar-logo {
+    display: none;
+  }
+  .min {
+    height: 63px;
+    margin-right: 22px;
+  }
+  .min img {
+    height: 63px;
+  }
+  .gripi,
+  .NavBotones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  .buscador {
+    width: auto;
+  }
+  .btnNavIni {
+    margin: 0;
+    margin: 0.5rem 0;
+  }
+  .iconMenu {
+    display: block;
   }
 }
