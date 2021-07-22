@@ -1,0 +1,73 @@
+.ContRegistro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 63px);
+  background-color: #f2f2f2;
+}
+.CardRegistro {
+  width: 70%;
+  border-radius: 25px !important;
+  padding: 2em 4em !important;
+}
+.CardRegistro h1 {
+  margin-top: 0;
+  border-bottom: 3px solid #25a6d9;
+  display: block;
+  width: fit-content;
+}
+.FormRegistro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ContInputRegistro1 {
+  padding-right: 5em;
+}
+.ContInputRegistro2 {
+  padding-left: 5em;
+}
+.InputRegistro {
+  background-color: #f2f2f2;
+  width: 100%;
+  margin: 10px 0 !important;
+  border-radius: 10px !important;
+}
+.MuiOutlinedInput-root {
+  border-radius: 10px !important;
+}
+.InputRegistro label,
+.InputRegistro input {
+  font-family: "DM Sans", sans-serif;
+}
+.btnRegistro {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 0em 1em;
+  width: 50%;
+  height: 50px;
+  color: #f2f2f2;
+  font-family: "DM Sans";
+  font-size: medium;
+  display: block;
+  margin: 20px auto;
+  background-color: #25a6d9;
+}
+.CardRegistro span {
+  display: block;
+  margin-top: 1em;
+}
+
+@media (max-width: 900px) {
+  .FormRegistro {
+    grid-template-columns: 1fr;
+  }
+  .ContRegistro {
+    height: auto;
+  }
+  .ContInputRegistro1,
+  .ContInputRegistro2 {
+    padding: 0;
+  }
+}

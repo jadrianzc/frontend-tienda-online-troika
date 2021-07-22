@@ -95,6 +95,9 @@
   align-items: center;
   padding: 0 2em;
 }
+.linkBtnNav {
+  text-decoration: none;
+}
 .btnNav {
   outline: none;
   border: none;
@@ -172,7 +175,7 @@
   }
   .ContNavBar {
     list-style: none;
-    position: fixed;
+    position: absolute;
     margin: 0;
     top: 60px;
     left: -100%;
@@ -203,17 +206,36 @@
   }
   .gripi,
   .NavBotones {
-    display: flex;
+    display: block;
+    width: 100%;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
   }
+  .nav-item {
+    border: 0;
+  }
+  .nav-links {
+    display: table;
+    padding: 1em 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-item:hover {
+    background-color: #252525;
+    border: 0;
+  }
+  .NavLink-Active {
+    background-color: #252525;
+    border: 0;
+  }
   .buscador {
     width: auto;
   }
-  .btnNavIni {
-    margin: 0;
-    margin: 0.5rem 0;
+  .btnNav {
+    display: table;
+    margin: 20px auto;
   }
   .iconMenu {
     display: block;

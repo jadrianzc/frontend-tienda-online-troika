@@ -3,7 +3,7 @@ import './Inicio.css'
 
 function Inicio() {
     return (
-        <div>
+        <div className='ContInicio'>
             <p className='ini'>Este es el Inicio</p>
             <p>Este es el Inicio</p>
         </div>
