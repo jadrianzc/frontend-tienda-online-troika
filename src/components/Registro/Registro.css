@@ -12,6 +12,7 @@
 }
 .CardRegistro h1 {
   margin-top: 0;
+  font-size: 30px;
   border-bottom: 3px solid #25a6d9;
   display: block;
   width: fit-content;
@@ -38,6 +39,7 @@
 .InputRegistro label,
 .InputRegistro input {
   font-family: "DM Sans", sans-serif;
+  font-size: 13px;
 }
 .btnRegistro {
   outline: none;
@@ -57,6 +59,7 @@
 .CardRegistro span {
   display: block;
   margin-top: 1em;
+  font-size: 11px;
 }
 
 @media (max-width: 900px) {
