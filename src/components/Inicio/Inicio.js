@@ -1,13 +1,13 @@
-import React from 'react'
-import './Inicio.css'
+import React from "react";
+import "./Inicio.css";
 
 function Inicio() {
-    return (
-        <div className='ContInicio'>
-            <p className='ini'>Este es el Inicio</p>
-            <p>Este es el Inicio</p>
-        </div>
-    )
+  return (
+    <div className="ContInicio">
+      <p className="ini">Este es el Inicio</p>
+      <p>Este es el Inicio</p>
+    </div>
+  );
 }
 
-export default Inicio
+export default Inicio;

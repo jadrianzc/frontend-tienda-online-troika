@@ -28,10 +28,8 @@
   padding-left: 5em;
 }
 .InputRegistro {
-  background-color: #f2f2f2;
   width: 100%;
   margin: 10px 0 !important;
-  border-radius: 10px !important;
 }
 .MuiOutlinedInput-root {
   border-radius: 10px !important;
@@ -40,6 +38,10 @@
 .InputRegistro input {
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
+}
+.InputRegistro input {
+  background-color: #f2f2f2;
+  border-radius: 10px !important;
 }
 .btnRegistro {
   outline: none;
@@ -56,7 +58,7 @@
   margin: 20px auto;
   background-color: #25a6d9;
 }
-.CardRegistro span {
+.CardRegistro .infoRegistro {
   display: block;
   margin-top: 1em;
   font-size: 11px;
