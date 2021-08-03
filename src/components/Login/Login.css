@@ -1,0 +1,85 @@
+.container {
+	margin: 0;
+	padding: 0;
+	height: 91%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f2f2f2;
+}
+
+.container-content {
+	width: 1274px;
+	height: 659px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-img {
+	width: 50%;
+	height: 100%;
+	background-color: #25a6d9;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.container-img img {
+	width: 100%;
+	padding: 20% 5%;
+}
+.container-login {
+	width: 50%;
+	height: 100%;
+	background-color: #fff;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+}
+
+form {
+	width: 100%;
+	height: 100%;
+}
+
+form h1 {
+	height: 20%;
+	text-align: center;
+	text-decoration: underline;
+	text-decoration-color: #25a6d9;
+	padding-top: 50px;
+}
+
+.container-login-items {
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.container-login-email,
+.container-login-pass {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-login-items .iconCar {
+	color: #707070;
+	margin-right: 20px;
+	font-size: 20px;
+}
+
+.container-login-items input[type='email'],
+input[type='password'] {
+	width: 50%;
+	padding: 10px;
+	border: none;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+.container-login-items input[type='email']:focus,
+input[type='password']:focus {
+	outline: none;
+}
