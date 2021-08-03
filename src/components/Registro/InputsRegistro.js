@@ -7,14 +7,19 @@ import { CampoCedula } from "./VerificaRegistro";
 import { CampoEmail } from "./VerificaRegistro";
 import { CampoPassword } from "./VerificaRegistro";
 import { CampoPassword2 } from "./VerificaRegistro";
+import axios from "axios";
 
 function InputsRegistro() {
   const [datos, setDatos] = useState({
-    nombre: "",
-    apellido: "",
-    cedula: "",
-    email: "",
-    pwd: "",
+    nomb_usuario: "",
+    apell_usuario: "",
+    ced_usuario: "",
+    telf_usuario: "",
+    cel_usuario: "",
+    email_usuario: "",
+    contraseña_usuario: "",
+    conf_contraseña: "",
+    rol_usuario: "cliente",
   });
 
   const [nombre, setNombre] = useState(false); //mensajes de error
@@ -52,14 +57,36 @@ function InputsRegistro() {
     CampoPassword2(datos, setPwd2, setErrorPwd2);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(datos);
+    if (
+      nombre === false &&
+      apellido === false &&
+      cedula === false &&
+      email === false &&
+      pwd === false &&
+      pwd2 === false
+    ) {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/usuarios",
+        datos
+      );
+      console.log(res.data);
+      console.log("se fue");
+    } else {
+      console.log("hubo un error");
+    }
+  };
+
   return (
-    <form className="FormRegistro">
+    <form className="FormRegistro" method="post" onSubmit={handleSubmit}>
       <div className="ContInputRegistro1">
         <TextField
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="nombre"
+          name="nomb_usuario"
           label="Nombres"
           variant="outlined"
           onChange={handleInputChange}
@@ -70,7 +97,7 @@ function InputsRegistro() {
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="apellido"
+          name="apell_usuario"
           label="Apellidos"
           variant="outlined"
           onChange={handleInputChange}
@@ -81,7 +108,7 @@ function InputsRegistro() {
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="cedula"
+          name="ced_usuario"
           label="Cédula / RUC"
           variant="outlined"
           onChange={handleInputChange}
@@ -92,7 +119,7 @@ function InputsRegistro() {
           inputProps={{ maxLength: 10 }}
           //id="outlined-basic"
           className="InputRegistro"
-          name="telefono"
+          name="telf_usuario"
           label="Télefono"
           variant="outlined"
         />
@@ -100,7 +127,7 @@ function InputsRegistro() {
           inputProps={{ maxLength: 10 }}
           //id="outlined-basic"
           className="InputRegistro"
-          name="celular"
+          name="cel_usuario"
           label="Celular"
           variant="outlined"
         />
@@ -110,7 +137,7 @@ function InputsRegistro() {
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="email"
+          name="email_usuario"
           label="E-mail"
           variant="outlined"
           onChange={handleInputChange}
@@ -121,7 +148,7 @@ function InputsRegistro() {
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="pwd"
+          name="contraseña_usuario"
           label="Contraseña"
           type="password"
           variant="outlined"
@@ -133,7 +160,7 @@ function InputsRegistro() {
           required
           //id="outlined-basic"
           className="InputRegistro"
-          name="pwd2"
+          name="conf_contraseña"
           label="Repetir contraseña"
           type="password"
           variant="outlined"
