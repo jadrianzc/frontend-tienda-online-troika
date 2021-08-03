@@ -78,27 +78,24 @@ form h1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 20px;
+	font-size: 22px;
 }
 
 .container-login-items .iconCar {
 	color: #707070;
 	margin-right: 20px;
+	margin-top: 16px;
 	font-size: 20px;
 }
 
-.container-login-items input[type='email'],
-input[type='password'] {
+.container-login-email .email,
+.container-login-pass .pass {
 	width: 50%;
+}
+/* .container-login-items .email,
+.pass {
 	padding: 10px;
-	border: none;
-	border-bottom: 2px solid #e5e5e5;
-}
-
-.container-login-items input[type='email']:focus,
-input[type='password']:focus {
-	outline: none;
-}
+} */
 
 .container-login-submit {
 	width: 35%;

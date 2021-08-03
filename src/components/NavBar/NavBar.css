@@ -30,6 +30,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 0;
+	height: 63px;
 }
 .nav-item {
 	border-bottom: 5px solid transparent;
@@ -146,14 +147,14 @@
 /***responsive***/
 /* Si el tamaño de la pantalla es de 1920 px de ancho o más, establezca el tamaño de fuente de 23 px */
 @media all and (min-width: 1920px) {
-	.ContNavBar,
+	/* .ContNavBar,
 	.navbar-logo,
 	.gripi,
 	.navbar-logo img {
-		height: 83px;
-	}
+		height: 55px;
+	} */
 	.nav-links {
-		font-size: 23px;
+		font-size: 18px;
 	}
 }
 /**/

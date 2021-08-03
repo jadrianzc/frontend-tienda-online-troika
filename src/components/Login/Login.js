@@ -3,6 +3,7 @@ import './Login.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
 	return (
@@ -20,11 +21,11 @@ const Login = () => {
 						<div className="container-login-items">
 							<div className="container-login-email">
 								<FontAwesomeIcon icon={faEnvelope} className="iconCar" />
-								<input type="email" name="" value="" placeholder="e-mail" />
+								<TextField type="email" className="email" id="standard-basic" label="e-mail" />
 							</div>
 							<div className="container-login-pass">
 								<FontAwesomeIcon icon={faLock} className="iconCar" />
-								<input type="password" name="" value="" placeholder="contraseña" />
+								<TextField type="password" className="pass" id="standard-basic" label="contraseña" />
 							</div>
 
 							<div className="container-login-submit">
