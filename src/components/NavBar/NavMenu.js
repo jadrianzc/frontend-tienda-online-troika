@@ -1,15 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
-import logo from '../../assets/images/logo.svg';
 
-function NavMenu() {
+function NavMenu({ OpenMenu }) {
 	return (
 		<>
-			<NavLink to="/" className="navbar-logo">
-				<img src={logo} alt="Logo Troika" />
-			</NavLink>
-
 			<ul className="nav-menu gripi">
 				<li className="nav-item">
 					<NavLink
@@ -17,22 +12,23 @@ function NavMenu() {
 						to="/" //aqui la ruta
 						className="nav-links"
 						activeClassName="NavLink-Active"
+						onClick={OpenMenu}
 					>
 						Inicio
 					</NavLink>
 				</li>
 				<li className="nav-item">
-					<NavLink exact to="/Categorías" className="nav-links" activeClassName="NavLink-Active">
+					<NavLink exact to="/Categorías" className="nav-links" activeClassName="NavLink-Active" onClick={OpenMenu}>
 						Categorías
 					</NavLink>
 				</li>
 				<li className="nav-item">
-					<NavLink exact to="/Agencias" className="nav-links" activeClassName="NavLink-Active">
+					<NavLink exact to="/Agencias" className="nav-links" activeClassName="NavLink-Active" onClick={OpenMenu}>
 						Agencias
 					</NavLink>
 				</li>
 				<li className="nav-item">
-					<NavLink exact to="/Quienes-somos" className="nav-links" activeClassName="NavLink-Active">
+					<NavLink exact to="/Quienes-somos" className="nav-links" activeClassName="NavLink-Active" onClick={OpenMenu}>
 						Quienes somos
 					</NavLink>
 				</li>

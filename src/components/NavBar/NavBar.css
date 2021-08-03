@@ -1,22 +1,23 @@
 .NavBar {
 	background-color: #191919;
+	width: 100%;
+	height: 63px;
 }
 .ContNavBar {
-	display: grid;
-	height: 63px;
-	grid-template-columns: auto auto auto auto auto;
-	justify-items: center;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	align-content: center;
-	margin-right: 30px;
-	margin-left: 30px;
 }
 .navbar-logo {
 	height: 63px;
 	margin-right: 22px;
+	margin-left: 30px;
 }
 .navbar-logo img {
 	height: 63px;
+}
+.min {
+	display: none;
 }
 .nav-menu {
 	display: flex;
@@ -26,10 +27,8 @@
 	padding: 0;
 }
 .gripi {
-	display: grid;
-	height: 63px;
-	grid-auto-flow: column;
-	justify-items: center;
+	display: flex;
+	justify-content: space-between;
 	margin: 0;
 }
 .nav-item {
@@ -42,14 +41,13 @@
 }
 .nav-links {
 	color: #f2f2f2;
-	font-family: 'DM Sans';
 	display: flex;
 	align-items: center;
 	text-decoration: none;
 	padding: 0 0.5rem;
 	margin: 0;
 	height: 100%;
-	font-size: 16px;
+	font-size: 14px;
 }
 .NavLink-Active {
 	border-bottom: 5px solid #f2f2f2;
@@ -70,17 +68,20 @@
 	outline: none;
 	border: none;
 	padding: 0.5em 0.6em 0.5em 2em;
-	height: 16px;
-	width: 391px;
-	font-size: 16px;
+	height: 14px;
+	border-radius: 1em;
+	width: 300px;
+	font-size: 14px;
 	background-color: #25a6d9;
 	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .buscador::placeholder {
 	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .iconBuscar {
-	font-size: 16px;
+	font-size: 14px;
 	color: #f2f2f2;
 }
 
@@ -91,16 +92,20 @@
 	align-items: center;
 	padding: 0 2em;
 }
+.linkBtnNav {
+	text-decoration: none;
+}
 .btnNav {
 	outline: none;
 	border: none;
 	cursor: pointer;
 	border-radius: 1em;
-	font-size: 16px;
+	font-size: 14px;
 	padding: 0em 1em;
 	width: 144px;
 	height: 32px;
 	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .btnNavIni {
 	background-color: #3e3f40;
@@ -120,6 +125,22 @@
 	color: #f2f2f2;
 	font-size: 32px;
 	justify-self: end;
+	margin-right: 30px;
+}
+
+/***icon resposive**/
+.ContIconMenu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.iconMenu {
+	position: absolute;
+	display: none;
+	cursor: pointer;
+	right: 5%;
+	color: #f2f2f2;
+	font-size: 32px;
 }
 
 /***responsive***/
@@ -133,5 +154,79 @@
 	}
 	.nav-links {
 		font-size: 23px;
+	}
+}
+/**/
+@media (max-width: 900px) {
+	.NavBar {
+		display: flex;
+		list-style: none;
+	}
+	.ContNavBar {
+		list-style: none;
+		position: absolute;
+		margin: 0;
+		top: 60px;
+		left: -100%;
+		background-color: #191919;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+		z-index: 99;
+		transition: 0.5s all ease-in;
+	}
+	.toggle {
+		left: 0;
+		transition: 0.5s all ease-in;
+	}
+	.navbar-logo {
+		display: none;
+	}
+	.min {
+		display: block;
+		height: 63px;
+		margin-right: 22px;
+	}
+	.min img {
+		height: 63px;
+	}
+	.gripi,
+	.NavBotones {
+		display: block;
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+	}
+	.nav-item {
+		border: 0;
+	}
+	.nav-links {
+		display: table;
+		padding: 1em 0;
+		margin: 0;
+		width: 100%;
+		text-align: center;
+	}
+	.nav-item:hover {
+		background-color: #252525;
+		border: 0;
+	}
+	.NavLink-Active {
+		background-color: #252525;
+		border: 0;
+	}
+	.buscador {
+		width: auto;
+	}
+	.btnNav {
+		display: table;
+		margin: 20px auto;
+	}
+	.iconMenu {
+		display: block;
 	}
 }

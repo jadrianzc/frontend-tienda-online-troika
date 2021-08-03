@@ -1,0 +1,79 @@
+.ContRegistro {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 63px);
+	background-color: #f2f2f2;
+}
+.CardRegistro {
+	width: 70%;
+	border-radius: 25px !important;
+	padding: 2em 4em !important;
+}
+.CardRegistro h1 {
+	margin-top: 0;
+	font-size: 30px;
+	border-bottom: 3px solid #25a6d9;
+	display: block;
+	width: fit-content;
+}
+.FormRegistro {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.ContInputRegistro1 {
+	padding-right: 5em;
+}
+.ContInputRegistro2 {
+	padding-left: 5em;
+}
+.InputRegistro {
+	width: 100%;
+	margin: 10px 0 !important;
+}
+.MuiOutlinedInput-root {
+	border-radius: 10px !important;
+}
+.InputRegistro label,
+.InputRegistro input {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 13px;
+	width: 100%;
+}
+.InputRegistro input {
+	background-color: #f2f2f2;
+	border-radius: 10px !important;
+}
+.btnRegistro {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 25px;
+	padding: 0em 1em;
+	width: 50%;
+	height: 50px;
+	color: #f2f2f2;
+	font-family: 'DM Sans';
+	font-size: medium;
+	display: block;
+	margin: 20px auto;
+	background-color: #25a6d9;
+}
+.CardRegistro .infoRegistro {
+	display: block;
+	margin-top: 1em;
+	font-size: 11px;
+}
+
+@media (max-width: 900px) {
+	.FormRegistro {
+		grid-template-columns: 1fr;
+	}
+	.ContRegistro {
+		height: auto;
+	}
+	.ContInputRegistro1,
+	.ContInputRegistro2 {
+		padding: 0;
+	}
+}
