@@ -5,7 +5,8 @@
 	display: grid;
 	height: 63px;
 	grid-template-columns: auto auto auto auto auto;
-	justify-items: start;
+	justify-items: center;
+	align-items: center;
 	align-content: center;
 	margin-right: 30px;
 	margin-left: 30px;
@@ -56,17 +57,20 @@
 
 .NavBuscador {
 	padding: 0 2em;
+	height: 32px;
+	border-radius: 1em;
 	display: flex;
-	position: relative;
+	/* position: relative; */
 	justify-content: center;
 	align-items: center;
+	background-color: #25a6d9;
+	color: #f2f2f2;
 }
 .buscador {
 	outline: none;
 	border: none;
 	padding: 0.5em 0.6em 0.5em 2em;
 	height: 16px;
-	border-radius: 1em;
 	width: 391px;
 	font-size: 16px;
 	background-color: #25a6d9;
@@ -76,10 +80,7 @@
 	color: #f2f2f2;
 }
 .iconBuscar {
-	position: absolute;
-	left: 0;
 	font-size: 16px;
-	padding-left: 2.6em;
 	color: #f2f2f2;
 }
 
@@ -132,14 +133,5 @@
 	}
 	.nav-links {
 		font-size: 23px;
-	}
-	.buscador {
-		font-size: 20px;
-		width: 491px;
-		padding-left: 2.5em;
-	}
-	.iconBuscar {
-		font-size: 23px;
-		padding-left: 2em;
 	}
 }
