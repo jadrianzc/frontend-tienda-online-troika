@@ -20,6 +20,9 @@
   color: #191919;
   text-decoration: none;
 }
+.Categoria-links:hover {
+  border-bottom: 2px solid #25a6d9;
+}
 .CategoriaLink-Active {
   border-bottom: 2px solid #25a6d9;
 }
