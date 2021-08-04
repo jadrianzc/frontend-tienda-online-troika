@@ -1,11 +1,17 @@
 import React from "react";
 import "./Inicio.css";
+import Categorias from "../Categorias/Categorias";
+import Banner from "./Banner";
+import MasVendidos from "./MasVendidos";
 
 function Inicio() {
   return (
     <div className="ContInicio">
-      <p className="ini">Este es el Inicio</p>
-      <p>Este es el Inicio</p>
+      <Categorias />
+      <div className="ContProducts">
+        <Banner />
+        <MasVendidos />
+      </div>
     </div>
   );
 }

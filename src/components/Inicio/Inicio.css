@@ -1,4 +1,46 @@
-.ini {
-  font-family: "DM Sans", sans-serif;
-  font-weight: bold;
+.ContInicio {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.ContProducts {
+  background-color: #f2f2f2;
+  padding: 40px 50px;
+}
+.BannerInicio {
+  background-color: #01619e;
+  padding: 50px 20px;
+  text-align: center;
+  color: #fff;
+}
+.LetraMasVendidos {
+  margin-top: 30px;
+  font-size: 14px;
+}
+.GripContainer {
+  padding: 40px;
+  width: 100% !important;
+  margin: 0 !important;
+  background: #fff;
+}
+.CardMedia {
+  min-height: 130px;
+  background-size: contain !important;
+}
+.MuiCardContent-root {
+  padding: 0px !important;
+}
+.CardProducts {
+  border: 1px solid #707070;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+.CardProducts h1,
+span {
+  font-size: 14px;
+}
+.CardProducts p {
+  font-size: 13px;
+  margin: 0;
 }
