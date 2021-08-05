@@ -1,0 +1,28 @@
+.ContCategoria {
+  width: 280px;
+}
+.CategoriaStatico {
+  position: sticky;
+  top: 20px;
+}
+.ContCategoria h1 {
+  font-size: 14px;
+  margin: 20px;
+}
+.ContCategoria ul {
+  list-style: none;
+}
+.ContCategoria li {
+  display: block;
+  padding: 9px 10px;
+}
+.Categoria-links {
+  color: #191919;
+  text-decoration: none;
+}
+.Categoria-links:hover {
+  border-bottom: 2px solid #25a6d9;
+}
+.CategoriaLink-Active {
+  border-bottom: 2px solid #25a6d9;
+}
