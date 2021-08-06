@@ -5,18 +5,20 @@ import axios from "axios";
 
 function CardProducts({ id }) {
   const [documentos, setDocumentos] = useState([]);
-  const [recarga, setRecarga] = useState(true);
 
   useEffect(() => {
     const LoadData = async () => {
-      await axios
-        .get(`http://localhost:4000/api/v1/FiltraProductCatego/${id}`)
-        .then((res) => {
-          setDocumentos(res.data);
-        })
-        .catch(console.log("error"));
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/FiltraProductCatego/${id}`
+        );
+        setDocumentos(res.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     LoadData();
+    window.scrollTo(0, 0);
   }, [id]);
 
   return (
