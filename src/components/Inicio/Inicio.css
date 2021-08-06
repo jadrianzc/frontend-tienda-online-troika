@@ -1,6 +1,6 @@
 .ContInicio {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto 1fr;
 }
 .ContProducts {
   background-color: #f2f2f2;

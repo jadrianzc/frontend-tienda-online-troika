@@ -1,3 +1,7 @@
+.CargandoProducts {
+  height: 100vh;
+  font-size: x-large;
+}
 .ContCategoria {
   width: 280px;
 }
@@ -23,6 +27,13 @@
 .Categoria-links:hover {
   border-bottom: 2px solid #25a6d9;
 }
+.check {
+  visibility: hidden;
+}
+.check-Active {
+  visibility: visible;
+}
 .CategoriaLink-Active {
   border-bottom: 2px solid #25a6d9;
+  font-weight: bold;
 }
