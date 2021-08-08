@@ -7,6 +7,9 @@
   height: 100vh;
   font-size: x-large;
 }
+.LinkCardProducts {
+  text-decoration: none;
+}
 .ContCategoria {
   width: 280px;
   background: #fff;
