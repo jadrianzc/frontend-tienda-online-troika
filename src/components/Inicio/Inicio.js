@@ -1,13 +1,13 @@
 import React from "react";
 import "./Inicio.css";
-import Categorias from "../Categorias/Categorias";
+import NavCatregorias from "../Categorias/NavCategorias";
 import Banner from "./Banner";
 import MasVendidos from "./MasVendidos";
 
 function Inicio() {
   return (
     <div className="ContInicio">
-      <Categorias />
+      <NavCatregorias />
       <div className="ContProducts">
         <Banner />
         <MasVendidos />

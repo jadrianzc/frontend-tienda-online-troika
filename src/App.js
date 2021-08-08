@@ -7,8 +7,9 @@ import NavBar from './components/NavBar/NavBar';
 import Inicio from './components/Inicio/Inicio';
 import Login from './components/Login/Login';
 import Registro from './components/Registro/Registro';
-import Filtros from './components/Categorias/Filtros/Filtros';
+// import Filtros from './components/Categorias/Filtros/Filtros';
 import Producto from './components/Categorias/Producto/Producto';
+import Categorias from './components/Categorias/Catregorias';
 
 const theme = createTheme({
 	palette: {
@@ -32,8 +33,9 @@ function App() {
 					<Route path="/" exact component={Inicio} />
 					<Route path="/Login" exact component={Login} />
 					<Route path="/Registro" exact component={Registro} />
-					<Route path="/Filtros" exact component={Filtros} />
+					{/* <Route path="/Filtros" exact component={Filtros} /> */}
 					<Route path="/Producto" exact component={Producto} />
+					<Route path="/Categorías/:id" exact component={Categorias} />
 				</Switch>
 				{/* <Footer />  */}
 			</Router>

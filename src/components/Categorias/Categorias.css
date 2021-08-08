@@ -1,5 +1,15 @@
+.GipFiltro {
+  background: #fff;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+.CargandoProducts {
+  height: 100vh;
+  font-size: x-large;
+}
 .ContCategoria {
   width: 280px;
+  background: #fff;
 }
 .CategoriaStatico {
   position: sticky;
@@ -23,6 +33,13 @@
 .Categoria-links:hover {
   border-bottom: 2px solid #25a6d9;
 }
+.check {
+  visibility: hidden;
+}
+.check-Active {
+  visibility: visible;
+}
 .CategoriaLink-Active {
   border-bottom: 2px solid #25a6d9;
+  font-weight: bold;
 }
