@@ -1,9 +1,9 @@
 .ContInicio {
   display: grid;
   grid-template-columns: auto 1fr;
+  background: #f2f2f2;
 }
 .ContProducts {
-  background-color: #f2f2f2;
   padding: 40px 50px;
 }
 .BannerInicio {

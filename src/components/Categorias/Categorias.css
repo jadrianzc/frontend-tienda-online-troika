@@ -9,6 +9,7 @@
 }
 .ContCategoria {
   width: 280px;
+  background: #fff;
 }
 .CategoriaStatico {
   position: sticky;
