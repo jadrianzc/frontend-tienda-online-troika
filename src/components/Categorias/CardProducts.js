@@ -1,6 +1,7 @@
 //OBTENER LOS PRODUCTOS DE LA DB Y PRESENTARLOS EN TARJETA SEGUN LA CATEGORIA
 import React, { useState, useEffect } from "react";
 import { Grid, Card, CardMedia, CardContent } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function CardProducts({ id }) {
@@ -25,14 +26,17 @@ function CardProducts({ id }) {
     <>
       {documentos.map((card) => (
         <Grid item xs={12} sm={6} md={4} key={card._id}>
-          <Card className="CardProducts">
-            <CardMedia image={card.imgurl[0]} className="CardMedia" />
-            <CardContent>
-              <h1>{card.nom_producto}</h1>
-              <p>{card.descrip_producto}</p>
-              <span>$ {card.precio_producto}</span>
-            </CardContent>
-          </Card>
+          <Link to={`/Producto/${card._id}`} className="LinkCardProducts">
+            {/*redirecciona al producto, enviando el id*/}
+            <Card className="CardProducts">
+              <CardMedia image={card.imgurl[0]} className="CardMedia" />
+              <CardContent>
+                <h1>{card.nom_producto}</h1>
+                <p>{card.descrip_producto}</p>
+                <span>$ {card.precio_producto}</span>
+              </CardContent>
+            </Card>
+          </Link>
         </Grid>
       ))}
     </>
