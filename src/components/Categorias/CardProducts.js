@@ -26,7 +26,7 @@ function CardProducts({ id }) {
     <>
       {documentos.map((card) => (
         <Grid item xs={12} sm={6} md={4} key={card._id}>
-          <Link to={`/Productos/${card._id}`} className="LinkCardProducts">
+          <Link to={`/Producto/${card._id}`} className="LinkCardProducts">
             {/*redirecciona al producto, enviando el id*/}
             <Card className="CardProducts">
               <CardMedia image={card.imgurl[0]} className="CardMedia" />
