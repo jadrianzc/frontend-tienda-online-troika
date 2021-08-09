@@ -32,7 +32,7 @@ function App() {
 					<Route path="/" exact component={Inicio} />
 					<Route path="/Login" exact component={Login} />
 					<Route path="/Registro" exact component={Registro} />\
-					<Route path="/Producto" exact component={Producto} />
+					<Route path="/Producto/:id" exact component={Producto} />
 					<Route path="/Categorías/:id" exact component={Categorias} />
 				</Switch>
 				{/* <Footer />  */}
