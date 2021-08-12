@@ -1,0 +1,104 @@
+.container-user {
+	display: flex !important;
+}
+
+.grid-container-user {
+	height: 90%;
+	margin: auto;
+	background-color: #fff;
+	border-radius: 40px;
+	padding: 20px;
+}
+
+.grid-item-perfil {
+	height: 60%;
+}
+
+.grid-item-seguridad {
+	height: 40%;
+	width: 100%;
+}
+
+.grid-item-title {
+	height: 50px;
+}
+
+.grid-item-col {
+	height: calc(100% - 50px);
+}
+
+.grid-item-title .title,
+.grid-item-seguridad .title {
+	font-size: 24px;
+	font-weight: 700;
+	display: inline;
+}
+.grid-item-title .underline,
+.grid-item-seguridad .underline {
+	border: none;
+	width: 210px;
+	height: 3px;
+	margin: 0;
+	background-color: #25a6d9;
+}
+
+.grid-item-seguridad .underline {
+	width: 120px;
+}
+
+.grid-item-img {
+	width: 20%;
+	height: 100%;
+}
+
+.grid-item-data {
+	width: 40%;
+	height: 100%;
+}
+
+.grid-container-data {
+	height: 100%;
+	width: 100%;
+	padding: 0 10px;
+}
+
+.grid-container-data2 {
+	height: 167.38px;
+}
+
+.grid-item-info {
+	width: 100%;
+}
+
+.grid-item-margin {
+	margin-left: 20% !important;
+}
+
+.grid-container-data button {
+	width: 50%;
+	height: 50px;
+	background-color: #25a6d9;
+	color: #fff;
+	outline: none;
+	border: none;
+	border-radius: 20px;
+}
+
+.grid-container-data button:hover {
+	cursor: pointer;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+input {
+	width: 100%;
+	outline: none;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 10px;
+	background-color: #f2f2f2;
+}
