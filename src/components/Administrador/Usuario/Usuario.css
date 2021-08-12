@@ -1,0 +1,53 @@
+.grid-item-user-4,
+.grid-item-user-6 {
+	background-color: #fff;
+}
+
+.grid-item-user-4 {
+	width: 40%;
+	height: 100%;
+	padding: 20px;
+}
+
+.grid-item-user-6 {
+	width: 55%;
+	height: 100%;
+	padding: 20px;
+}
+
+.grid-container-add-user {
+	height: 90%;
+	margin: auto;
+}
+
+.grid-item-user-4 .grid-item-title,
+.grid-item-user-4 .grid-item-user-btn {
+	height: 10%;
+}
+
+.grid-item-user-4 .grid-item-user-data {
+	height: 80%;
+}
+
+.grid-item-user-data .grid-container-user-data {
+	height: 100%;
+}
+
+.grid-item-user-data .grid-container-user-data .grid-item-info input {
+	height: 50px;
+	margin-top: 5px;
+}
+
+.grid-item-user-btn .grid-container-user-btn {
+	width: 100%;
+	height: 100%;
+}
+
+.grid-item-user-btn .grid-container-user-btn button {
+	width: 90px;
+	padding: 16px;
+	background-color: #01619e;
+	color: #fff;
+	border: 1px solid #707070;
+	font-weight: 600;
+}

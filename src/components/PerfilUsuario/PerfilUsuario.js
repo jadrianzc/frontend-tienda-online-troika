@@ -1,5 +1,5 @@
-import { Container, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Container, Grid, Typography } from '@material-ui/core';
 import './PerfilUsuario.css';
 
 const PerfilUsuario = () => {

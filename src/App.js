@@ -11,6 +11,7 @@ import Producto from './components/Categorias/Producto/Producto';
 import Categorias from './components/Categorias/Catregorias';
 import PerfilUsuario from './components/PerfilUsuario/PerfilUsuario';
 import Administrador from './components/Administrador/Administrador';
+import Usuario from './components/Administrador/Usuario/Usuario';
 
 const theme = createTheme({
 	palette: {
@@ -38,6 +39,7 @@ function App() {
 					<Route path="/Categorías/:id" exact component={Categorias} />
 					<Route path="/PerfilUsuario" exact component={PerfilUsuario} />
 					<Route path="/Admin" exact component={Administrador} />
+					<Route path="/Admin/Usuario" exact component={Usuario} />
 				</Switch>
 				{/* <Footer />  */}
 			</Router>
