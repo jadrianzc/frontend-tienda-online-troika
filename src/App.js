@@ -10,6 +10,7 @@ import Registro from './components/Registro/Registro';
 import Producto from './components/Categorias/Producto/Producto';
 import Categorias from './components/Categorias/Catregorias';
 import PerfilUsuario from './components/PerfilUsuario/PerfilUsuario';
+import Administrador from './components/Administrador/Administrador';
 
 const theme = createTheme({
 	palette: {
@@ -36,6 +37,7 @@ function App() {
 					<Route path="/Producto/:id" exact component={Producto} />
 					<Route path="/Categorías/:id" exact component={Categorias} />
 					<Route path="/PerfilUsuario" exact component={PerfilUsuario} />
+					<Route path="/Admin" exact component={Administrador} />
 				</Switch>
 				{/* <Footer />  */}
 			</Router>
