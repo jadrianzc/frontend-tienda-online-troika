@@ -42,9 +42,9 @@ h3 {
 	text-align: center;
 }
 
-a:link,
-a:visited,
-a:active {
+.grid-container-adminLogo a:link,
+.grid-container-adminLogo a:visited,
+.grid-container-adminLogo a:active {
 	text-decoration: none;
 	color: inherit;
 }
