@@ -41,11 +41,11 @@ const PerfilUsuario = () => {
 						</Grid>
 						<Grid item className="grid-item-data">
 							<Grid container className="grid-container-data2">
-								<Grid item className="grid-item-info">
+								<Grid item className="grid-item-info2">
 									<label>E-mail*</label>
 									<input type="text"></input>
 								</Grid>
-								<Grid item className="grid-item-info">
+								<Grid item className="grid-item-info2">
 									<label>Sexo*</label>
 									<input type="text"></input>
 								</Grid>
@@ -61,15 +61,15 @@ const PerfilUsuario = () => {
 					<Grid container className="grid-item-col">
 						<Grid item className="grid-item-data grid-item-margin">
 							<Grid container className="grid-container-data">
-								<Grid item className="grid-item-info">
+								<Grid item className="grid-item-info3">
 									<label>Contraseña actual</label>
 									<input type="password" placeholder="Contraseña actual"></input>
 								</Grid>
-								<Grid item className="grid-item-info">
+								<Grid item className="grid-item-info3">
 									<label>Nueva contraseña</label>
 									<input type="password" placeholder="Nueva contraseña"></input>
 								</Grid>
-								<Grid item className="grid-item-info">
+								<Grid item className="grid-item-info3">
 									<label>Repita la contraseña</label>
 									<input type="password" placeholder="Repita la contraseña"></input>
 								</Grid>
