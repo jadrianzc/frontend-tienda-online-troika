@@ -19,7 +19,7 @@ const Administrador = () => {
 				</Grid>
 				<Grid item className="grid-item-admin grid-item-admin-logo">
 					<Grid container className="grid-container-adminLogo" justifyContent="space-evenly" alignItems="center">
-						<Link to={`/`}>
+						<Link to={`/Admin/Usuario`}>
 							<Grid item>
 								<div className="div-logo">
 									<img src={userLogo} alt="Logo-usuario"></img>

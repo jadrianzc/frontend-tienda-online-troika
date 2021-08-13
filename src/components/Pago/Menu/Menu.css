@@ -1,0 +1,11 @@
+.grid-container-menu {
+	width: 100%;
+	height: 5%;
+}
+
+.grid-container-menu a:link,
+.grid-container-menu a:visited,
+.grid-container-menu a:active {
+	text-decoration: none;
+	color: #545454;
+}

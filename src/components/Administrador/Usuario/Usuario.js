@@ -47,11 +47,11 @@ const Usuario = () => {
 						<hr className="underline" />
 					</div>
 					<Grid item className="grid-item-user-buscar">
-						<Grid container>
-							<Grid item>
+						<Grid container className="grid-container-user-buscar" justifyContent="space-between" alignItems="center">
+							<Grid item className="grid-item-user-label">
 								<label>ID:</label>
 							</Grid>
-							<Grid item className="">
+							<Grid item className="grid-item-user-input">
 								<input type="text"></input>
 							</Grid>
 							<Grid item className="grid-container-user-btn" justifyContent="flex-end" alignItems="center">
