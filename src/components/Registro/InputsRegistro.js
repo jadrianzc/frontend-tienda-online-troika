@@ -122,6 +122,7 @@ function InputsRegistro() {
           name="telf_usuario"
           label="Télefono"
           variant="outlined"
+          onChange={handleInputChange}
         />
         <TextField
           inputProps={{ maxLength: 10 }}
@@ -130,6 +131,7 @@ function InputsRegistro() {
           name="cel_usuario"
           label="Celular"
           variant="outlined"
+          onChange={handleInputChange}
         />
       </div>
       <div className="ContInputRegistro2">
