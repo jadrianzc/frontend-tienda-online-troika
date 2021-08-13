@@ -40,7 +40,7 @@ function NavBotones() {
     if (cookies.get("id")) {
       //sino encuentra ninguna session abierta
       cookies.remove("id", { path: "/" });
-      window.location.href = "/";
+      window.location.href = "/Login";
       //setLogiado('Ingresar')
     }
   };

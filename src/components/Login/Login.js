@@ -8,9 +8,12 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import Alert from "@material-ui/lab/Alert";
+import Collapse from "@material-ui/core/Collapse";
 
 const Login = () => {
   const cookies = new Cookies();
+  const [openAlert, setOpenAlert] = useState(false);
   const [datos, setDatos] = useState({
     email: "",
     password: "",
@@ -46,13 +49,11 @@ const Login = () => {
               window.location.href = "/";
             }
           } else {
-            //setErrorpwd(true);
-            //setMsjerrorpwd("Contraseña incorrecta");
+            setOpenAlert(true);
             console.log("Contraseña incorrecta");
           }
         } else {
-          //setErroruser(true);
-          //setMsjerroruser("El nombre del usuario esta incorrecto");
+          setOpenAlert(true);
           console.log("El correo del usuario esta incorrecto");
         }
       })
@@ -99,6 +100,11 @@ const Login = () => {
                     onChange={handleInputChange}
                   />
                 </div>
+                <Collapse in={openAlert} className="AlertLogin">
+                  <Alert variant="filled" severity="error">
+                    El correo o la contraseña son incorrectos.
+                  </Alert>
+                </Collapse>
 
                 <div className="container-login-submit">
                   <input type="submit" name="" value="Login" />

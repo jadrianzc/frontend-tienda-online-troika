@@ -33,7 +33,7 @@ const PerfilUsuario = () => {
   };
 
   return (
-    <Container className="container container-user">
+    <Container className="container-user">
       <Grid container className="grid-container-user">
         <Grid item className="grid-item-perfil">
           <div className="grid-item-title">
@@ -78,6 +78,14 @@ const PerfilUsuario = () => {
                   <label>Sexo*</label>
                   <input type="text"></input>
                 </Grid>
+              </Grid>
+              <Grid
+                container
+                className="grid-container-data"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <button>Actualizar datos</button>
               </Grid>
             </Grid>
           </Grid>
