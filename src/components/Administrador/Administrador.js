@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import userLogo from '../../assets/images/user_vector.png';
@@ -6,8 +6,21 @@ import categoryLogo from '../../assets/images/category_vector.png';
 import productsLogo from '../../assets/images/products_vector.png';
 import pedidosLogo from '../../assets/images/pedidos_vector.png';
 import './Administrador.css';
+import Cookies from 'universal-cookie';
 
 const Administrador = () => {
+	const cookies = new Cookies();
+
+	useEffect(() => {
+		session();
+	}, []);
+
+	const session = () => {
+		//verificar si hay alguna session
+		if (cookies.get('coki').rol_usuario === 'cliente') {
+			window.location.href = '/';
+		}
+	};
 	return (
 		<Container className="container container-user container-admin">
 			<Grid container className="grid-container-user admin">
@@ -19,7 +32,7 @@ const Administrador = () => {
 				</Grid>
 				<Grid item className="grid-item-admin grid-item-admin-logo">
 					<Grid container className="grid-container-adminLogo" justifyContent="space-evenly" alignItems="center">
-						<Link to={`/Admin/Usuario`}>
+						<Link to={`/`}>
 							<Grid item>
 								<div className="div-logo">
 									<img src={userLogo} alt="Logo-usuario"></img>
