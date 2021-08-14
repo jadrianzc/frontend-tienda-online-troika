@@ -32,10 +32,6 @@ const Producto = () => {
 						<img src={documentos.imgurl} alt="Imagen-Producto" />
 					</div>
 					<p>Imagen referencial</p>
-					{/* <div>
-						<button>{'<'}</button>
-						<button>{'>'}</button>
-					</div> */}
 				</Grid>
 				<Grid item className="grid-content grid-item" xs={6}>
 					<Grid container className="grid-container-det">
@@ -58,7 +54,7 @@ const Producto = () => {
 						</Grid>
 						<Grid item xs={12}>
 							<h4>Descripción:</h4>
-							<p>Lorem ipsum</p>
+							<p>{documentos.descrip_producto}</p>
 						</Grid>
 					</Grid>
 				</Grid>

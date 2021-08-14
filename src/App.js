@@ -13,6 +13,7 @@ import PerfilUsuario from './components/PerfilUsuario/PerfilUsuario';
 import Administrador from './components/Administrador/Administrador';
 import Usuario from './components/Administrador/Usuario/Usuario';
 import InformacionPago from './components/Pago/Informacion/InformacionPago';
+import CarritoCompras from './components/CarritoCompras/CarritoCompras';
 
 const theme = createTheme({
 	palette: {
@@ -41,6 +42,7 @@ function App() {
 					<Route path="/PerfilUsuario" exact component={PerfilUsuario} />
 					<Route path="/Admin" exact component={Administrador} />
 					<Route path="/Admin/Usuario" exact component={Usuario} />
+					<Route path="/carrito-compras" exact component={CarritoCompras} />
 					<Route path="/carrito-compras/info-pago" exact component={InformacionPago} />
 				</Switch>
 				{/* <Footer />  */}
