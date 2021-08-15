@@ -37,6 +37,7 @@
 }
 .ContCategoria {
   width: 280px;
+  height: calc(100vh - 63px);
   background: #fff;
 }
 .CategoriaStatico {
