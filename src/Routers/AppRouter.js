@@ -38,8 +38,12 @@ export default function AppRouter() {
           exact
           component={Usuario}
         />
-        <Route path="/carrito-compras" exact component={CarritoCompras} />
-        <Route
+        <PrivateRoute
+          path="/carrito-compras"
+          exact
+          component={CarritoCompras}
+        />
+        <PrivateRoute
           path="/carrito-compras/info-pago"
           exact
           component={InformacionPago}
