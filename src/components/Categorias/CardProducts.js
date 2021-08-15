@@ -26,9 +26,22 @@ function CardProducts({ id, filtro }) {
     <>
       {documentos
         .filter((card) => {
-          if (filtro.marca === "") {
+          if (filtro.modelo === "" && filtro.marca === "") {
             return card;
-          } else if (card.marca_producto === filtro.marca) {
+          } else if (
+            card.modelo_producto === filtro.modelo &&
+            filtro.marca === ""
+          ) {
+            return card;
+          } else if (
+            card.marca_producto === filtro.marca &&
+            filtro.modelo === ""
+          ) {
+            return card;
+          } else if (
+            card.modelo_producto === filtro.modelo &&
+            card.marca_producto === filtro.marca
+          ) {
             return card;
           }
         })

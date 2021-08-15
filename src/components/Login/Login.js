@@ -24,6 +24,7 @@ const Login = () => {
       ...datos,
       [e.target.name]: e.target.value,
     });
+    console.log(datos);
   };
 
   const handleSubmit = async (e) => {
@@ -39,11 +40,11 @@ const Login = () => {
         if (res.length > 0) {
           console.log(res[0].rol_usuario);
           //setErroruser(false);
-          if (res[0].contraseña_usuario == datos.password) {
+          if (res[0].contraseña_usuario === datos.password) {
             //si los datos son correcto guarda session en las cookies e inicia
             cookies.set("id", res[0]._id, { path: "/" });
             cookies.set("coki", res[0], { path: "/" }); // aqui se guarda la session
-            if (res[0].rol_usuario == "admin") {
+            if (res[0].rol_usuario === "admin") {
               window.location.href = "/Admin";
             } else {
               window.location.href = "/";
@@ -82,7 +83,6 @@ const Login = () => {
                     required
                     type="email"
                     className="email"
-                    id="standard-basic"
                     label="e-mail"
                     name="email"
                     onChange={handleInputChange}
@@ -94,7 +94,6 @@ const Login = () => {
                     required
                     type="password"
                     className="pass"
-                    id="standard-basic"
                     label="contraseña"
                     name="password"
                     onChange={handleInputChange}

@@ -6,21 +6,8 @@ import categoryLogo from "../../assets/images/category_vector.png";
 import productsLogo from "../../assets/images/products_vector.png";
 import pedidosLogo from "../../assets/images/pedidos_vector.png";
 import "./Administrador.css";
-import Cookies from "universal-cookie";
 
 const Administrador = () => {
-  const cookies = new Cookies();
-
-  useEffect(() => {
-    session();
-  }, []);
-
-  const session = () => {
-    //verificar si hay alguna session
-    if (cookies.get("coki").rol_usuario === "cliente") {
-      window.location.href = "/";
-    }
-  };
   return (
     <Container className="container container-user container-admin">
       <Grid container className="grid-container-user admin">

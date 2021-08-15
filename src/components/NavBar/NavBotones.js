@@ -4,42 +4,40 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 function NavBotones() {
   const cookies = new Cookies();
   const [login, setLogin] = useState(false);
-  const [user, setUser] = useState({
-    nombre: "",
-    apellido: "",
-    correo: "",
-  });
+  const [user, setUser] = useState({});
 
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
 
   useEffect(() => {
+    const session = async () => {
+      //verificar si hay alguna session
+      if (cookies.get("id")) {
+        try {
+          const res = await axios.get(
+            `http://localhost:4000/api/v1/usuarios/${cookies.get("id")}`
+          );
+          setUser(res.data);
+        } catch (error) {
+          console.log(error);
+        }
+        setLogin(true);
+      }
+    };
     session();
   }, []);
 
-  const session = () => {
-    //verificar si hay alguna session
-    if (cookies.get("id")) {
-      const cokiapell = cookies.get("coki").apell_usuario.split(" ")[0];
-      const cokinomb = cookies.get("coki").nomb_usuario.split(" ")[0];
-
-      setUser({
-        nombre: cokinomb,
-        apellido: cokiapell,
-        correo: cookies.get("coki").email_usuario,
-      });
-      setLogin(true);
-    }
-  };
   const cerrarseccion = () => {
     if (cookies.get("id")) {
       //sino encuentra ninguna session abierta
       cookies.remove("id", { path: "/" });
+      cookies.remove("coki", { path: "/" });
       window.location.href = "/Login";
       //setLogiado('Ingresar')
     }
@@ -49,11 +47,8 @@ function NavBotones() {
       {login ? (
         <div className="MenuSession-container">
           <button onClick={onClick} className="MenuSession-trigger">
-            <img
-              src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
-              alt="User avatar"
-            />
-            <span>{user.apellido + " " + user.nombre}</span>
+            <img src={user.imgurl} alt="User avatar" />
+            <span>{user.apell_usuario + " " + user.nomb_usuario}</span>
             <FontAwesomeIcon icon={faAngleDown} />
           </button>
           <nav
@@ -61,13 +56,10 @@ function NavBotones() {
             className={`MenuSession ${isActive ? "active" : "inactive"}`}
           >
             <div className="MenuSession-contenido">
-              <img
-                src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
-                alt="User avatar"
-              />
+              <img src={user.imgurl} alt="User avatar" />
               <span>
-                <p>{user.apellido + " " + user.nombre}</p>
-                {user.correo}
+                <p>{user.apell_usuario + " " + user.nomb_usuario}</p>
+                {user.email_usuario}
               </span>
             </div>
             <ul>

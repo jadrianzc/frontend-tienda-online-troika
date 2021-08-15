@@ -3,8 +3,10 @@ import axios from "axios";
 
 function FiltraProducts({ id, onChange, filtro, handleChange, Limpiar }) {
   const [documentos, setDocumentos] = useState([]);
-  const newArr = [];
-  const myObj = {};
+  const newMarcas = [];
+  const newModelos = [];
+  const myObjMarca = {};
+  const myObjModelo = {};
   useEffect(() => {
     const LoadData = async () => {
       try {
@@ -20,34 +22,63 @@ function FiltraProducts({ id, onChange, filtro, handleChange, Limpiar }) {
   }, [id]);
   return (
     <>
+      {documentos.map((doc) => {
+        if (!(doc.marca_producto in myObjMarca)) {
+          // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
+          myObjMarca[doc.marca_producto] = true;
+          newMarcas.push(doc.marca_producto);
+        }
+        if (!(doc.modelo_producto in myObjModelo)) {
+          // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
+          myObjModelo[doc.modelo_producto] = true;
+          newModelos.push(doc.modelo_producto);
+        }
+      })}
       <form
         method="POST"
         variant="outlined"
-        className="formControl"
+        className="formControlFiltra"
         onSubmit={onChange}
       >
-        Marca:
-        <select name="marca" value={filtro.marca} onChange={handleChange}>
-          {documentos.map((jj) => {
-            if (!(jj.marca_producto in myObj)) {
-              // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
-              myObj[jj.marca_producto] = true;
-              newArr.push(jj.marca_producto);
-            }
-          })}
-          <option aria-label="None" value="" />
-          {newArr.map((mol) => (
-            <option value={mol}>{mol}</option>
-          ))}
-        </select>
-        Modelo:
-        <select name="modelo" value={filtro.modelo} onChange={handleChange}>
-          <option aria-label="None" value="" />
-          <option value={"ff"}>RT</option>
-          <option value={"ff"}>CT</option>
-        </select>
-        <input type="submit" value="Enviar" />
-        <input type="button" onClick={Limpiar} value="Limpiar" />
+        <div className="DivSelectFiltra">
+          <label htmlFor="marca">Marca:</label>
+          <select
+            name="marca"
+            id="marca"
+            value={filtro.marca}
+            onChange={handleChange}
+          >
+            <option aria-label="None" value="" />
+            {newMarcas.map((mar) => (
+              <option key={mar} value={mar}>
+                {mar}
+              </option>
+            ))}
+          </select>
+          <label htmlFor="modelo">Modelo:</label>
+          <select
+            name="modelo"
+            id="modelo"
+            value={filtro.modelo}
+            onChange={handleChange}
+          >
+            <option aria-label="None" value="" />
+            {newModelos.map((mol) => (
+              <option key={mol} value={mol}>
+                {mol}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="DivBtnFiltra">
+          <input type="submit" className="btnNav btnNavIni" value="Buscar" />
+          <input
+            type="button"
+            className="btnNav btnNavRegi"
+            onClick={Limpiar}
+            value="Eliminar"
+          />
+        </div>
       </form>
     </>
   );

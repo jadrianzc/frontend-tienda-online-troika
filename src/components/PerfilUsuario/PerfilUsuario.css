@@ -22,6 +22,7 @@
 
 .grid-item-title {
   height: 50px;
+  margin-bottom: 30px;
 }
 
 .grid-item-col {
@@ -50,11 +51,15 @@
 .grid-item-img {
   width: 20%;
   height: 100%;
+  padding-right: 40px;
+}
+.grid-item-img img {
+  width: 100%;
+  border-radius: 50%;
 }
 
 .grid-item-data {
   width: 40%;
-  height: 100%;
 }
 
 .grid-container-data {
@@ -62,11 +67,16 @@
   width: 100%;
   padding: 0 10px;
 }
+.Btn-grid-container-data1 {
+  height: 50%;
+}
+.Btn-grid-container-data2 {
+  height: 100%;
+}
 
 .grid-container-data2 {
   padding: 0 10px;
   width: 100%;
-  height: 40%;
 }
 
 .grid-item-info {
@@ -88,7 +98,7 @@
   margin-left: 20% !important;
 }
 
-.grid-container-data button {
+.Btn-data button {
   width: 50%;
   height: 50px;
   background-color: #25a6d9;
@@ -96,20 +106,16 @@
   outline: none;
   border: none;
   border-radius: 20px;
-}
-
-.grid-container-data button:hover {
   cursor: pointer;
 }
 
-label {
+.container-user label {
   display: block;
   height: 20px;
   font-size: 15px;
 }
 
-input {
-  width: 100%;
+.container-user input {
   height: 40px;
   outline: none;
   padding: 10px 20px;
@@ -117,4 +123,36 @@ input {
   border: 1px solid #c1c1c1;
   border-radius: 10px;
   background-color: #f2f2f2;
+}
+.impu {
+  width: 100%;
+  margin-bottom: 30px !important;
+  position: unset !important;
+}
+.impu .MuiInputBase-root,
+.MuiOutlinedInput-root {
+  position: unset !important;
+}
+.impu .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+.btnPwd {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 0em 1em;
+  width: 50%;
+  height: 50px;
+  color: #f2f2f2;
+  font-family: "DM Sans";
+  font-size: medium;
+  display: block;
+  margin: 20px auto;
+}
+.btnPwdAcep {
+  background-color: #25a6d9;
+}
+.btnPwdCan {
+  background-color: #3e3f40;
 }

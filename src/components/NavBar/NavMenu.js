@@ -20,17 +20,6 @@ function NavMenu({ OpenMenu }) {
         <li className="nav-item">
           <NavLink
             exact
-            to="/Categorías"
-            className="nav-links"
-            activeClassName="NavLink-Active"
-            onClick={OpenMenu}
-          >
-            Categorías
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
-            exact
             to="/Agencias"
             className="nav-links"
             activeClassName="NavLink-Active"

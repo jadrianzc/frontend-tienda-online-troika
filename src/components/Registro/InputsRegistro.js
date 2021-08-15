@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import "./Registro.css";
-import { CampoNombre } from "./VerificaRegistro";
-import { CampoApellido } from "./VerificaRegistro";
-import { CampoCedula } from "./VerificaRegistro";
-import { CampoEmail } from "./VerificaRegistro";
-import { CampoPassword } from "./VerificaRegistro";
-import { CampoPassword2 } from "./VerificaRegistro";
+import {
+  CampoNombre,
+  CampoApellido,
+  CampoCedula,
+  CampoEmail,
+  CampoPassword,
+  CampoPassword2,
+} from "./VerificaRegistro";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import Modal from "@material-ui/core/Modal";

@@ -25,15 +25,22 @@ function NavCatregorias() {
         <h1>Categorías</h1>
         <ul>
           {categorias.map((item) => (
-            <li key={item._id}>
-              <NavLink
-                exact
-                to={`/Categorías/${item.nombre_categoria}`}
-                className="Categoria-links"
-                activeClassName="CategoriaLink-Active"
-              >
-                {item.descrip_categoria}
-              </NavLink>
+            <li key={item._id} className="LiCategori">
+              {item.descrip_categoria}
+              <ul>
+                {item.sub_categoria.map((sub) => (
+                  <li key={sub} className="LiSubCategori">
+                    <NavLink
+                      exact
+                      to={`/Categorías/${sub}`}
+                      className="Categoria-links"
+                      activeClassName="CategoriaLink-Active"
+                    >
+                      {sub}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>

@@ -15,6 +15,7 @@
 }
 .navbar-logo img {
   height: 63px;
+  width: 100%;
 }
 .min {
   display: none;
@@ -55,7 +56,7 @@
 }
 
 .NavBuscador {
-  padding: 0 2em;
+  padding: 0 0.8em;
   height: 32px;
   border-radius: 1em;
   display: flex;
@@ -179,6 +180,7 @@
 
 .MenuSession-trigger img {
   border-radius: 90px;
+  width: 32px;
 }
 .MenuSession-container p {
   font-weight: bold;
@@ -202,6 +204,7 @@
   cursor: pointer;
   text-align: start;
   color: #333333;
+  padding: 10px 20px;
 }
 /***/
 .NavCar {
