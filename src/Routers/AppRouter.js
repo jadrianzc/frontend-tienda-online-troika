@@ -9,6 +9,8 @@ import Categorias from "../components/Categorias/Catregorias";
 import PerfilUsuario from "../components/PerfilUsuario/PerfilUsuario";
 import Administrador from "../components/Administrador/Administrador";
 import Usuario from "../components/Administrador/Usuario/Usuario";
+import InformacionPago from "../components/Pago/Informacion/InformacionPago";
+import CarritoCompras from "../components/CarritoCompras/CarritoCompras";
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -35,6 +37,12 @@ export default function AppRouter() {
           path="/Admin/Usuario"
           exact
           component={Usuario}
+        />
+        <Route path="/carrito-compras" exact component={CarritoCompras} />
+        <Route
+          path="/carrito-compras/info-pago"
+          exact
+          component={InformacionPago}
         />
       </Switch>
       {/* <Footer />  */}

@@ -1,0 +1,62 @@
+.container-carrito {
+	min-width: 95% !important;
+}
+
+.grid-container-carrito {
+	padding: 50px;
+}
+
+.grid-item-carrito-title,
+.grid-item-carrito-table,
+.grid-item-totalCarrito-table,
+.grid-item-btn-table {
+	width: 100%;
+}
+
+.grid-item-totalCarrito-table {
+	margin-top: 30px !important;
+}
+
+.grid-item-btn-table .grid-item-admin-btn {
+	padding: 40px 0 40px 40px;
+}
+
+.grid-item-btn-table .grid-item-admin-btn button {
+	background-color: #01619e;
+}
+
+.btn-delete {
+	color: #953030;
+	font-size: 30px;
+}
+
+.btn-delete:hover {
+	cursor: pointer;
+}
+
+.row-item-producto-img img {
+	width: 180px;
+	height: 150px;
+}
+
+.item-table-size {
+	font-size: 16px !important;
+}
+
+.row-items-producto-car {
+	width: 100%;
+}
+
+.row-items-producto-car .row-item-producto-btn-delete {
+	width: 5%;
+}
+
+.row-items-producto-car .row-item-producto-img,
+.row-items-producto-car .row-item-producto-precio,
+.row-items-producto-car .row-item-producto-total {
+	width: 10%;
+}
+
+.row-items-producto-car .row-item-producto-btns {
+	width: 15%;
+}

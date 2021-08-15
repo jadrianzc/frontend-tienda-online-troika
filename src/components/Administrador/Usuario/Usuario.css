@@ -21,11 +21,14 @@
 }
 
 .grid-item-user-4 .grid-item-title,
-.grid-item-user-4 .grid-item-user-btn {
+.grid-item-user-4 .grid-item-user-btn,
+.grid-item-user-6 .grid-item-title,
+.grid-item-user-6 .grid-item-user-buscar {
 	height: 10%;
 }
 
-.grid-item-user-4 .grid-item-user-data {
+.grid-item-user-4 .grid-item-user-data,
+.grid-item-user-6 .grid-item-user-tabla {
 	height: 80%;
 }
 
@@ -50,4 +53,31 @@
 	color: #fff;
 	border: 1px solid #707070;
 	font-weight: 600;
+}
+
+.grid-item-user-buscar {
+	width: 100%;
+	height: 100%;
+}
+
+.grid-container-user-buscar {
+	width: 55% !important;
+	height: 100%;
+}
+
+.grid-container-user-buscar .grid-item-user-input input {
+	border: 1px solid #25a6d9;
+	outline: none;
+}
+
+.grid-container-user-buscar .grid-item-user-label label {
+	font-weight: bold;
+}
+
+.grid-container-user-buscar .grid-container-user-btn button {
+	background-color: #01619e;
+	color: #fff;
+	padding: 16px;
+	border: 1px solid #707070;
+	border-radius: 10px;
 }

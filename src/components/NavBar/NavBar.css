@@ -220,6 +220,13 @@
   margin-right: 30px;
 }
 
+.NavCar a:link,
+.NavCar a:visited,
+.NavCar a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 /***icon resposive**/
 .ContIconMenu {
   display: flex;

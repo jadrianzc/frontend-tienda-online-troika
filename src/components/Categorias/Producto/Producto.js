@@ -1,12 +1,17 @@
-import { Container, Grid } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+import { Container, Grid } from "@material-ui/core";
 import { useCounter } from "../../../hooks/useCounter";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie";
 import "./Producto.css";
 
 const Producto = () => {
   const { id } = useParams();
+  const cookies = new Cookies();
+  const idUserSession = cookies.get("id");
+  // console.log(idUserSession);
+
   const [documentos, setDocumentos] = useState({});
 
   useEffect(() => {
@@ -24,8 +29,26 @@ const Producto = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const { counter, increment, decrement } = useCounter();
-  console.log(counter);
+  const { counter, increment, decrement } = useCounter(0);
+
+  // handleAddCar
+  const handleAddCar = async (idUserSession) => {
+    const productoAdd = {
+      ...documentos,
+      cantidad_producto: counter,
+      idUserSession: idUserSession,
+    };
+    try {
+      const res = await axios.post(
+        `http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`,
+        productoAdd
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container className="container-producto">
       <Grid container className="grid-container-producto">
@@ -34,15 +57,11 @@ const Producto = () => {
             <img src={documentos.imgurl} alt="Imagen-Producto" />
           </div>
           <p>Imagen referencial</p>
-          {/* <div>
-						<button>{'<'}</button>
-						<button>{'>'}</button>
-					</div> */}
         </Grid>
         <Grid item className="grid-content grid-item" xs={6}>
           <Grid container className="grid-container-det">
             <Grid item xs={12} className="grid-item-descrip">
-              <h1>{documentos.nom_producto}</h1>
+              <h1>{documentos.descrip_producto}</h1>
             </Grid>
             <Grid item xs={12} className="grid-item-precio">
               $ {documentos.precio_producto}
@@ -55,7 +74,12 @@ const Producto = () => {
                   <button>{counter}</button>
                   <button onClick={() => increment(2)}>+</button>
                 </div>
-                <button type="submit">Añadir al carrito</button>
+                <button
+                  className="btn-addCarrito"
+                  onClick={() => handleAddCar(idUserSession)}
+                >
+                  Añadir al carrito
+                </button>
               </div>
             </Grid>
             <Grid item xs={12}>

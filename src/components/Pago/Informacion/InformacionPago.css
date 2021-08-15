@@ -1,0 +1,67 @@
+.container-infoPago {
+	width: 90% !important;
+}
+
+.grid-item-infoPago {
+	width: 100%;
+	height: 10%;
+}
+
+.grid-item-infoContact {
+	width: 100%;
+	height: 85%;
+}
+
+.grid-item-infoContactEmail,
+.grid-item-infoContactDirec {
+	width: 100%;
+}
+
+.grid-item-infoContact-margin-top {
+	margin-top: 30px;
+}
+
+.grid-item-infoContactDirec .InputRegistro-md {
+	width: 48%;
+}
+
+.InputRegistro-bg {
+	background-color: #f2f2f2;
+}
+
+.grid-item-infoContactDirec-btn button {
+	width: 120px;
+	height: 60px;
+	background-color: #191919;
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid #707070;
+}
+
+.grid-item-infoContactDirec-btn button:hover {
+	cursor: pointer;
+}
+
+.grid-item-infoContact hr {
+	color: #f2f2f2;
+	margin: 15px 0;
+}
+
+@media (min-width: 720px) {
+	.container-infoPago {
+		width: 70% !important;
+	}
+}
+
+@media (min-width: 1280px) {
+	.container-infoPago {
+		width: 50% !important;
+	}
+}
+
+@media (min-width: 1560px) {
+	.container-infoPago {
+		width: 40% !important;
+	}
+}
