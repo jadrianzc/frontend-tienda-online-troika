@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { useCounter } from '../../hooks/useCounter';
+import { useCounter } from '../../../hooks/useCounter';
 import axios from 'axios';
 
-const BotonesAddSub = ({ cantidad, document, idUserSession }) => {
+const BotonesAddSub = ({ cantidad, document, idUserSession, setBtn, btn }) => {
 	const { counter, increment, decrement } = useCounter(cantidad);
-
 	useEffect(() => {
 		const UpdateData = async () => {
 			const newData = { ...document, cantidad_producto: counter };
@@ -16,16 +15,14 @@ const BotonesAddSub = ({ cantidad, document, idUserSession }) => {
 			}
 		};
 		UpdateData();
-		window.scrollTo(0, 0);
-	}, [counter]);
-
-	console.log(counter);
+	}, [counter, btn]);
 
 	return (
 		<div className="btn-cantidad">
 			<button
 				onClick={() => {
 					decrement(2);
+					setBtn(!btn);
 				}}
 			>
 				-
@@ -34,6 +31,7 @@ const BotonesAddSub = ({ cantidad, document, idUserSession }) => {
 			<button
 				onClick={() => {
 					increment(2);
+					setBtn(!btn);
 				}}
 			>
 				+

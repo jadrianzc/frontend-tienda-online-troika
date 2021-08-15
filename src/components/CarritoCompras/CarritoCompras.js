@@ -12,7 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import BotonesAddSub from '../BotonesAddSub/BotonesAddSub';
+import BotonesAddSub from './BotonesAddSub/BotonesAddSub';
+import Total from './Totales/Total';
 import './CarritoCompras.css';
 
 const StyledTableCell = withStyles((theme) => ({
@@ -42,12 +43,12 @@ const useStyles = makeStyles({
 const CarritoCompras = () => {
 	const classes = useStyles();
 	const [rows, setRows] = useState([]);
-
+	const [btn, setBtn] = useState(false);
 	const cookies = new Cookies();
 	const idUserSession = cookies.get('id');
 
 	useEffect(() => {
-		const LoadData = async () => {
+		const LoadData = async (idUserSession) => {
 			try {
 				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`);
 				setRows(res.data);
@@ -55,14 +56,22 @@ const CarritoCompras = () => {
 				console.log(error);
 			}
 		};
-		LoadData();
-		window.scrollTo(0, 0);
-	}, [idUserSession]);
+		LoadData(idUserSession);
+		// window.scrollTo(0, 0);
+	}, [idUserSession, btn]);
 
 	console.log(rows);
+	//Btn Delete
+	const handleBtnDelete = async (idProductoUnique) => {
+		console.log('deleted: ', idProductoUnique);
+		const res = await axios.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
+			data: { idProductoUnique },
+		});
+		console.log(res.data);
+	};
 
 	return (
-		<Container className="container container-user container-carrito">
+		<Container className="container-user container-carrito">
 			<Grid container className="grid-container-user grid-container-carrito" alignItems="flex-start">
 				<Grid item className="grid-item-carrito-title">
 					<div className="grid-item-title">
@@ -94,42 +103,60 @@ const CarritoCompras = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{rows.map((row) => (
-									<StyledTableRow key={row._id} className="row-items-producto-car">
-										<StyledTableCell align="center" component="th" scope="row" className="row-item-producto-btn-delete">
-											<FontAwesomeIcon icon={faTimesCircle} className="iconCar btn-delete" />
-										</StyledTableCell>
-										<StyledTableCell align="center" className="row-item-producto-img">
-											<img src={row.imgurl} alt="Imagen-Producto"></img>
-										</StyledTableCell>
-										<StyledTableCell align="center" className="item-table-size row-item-producto-descr">
-											{row.descrip_producto}
-										</StyledTableCell>
-										<StyledTableCell align="center" className="item-table-size row-item-producto-precio">
-											$ {row.precio_producto}
-										</StyledTableCell>
-										<StyledTableCell align="center" className="row-item-producto-btns">
-											<BotonesAddSub cantidad={row.cantidad_producto} document={row} idUserSession={idUserSession} />
-										</StyledTableCell>
-										<StyledTableCell align="center" className="item-table-size row-item-producto-total">
-											$ {(row.cantidad_producto * row.precio_producto).toFixed(2)}
-										</StyledTableCell>
-									</StyledTableRow>
-								))}
+								{rows.map((row) => {
+									if (row.idUserSession === idUserSession) {
+										return (
+											<StyledTableRow key={row._id} className="row-items-producto-car">
+												<StyledTableCell
+													align="center"
+													component="th"
+													scope="row"
+													className="row-item-producto-btn-delete"
+												>
+													<FontAwesomeIcon
+														icon={faTimesCircle}
+														onClick={() => {
+															handleBtnDelete(row._id);
+															setBtn(!btn);
+														}}
+														className="iconCar btn-delete"
+													/>
+												</StyledTableCell>
+												<StyledTableCell align="center" className="row-item-producto-img">
+													<img src={row.imgurl} alt="Imagen-Producto"></img>
+												</StyledTableCell>
+												<StyledTableCell align="center" className="item-table-size row-item-producto-descr">
+													{row.descrip_producto}
+												</StyledTableCell>
+												<StyledTableCell align="center" className="item-table-size row-item-producto-precio">
+													$ {row.precio_producto}
+												</StyledTableCell>
+												<StyledTableCell align="center" className="row-item-producto-btns">
+													<BotonesAddSub
+														cantidad={row.cantidad_producto}
+														document={row}
+														idUserSession={idUserSession}
+														setBtn={setBtn}
+														btn={btn}
+													/>
+												</StyledTableCell>
+												<StyledTableCell align="center" className="item-table-size row-item-producto-total">
+													$ {(row.cantidad_producto * row.precio_producto).toFixed(2)}
+												</StyledTableCell>
+											</StyledTableRow>
+										);
+									}
+								})}
 							</TableBody>
 						</Table>
 					</TableContainer>
 				</Grid>
 				<Grid item className="grid-item-totalCarrito-table">
-					<div className="grid-item-title">
-						<Typography className="title">Carrito de compras</Typography>
-						<hr className="underline" />
-					</div>
+					<Total rows={rows} idUserSession={idUserSession} />
 				</Grid>
 				<Grid item className="grid-item-btn-table">
-					<div className="grid-item-title">
-						<Typography className="title">Carrito de compras</Typography>
-						<hr className="underline" />
+					<div className="grid-item-admin-btn">
+						<button>Continuar</button>
 					</div>
 				</Grid>
 			</Grid>

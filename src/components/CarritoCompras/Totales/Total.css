@@ -1,0 +1,30 @@
+.grid-item-total {
+	width: 40%;
+}
+
+.grid-item-title-carrito,
+.div-item-total {
+	width: 100%;
+}
+
+.grid-item-title-carrito {
+	display: block;
+	text-align: end;
+}
+
+.grid-item-total .div-item-total {
+	display: grid;
+	grid-template-rows: repeat(5, 20%);
+	grid-template-columns: repeat(2, 50%);
+}
+
+.grid-item-total .div-item-total .div-item {
+	font-size: 18px;
+	padding: 10px;
+	border: 1px solid #000;
+	text-align: end;
+}
+
+.grid-item-total .div-item-total .div-item-title {
+	font-weight: bold;
+}

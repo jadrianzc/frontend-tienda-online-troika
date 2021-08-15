@@ -31,7 +31,7 @@ const Producto = () => {
 
 	// handleAddCar
 	const handleAddCar = async (idUserSession) => {
-		const productoAdd = { ...documentos, cantidad_producto: counter };
+		const productoAdd = { ...documentos, cantidad_producto: counter, idUserSession: idUserSession };
 		try {
 			const res = await axios.post(
 				`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`,
