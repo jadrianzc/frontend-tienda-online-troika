@@ -68,11 +68,6 @@ function NavBotones() {
                   Perfil de Troika
                 </Link>
               </li>
-              <li>
-                <Link to="/PerfilUsuario" onClick={onClick}>
-                  Historial de transacciones
-                </Link>
-              </li>
             </ul>
             <input
               type="button"
