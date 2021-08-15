@@ -34,15 +34,37 @@
 }
 
 .btn-delete {
-	background-color: #25a6d9;
-	color: #fff;
-	font-weight: bold;
-	border: none;
-	outline: none;
-	padding: 10px;
-	border-radius: 10px;
+	color: #953030;
+	font-size: 20px;
 }
 
 .btn-delete:hover {
 	cursor: pointer;
+}
+
+.row-item-producto-img img {
+	width: 180px;
+	height: 150px;
+}
+
+.item-table-size {
+	font-size: 16px !important;
+}
+
+.row-items-producto-car {
+	width: 100%;
+}
+
+.row-items-producto-car .row-item-producto-btn-delete {
+	width: 5%;
+}
+
+.row-items-producto-car .row-item-producto-img,
+.row-items-producto-car .row-item-producto-precio,
+.row-items-producto-car .row-item-producto-total {
+	width: 10%;
+}
+
+.row-items-producto-car .row-item-producto-btns {
+	width: 15%;
 }

@@ -83,7 +83,7 @@ body {
 	font-size: 14px;
 }
 
-.container-btn [type='submit'] {
+.container-btn .btn-addCarrito {
 	border: none;
 	border-radius: 20px;
 	background-color: #01619e;
@@ -92,4 +92,8 @@ body {
 	margin-left: 20px;
 	padding: 10px;
 	width: 200px;
+}
+
+.container-btn .btn-addCarrito:hover {
+	cursor: pointer;
 }
