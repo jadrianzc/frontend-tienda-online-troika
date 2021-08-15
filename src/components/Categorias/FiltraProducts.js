@@ -23,15 +23,15 @@ function FiltraProducts({ id, onChange, filtro, handleChange, Limpiar }) {
   return (
     <>
       {documentos.map((doc) => {
-        if (!(doc.marca_producto in myObjMarca)) {
+        if (!(doc.marca_auto in myObjMarca)) {
           // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
-          myObjMarca[doc.marca_producto] = true;
-          newMarcas.push(doc.marca_producto);
+          myObjMarca[doc.marca_auto] = true;
+          newMarcas.push(doc.marca_auto);
         }
-        if (!(doc.modelo_producto in myObjModelo)) {
+        if (!(doc.modelo_auto in myObjModelo)) {
           // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
-          myObjModelo[doc.modelo_producto] = true;
-          newModelos.push(doc.modelo_producto);
+          myObjModelo[doc.modelo_auto] = true;
+          newModelos.push(doc.modelo_auto);
         }
       })}
       <form

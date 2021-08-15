@@ -1,64 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Card, CardMedia, CardContent } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function ProductosMasVendidos() {
-  const products = [
-    {
-      id: 1,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "jejeje",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-    {
-      id: 2,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "gggg",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-    {
-      id: 3,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "fff",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-    {
-      id: 4,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "jejeje",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-    {
-      id: 5,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "lllllll",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-    {
-      id: 6,
-      img: "https://www.mansuera.com/uploads/subcategorias/4b1f72314a4651edaeb421413fc8d588498f1591.jpeg?v20210614",
-      nombre: "kkkkkk",
-      descri: "jojojo",
-      precio: "15.00",
-    },
-  ];
+  const [documentos, setDocumentos] = useState([]);
+
+  useEffect(() => {
+    const LoadData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:4000/api/v1/productos`);
+        setDocumentos(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    LoadData();
+  }, []);
   return (
     <>
-      {products.map((card) => (
-        <Grid item xs={12} sm={6} md={4} key={card.id}>
-          <Card className="CardProducts">
-            <CardMedia image={card.img} className="CardMedia" />
-            <CardContent></CardContent>
-            <h1>{card.nombre}</h1>
-            <p>{card.descri}</p>
-            <span>$ {card.precio}</span>
-          </Card>
-        </Grid>
-      ))}
+      {documentos
+        .filter((card) => {
+          if (card.mas_vendidos) {
+            return card;
+          }
+        })
+        .map((card) => (
+          <Grid item xs={12} sm={6} md={4} key={card._id}>
+            <Link to={`/Producto/${card._id}`} className="LinkCardProducts">
+              {/*redirecciona al producto, enviando el id*/}
+              <Card className="CardProducts">
+                <CardMedia image={card.imgurl[0]} className="CardMedia" />
+                <CardContent></CardContent>
+                <h1>{card.nom_producto}</h1>
+                <p>{card.descrip_producto}</p>
+                <span>$ {card.precio_producto}</span>
+              </Card>
+            </Link>
+          </Grid>
+        ))}
     </>
   );
 }

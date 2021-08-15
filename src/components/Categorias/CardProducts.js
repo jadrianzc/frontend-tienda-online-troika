@@ -29,18 +29,15 @@ function CardProducts({ id, filtro }) {
           if (filtro.modelo === "" && filtro.marca === "") {
             return card;
           } else if (
-            card.modelo_producto === filtro.modelo &&
+            card.modelo_auto === filtro.modelo &&
             filtro.marca === ""
           ) {
             return card;
-          } else if (
-            card.marca_producto === filtro.marca &&
-            filtro.modelo === ""
-          ) {
+          } else if (card.marca_auto === filtro.marca && filtro.modelo === "") {
             return card;
           } else if (
-            card.modelo_producto === filtro.modelo &&
-            card.marca_producto === filtro.marca
+            card.modelo_auto === filtro.modelo &&
+            card.marca_auto === filtro.marca
           ) {
             return card;
           }
