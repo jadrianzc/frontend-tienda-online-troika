@@ -8,7 +8,9 @@ export const useCounter = (cantidad) => {
 	};
 
 	const decrement = () => {
-		setCounter(counter - 1);
+		if (counter > 0) {
+			setCounter(counter - 1);
+		}
 	};
 
 	return {
