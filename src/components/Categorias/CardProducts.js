@@ -47,7 +47,7 @@ function CardProducts({ id, filtro }) {
             <Link to={`/Producto/${card._id}`} className="LinkCardProducts">
               {/*redirecciona al producto, enviando el id*/}
               <Card className="CardProducts">
-                <CardMedia image={card.imgurl[0]} className="CardMedia" />
+                <CardMedia image={card.imgurl} className="CardMedia" />
                 <CardContent>
                   <h1>{card.nom_producto}</h1>
                   <p>{card.descrip_producto}</p>

@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import Registro from "../components/Registro/Registro";
 import Producto from "../components/Categorias/Producto/Producto";
 import Categorias from "../components/Categorias/Catregorias";
+import Busqueda from "../components/Busqueda/Busqueda";
 import PerfilUsuario from "../components/PerfilUsuario/PerfilUsuario";
 import Administrador from "../components/Administrador/Administrador";
 import Usuario from "../components/Administrador/Usuario/Usuario";
@@ -25,6 +26,7 @@ export default function AppRouter() {
         <PublicRoute path="/Registro" exact component={Registro} />\
         <Route path="/Producto/:id" exact component={Producto} />
         <Route path="/Categorías/:id" exact component={Categorias} />
+        <Route path="/Busqueda/:nombre" exact component={Busqueda} />
         <PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
         <PrivateRoute
           hasRole="admin"
