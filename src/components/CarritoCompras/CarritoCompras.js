@@ -61,14 +61,12 @@ const CarritoCompras = () => {
 		// window.scrollTo(0, 0);
 	}, [idUserSession, btn]);
 
-	console.log(rows);
 	//Btn Delete
 	const handleBtnDelete = async (idProductoUnique) => {
-		console.log('deleted: ', idProductoUnique);
 		const res = await axios.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
 			data: { idProductoUnique },
 		});
-		console.log(res.data);
+		// console.log(res.data);
 	};
 
 	return (
