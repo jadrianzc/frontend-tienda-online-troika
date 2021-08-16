@@ -13,13 +13,29 @@ const InformacionPago = () => {
 				{/* <Grid item className="grid-item-infoPago"></Grid> */}
 				<Grid item className="grid-item-infoContact">
 					<Grid container>
-						<Grid item className="grid-item-infoContactEmail">
+						<Grid item className="grid-item-infoContactEmail grid-item-infoContactDirec">
 							<div>
 								<Typography>Información de contacto</Typography>
 							</div>
-							<div>
+							<Grid container justifyContent="space-between">
+								<input
+									type="text"
+									required
+									className="InputRegistro InputRegistro-md"
+									name="cedula"
+									placeholder="Cédula *"
+								/>
+								<input
+									type="email"
+									required
+									className="InputRegistro InputRegistro-md"
+									name="email"
+									placeholder="Email *"
+								/>
+							</Grid>
+							{/* <div>
 								<TextField required className="InputRegistro" name="email" label="Email" variant="outlined" />
-							</div>
+							</div> */}
 						</Grid>
 						<Grid item></Grid>
 					</Grid>
@@ -29,46 +45,46 @@ const InformacionPago = () => {
 								<Typography>Dirección de envío</Typography>
 							</div>
 							<Grid container justifyContent="space-between">
-								<TextField
+								<input
+									type="text"
 									required
 									className="InputRegistro InputRegistro-md"
 									name="nombre"
-									label="Nombre"
-									variant="outlined"
+									placeholder="Nombre *"
 								/>
-								<TextField
+								<input
+									type="text"
 									required
 									className="InputRegistro InputRegistro-md"
 									name="apellido"
-									label="Apellido"
-									variant="outlined"
+									placeholder="Apellido *"
 								/>
 							</Grid>
 							<div>
-								<TextField required className="InputRegistro" name="dirección" label="Dirección" variant="outlined" />
+								<input type="text" required className="InputRegistro" name="dirección" placeholder="Dirección *" />
 							</div>
 							<div>
-								<TextField
+								<input
+									type="text"
 									className="InputRegistro"
 									name="dirección2"
-									label="Apartamento, local, etc. (opcional)"
-									variant="outlined"
+									placeholder="Apartamento, local, etc. (opcional)"
 								/>
 							</div>
 							<Grid container justifyContent="space-between">
-								<TextField
+								<input
+									type="text"
 									required
 									className="InputRegistro InputRegistro-md"
 									name="codPostal"
-									label="Código Postal"
-									variant="outlined"
+									placeholder="Código Postal *"
 								/>
-								<TextField
+								<input
+									type="text"
 									required
 									className="InputRegistro InputRegistro-md"
 									name="ciudad"
-									label="Ciudad"
-									variant="outlined"
+									placeholder="Ciudad *"
 								/>
 							</Grid>
 							<div>
@@ -88,7 +104,14 @@ const InformacionPago = () => {
 								</TextField>
 							</div>
 							<div>
-								<TextField required className="InputRegistro" name="telefono" label="Teléfono" variant="outlined" />
+								<input
+									type="text"
+									required
+									className="InputRegistro"
+									name="telefono"
+									placeholder="Teléfono *"
+									variant="outlined"
+								/>
 							</div>
 							<Grid container justifyContent="flex-end" className="grid-item-infoContactDirec-btn">
 								<button>Continuar</button>

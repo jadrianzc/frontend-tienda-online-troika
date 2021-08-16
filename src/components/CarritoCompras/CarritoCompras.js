@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
@@ -60,14 +61,12 @@ const CarritoCompras = () => {
 		// window.scrollTo(0, 0);
 	}, [idUserSession, btn]);
 
-	console.log(rows);
 	//Btn Delete
 	const handleBtnDelete = async (idProductoUnique) => {
-		console.log('deleted: ', idProductoUnique);
 		const res = await axios.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
 			data: { idProductoUnique },
 		});
-		console.log(res.data);
+		// console.log(res.data);
 	};
 
 	return (
@@ -156,7 +155,9 @@ const CarritoCompras = () => {
 				</Grid>
 				<Grid item className="grid-item-btn-table">
 					<div className="grid-item-admin-btn">
-						<button>Continuar</button>
+						<Link to={`/carrito-compras/info-pago`}>
+							<button>Continuar</button>
+						</Link>
 					</div>
 				</Grid>
 			</Grid>

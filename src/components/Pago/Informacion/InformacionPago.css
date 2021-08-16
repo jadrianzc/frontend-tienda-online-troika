@@ -48,6 +48,14 @@
 	margin: 15px 0;
 }
 
+.container-user .grid-item-infoContact input {
+	height: 50px;
+	font-family: Helvetica, sans-serif !important;
+	font-size: 15px;
+	line-height: 19px;
+	font-weight: 400;
+}
+
 @media (min-width: 720px) {
 	.container-infoPago {
 		width: 70% !important;
