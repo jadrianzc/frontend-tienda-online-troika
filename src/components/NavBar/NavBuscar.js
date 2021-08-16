@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -7,12 +7,12 @@ import { useHistory } from "react-router-dom";
 
 function NavBuscar() {
   const history = useHistory();
-  const [display, setDisplay] = useState(false);
   const [opcion, setOpcion] = useState([]);
   const [search, setSearch] = useState([]);
   const [sugerencia, setSugerencia] = useState("");
   const [sugeTxt, setSugeTxt] = useState("");
   const [respuesTxt, setRespuesTxt] = useState(true);
+  const losclick = useRef(null);
 
   useEffect(() => {
     const LoadData = async () => {
@@ -51,6 +51,19 @@ function NavBuscar() {
     history.push(`/Busqueda/${text}`);
   };
 
+  useEffect(() => {
+    window.addEventListener("mousedown", hacerclickfuera);
+    return () => {
+      window.removeEventListener("mousedown", hacerclickfuera);
+    };
+  }, []);
+  const hacerclickfuera = (e) => {
+    if (losclick.current && !losclick.current.contains(e.target)) {
+      setSearch([]);
+      setRespuesTxt(true);
+    }
+  };
+
   const getBusqueda = () => {
     console.log(respuesTxt);
     if (search.length === 0 && sugerencia !== "" && !respuesTxt) {
@@ -76,7 +89,7 @@ function NavBuscar() {
     }
   };
   return (
-    <div className="NavBuscador">
+    <div className="NavBuscador" ref={losclick}>
       <FontAwesomeIcon icon={faSearch} className="iconBuscar" />
       <input
         type="text"

@@ -1,9 +1,9 @@
 import React from "react";
-
+import banner1 from "../../assets/images/Banner1.png";
 function Banner() {
   return (
     <div className="BannerInicio">
-      <h1>Banner pedorro que aun no diseña el Egar</h1>
+      <img src={banner1} alt="" />
     </div>
   );
 }

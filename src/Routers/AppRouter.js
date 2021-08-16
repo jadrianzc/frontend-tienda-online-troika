@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from "../components/NavBar/NavBar";
 import Inicio from "../components/Inicio/Inicio";
+import Agencias from "../components/Agencias/Agencias";
+import QuienesSomos from "../components/QuienesSomos/QuienesSomos";
 import Login from "../components/Login/Login";
 import Registro from "../components/Registro/Registro";
 import Producto from "../components/Categorias/Producto/Producto";
@@ -22,6 +24,8 @@ export default function AppRouter() {
       <NavBar />
       <Switch>
         <Route path="/" exact component={Inicio} />
+        <Route path="/Quienes-somos" exact component={QuienesSomos} />
+        <Route path="/Agencias" exact component={Agencias} />
         <PublicRoute path="/Login" exact component={Login} />
         <PublicRoute path="/Registro" exact component={Registro} />\
         <Route path="/Producto/:id" exact component={Producto} />

@@ -28,7 +28,7 @@ function Busqueda() {
       {console.log(documentos)}
       <NavCatregorias />
       <div className="ContProducts">
-        <h1>Busqueda: {nombre}</h1>
+        <p>Busqueda: {nombre}</p>
         <Grid container spacing={3} className="GripContainer">
           {documentos.map((card) => (
             <Grid item xs={12} sm={6} md={4} key={card._id}>

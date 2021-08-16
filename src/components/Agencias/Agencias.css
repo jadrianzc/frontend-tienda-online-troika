@@ -1,0 +1,27 @@
+.AgenciasMapa {
+  width: 100%;
+  height: 400px;
+}
+.TitleAgenci1 {
+  font-family: "DM Sans", sans-serif !important;
+  margin-top: 0 !important;
+  color: #3e3f40;
+  font-size: 30px !important;
+  border-bottom: 3px solid #25a6d9;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.TitleAgenci2 {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  color: #3e3f40;
+  font-size: 30px !important;
+}
+.txtAgencia {
+  width: 70%;
+}
+.txtAgencia h1,
+p {
+  font-family: "DM Sans", sans-serif !important;
+}

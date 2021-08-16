@@ -7,10 +7,7 @@
   padding: 40px 50px;
 }
 .BannerInicio {
-  background-color: #01619e;
-  padding: 50px 20px;
-  text-align: center;
-  color: #fff;
+  width: 100%;
 }
 .LetraMasVendidos {
   margin-top: 30px;
