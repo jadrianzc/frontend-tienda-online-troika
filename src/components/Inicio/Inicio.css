@@ -9,6 +9,9 @@
 .BannerInicio {
   width: 100%;
 }
+.BannerInicio img {
+  width: 100%;
+}
 .LetraMasVendidos {
   margin-top: 30px;
   font-size: 14px;

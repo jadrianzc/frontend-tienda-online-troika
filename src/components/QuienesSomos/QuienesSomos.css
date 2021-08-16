@@ -13,6 +13,9 @@
 p {
   font-family: "DM Sans", sans-serif !important;
 }
+.GridQuienes img {
+  width: 100%;
+}
 .TitleQuienes {
   margin-top: 0 !important;
   color: #3e3f40;
