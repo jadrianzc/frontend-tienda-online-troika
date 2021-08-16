@@ -1,331 +1,345 @@
 .NavBar {
-  background-color: #191919;
-  width: 100%;
-  height: 63px;
+	background-color: #191919;
+	width: 100%;
+	height: 63px;
 }
 .ContNavBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .navbar-logo {
-  height: 63px;
-  margin-right: 22px;
-  margin-left: 30px;
+	height: 63px;
+	margin-right: 22px;
+	margin-left: 30px;
 }
 .navbar-logo img {
-  height: 63px;
-  width: 100%;
+	height: 63px;
+	width: 100%;
 }
 .min {
-  display: none;
+	display: none;
 }
 .nav-menu {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  justify-self: start;
-  padding: 0;
+	display: flex;
+	list-style: none;
+	text-align: center;
+	justify-self: start;
+	padding: 0;
 }
 .gripi {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  height: 63px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	height: 63px;
 }
 .nav-item {
-  border-bottom: 5px solid transparent;
-  border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-top: 5px solid transparent;
 }
 
 .nav-item:hover {
-  border-bottom: 5px solid #f2f2f2;
+	border-bottom: 5px solid #f2f2f2;
 }
 .nav-links {
-  color: #f2f2f2;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 0.5rem;
-  margin: 0;
-  height: 100%;
-  font-size: 14px;
+	color: #f2f2f2;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	padding: 0 0.5rem;
+	margin: 0;
+	height: 100%;
+	font-size: 14px;
 }
 .NavLink-Active {
-  border-bottom: 5px solid #f2f2f2;
+	border-bottom: 5px solid #f2f2f2;
 }
 
 .NavBuscador {
-  padding: 0 0.8em;
-  height: 32px;
-  border-radius: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #25a6d9;
-  color: #f2f2f2;
+	padding: 0 0.8em;
+	height: 32px;
+	border-radius: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #25a6d9;
+	color: #f2f2f2;
 }
 .buscador {
-  outline: none;
-  border: none;
-  padding: 0.5em 0.6em 0.5em 2em;
-  height: 14px;
-  border-radius: 1em;
-  width: 300px;
-  font-size: 14px;
-  background-color: #25a6d9;
-  color: #f2f2f2;
-  font-family: "DM Sans";
+	outline: none;
+	border: none;
+	padding: 0.5em 0.6em 0.5em 2em;
+	height: 14px;
+	border-radius: 1em;
+	width: 300px;
+	font-size: 14px;
+	background-color: #25a6d9;
+	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .buscador::placeholder {
-  color: #f2f2f2;
-  font-family: "DM Sans";
+	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .iconBuscar {
-  font-size: 14px;
-  color: #f2f2f2;
+	font-size: 14px;
+	color: #f2f2f2;
 }
 
 .NavBotones {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding: 0 2em;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	padding: 0 2em;
 }
 .linkBtnNav {
-  text-decoration: none;
+	text-decoration: none;
 }
 .btnNav {
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 1em;
-  font-size: 14px;
-  padding: 0em 1em;
-  width: 144px;
-  height: 32px;
-  color: #f2f2f2;
-  font-family: "DM Sans";
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 1em;
+	font-size: 14px;
+	padding: 0em 1em;
+	width: 144px;
+	height: 32px;
+	color: #f2f2f2;
+	font-family: 'DM Sans';
 }
 .btnNavIni {
-  background-color: #3e3f40;
-  margin-right: 1em;
+	background-color: #3e3f40;
+	margin-right: 1em;
 }
 .btnNavRegi {
-  background-color: #25a6d9;
+	background-color: #25a6d9;
 }
 /***Usuario**/
 .MenuSession-container {
-  position: relative;
+	position: relative;
 }
 .MenuSession {
-  background: #ffffff;
-  border-radius: 5px;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  width: 300px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+	background: #ffffff;
+	border-radius: 5px;
+	position: absolute;
+	top: 50px;
+	right: 0;
+	width: 300px;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-20px);
+	transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
 .MenuSession.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
 }
 
 .MenuSession ul {
-  list-style: none;
-  padding: 0;
-  padding-top: 10px;
-  padding-bottom: 40px;
-  margin: 0;
-  border-bottom: 1px solid #dddddd;
+	list-style: none;
+	padding: 0;
+	padding-top: 10px;
+	padding-bottom: 40px;
+	margin: 0;
+	border-bottom: 1px solid #dddddd;
 }
 
 .MenuSession li a {
-  text-decoration: none;
-  color: #333333;
-  padding: 5px 20px;
-  display: block;
+	text-decoration: none;
+	color: #333333;
+	padding: 5px 20px;
+	display: block;
 }
 .MenuSession-trigger {
-  background: transparent;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: none;
-  vertical-align: middle;
-  transition: box-shadow 0.4s ease;
+	background: transparent;
+	color: #ffffff;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: none;
+	vertical-align: middle;
+	transition: box-shadow 0.4s ease;
 }
 
 .MenuSession-trigger:hover {
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .MenuSession-trigger span {
-  font-weight: 700;
-  vertical-align: middle;
-  font-size: 14px;
-  margin: 0 10px;
-  white-space: nowrap;
+	font-weight: 700;
+	vertical-align: middle;
+	font-size: 14px;
+	margin: 0 10px;
+	white-space: nowrap;
 }
 
 .MenuSession-trigger img {
-  border-radius: 90px;
-  width: 32px;
+	border-radius: 90px;
+	width: 32px;
 }
 .MenuSession-container p {
-  font-weight: bold;
-  margin: 0;
+	font-weight: bold;
+	margin: 0;
 }
 
 .MenuSession-contenido {
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #dddddd;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid #dddddd;
 }
 .MenuSession-contenido img {
-  border-radius: 90px;
-  width: 60px;
-  margin-right: 15px;
+	border-radius: 90px;
+	width: 60px;
+	margin-right: 15px;
 }
 .BtnCerrarSession {
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: start;
-  color: #333333;
-  padding: 10px 20px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: start;
+	color: #333333;
+	padding: 10px 20px;
 }
 /***/
 .NavCar {
-  cursor: pointer;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding: 0 0.5em;
-  color: #f2f2f2;
-  font-size: 32px;
-  justify-self: end;
-  margin-right: 30px;
+	cursor: pointer;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0.5em;
+	color: #f2f2f2;
+	font-size: 32px;
+	justify-self: end;
+	margin-right: 30px;
 }
 
 .NavCar a:link,
 .NavCar a:visited,
 .NavCar a:active {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
+}
+
+.NavBar .container-logo-carrito {
+	display: flex;
+	align-items: flex-end;
+}
+
+.NavBar .container-logo-carrito .cantItemCar {
+	margin-left: 5px;
+	font-size: 18px;
+	background-color: #25a6d9;
+	padding: 8px;
+	border-radius: 50%;
+	text-align: center;
 }
 
 /***icon resposive**/
 .ContIconMenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .iconMenu {
-  position: absolute;
-  display: none;
-  cursor: pointer;
-  right: 5%;
-  color: #f2f2f2;
-  font-size: 32px;
+	position: absolute;
+	display: none;
+	cursor: pointer;
+	right: 5%;
+	color: #f2f2f2;
+	font-size: 32px;
 }
 
 /***responsive***/
 /* Si el tamaño de la pantalla es de 1920 px de ancho o más, establezca el tamaño de fuente de 23 px */
 @media all and (min-width: 1920px) {
-  /* .ContNavBar,
+	/* .ContNavBar,
 	.navbar-logo,
 	.gripi,
 	.navbar-logo img {
 		height: 55px;
 	} */
-  .nav-links {
-    font-size: 18px;
-  }
+	.nav-links {
+		font-size: 18px;
+	}
 }
 /**/
 @media (max-width: 900px) {
-  .NavBar {
-    display: flex;
-    list-style: none;
-  }
-  .ContNavBar {
-    list-style: none;
-    position: absolute;
-    margin: 0;
-    top: 60px;
-    left: -100%;
-    background-color: #191919;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    z-index: 99;
-    transition: 0.5s all ease-in;
-  }
-  .toggle {
-    left: 0;
-    transition: 0.5s all ease-in;
-  }
-  .navbar-logo {
-    display: none;
-  }
-  .min {
-    display: block;
-    height: 63px;
-    margin-right: 22px;
-  }
-  .min img {
-    height: 63px;
-  }
-  .gripi,
-  .NavBotones {
-    display: block;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-  }
-  .nav-item {
-    border: 0;
-  }
-  .nav-links {
-    display: table;
-    padding: 1em 0;
-    margin: 0;
-    width: 100%;
-    text-align: center;
-  }
-  .nav-item:hover {
-    background-color: #252525;
-    border: 0;
-  }
-  .NavLink-Active {
-    background-color: #252525;
-    border: 0;
-  }
-  .buscador {
-    width: auto;
-  }
-  .btnNav {
-    display: table;
-    margin: 20px auto;
-  }
-  .iconMenu {
-    display: block;
-  }
+	.NavBar {
+		display: flex;
+		list-style: none;
+	}
+	.ContNavBar {
+		list-style: none;
+		position: absolute;
+		margin: 0;
+		top: 60px;
+		left: -100%;
+		background-color: #191919;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+		z-index: 99;
+		transition: 0.5s all ease-in;
+	}
+	.toggle {
+		left: 0;
+		transition: 0.5s all ease-in;
+	}
+	.navbar-logo {
+		display: none;
+	}
+	.min {
+		display: block;
+		height: 63px;
+		margin-right: 22px;
+	}
+	.min img {
+		height: 63px;
+	}
+	.gripi,
+	.NavBotones {
+		display: block;
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+	}
+	.nav-item {
+		border: 0;
+	}
+	.nav-links {
+		display: table;
+		padding: 1em 0;
+		margin: 0;
+		width: 100%;
+		text-align: center;
+	}
+	.nav-item:hover {
+		background-color: #252525;
+		border: 0;
+	}
+	.NavLink-Active {
+		background-color: #252525;
+		border: 0;
+	}
+	.buscador {
+		width: auto;
+	}
+	.btnNav {
+		display: table;
+		margin: 20px auto;
+	}
+	.iconMenu {
+		display: block;
+	}
 }

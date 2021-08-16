@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
@@ -156,7 +157,9 @@ const CarritoCompras = () => {
 				</Grid>
 				<Grid item className="grid-item-btn-table">
 					<div className="grid-item-admin-btn">
-						<button>Continuar</button>
+						<Link to={`/carrito-compras/info-pago`}>
+							<button>Continuar</button>
+						</Link>
 					</div>
 				</Grid>
 			</Grid>

@@ -12,7 +12,6 @@ const Producto = () => {
 	const { id } = useParams();
 	const cookies = new Cookies();
 	const idUserSession = cookies.get('id');
-	// console.log(idUserSession);
 
 	const [documentos, setDocumentos] = useState({});
 	const [openAlert, setOpenAlert] = useState(false);
