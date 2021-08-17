@@ -27,26 +27,30 @@ export default function AppRouter() {
 
 	return (
 		<Router>
-			<NavBar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
 			<Switch>
-				<RouteCli path="/" exact render={() => <Inicio setCantCar={setCantCar} />} />
-				<RouteCli path="/Quienes-somos" exact component={QuienesSomos} />
-				<RouteCli path="/Agencias" exact component={Agencias} />
-				<PublicRoute path="/Login" exact component={Login} />
-				<PublicRoute path="/Registro" exact component={Registro} />
-				<RouteCli path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
-				<RouteCli path="/Categorías/:id" exact component={Categorias} />
-				<RouteCli path="/Busqueda/:nombre" exact component={Busqueda} />
-				<PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
 				<PrivateRoute hasRole="admin" path="/Admin" exact component={Administrador} />
 				<PrivateRoute hasRole="admin" path="/Admin/Usuario" exact component={Usuario} />
-				<PrivateRoute
-					path="/carrito-compras"
-					exact
-					render={() => <CarritoCompras addCar={addCar} setAddCar={setAddCar} />}
-				/>
-				<PrivateRoute path="/carrito-compras/info-pago" exact component={InformacionPago} />
-				<PrivateRoute path="/carrito-compras/info-pago/pago" exact component={Pago} />
+
+				<>
+					<NavBar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
+					<RouteCli path="/" exact render={() => <Inicio setCantCar={setCantCar} />} />
+					<RouteCli path="/Quienes-somos" exact component={QuienesSomos} />
+					<RouteCli path="/Agencias" exact component={Agencias} />
+					<PublicRoute path="/Login" exact component={Login} />
+					<PublicRoute path="/Registro" exact component={Registro} />
+					<RouteCli path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
+					<RouteCli path="/Categorías/:id" exact component={Categorias} />
+					<RouteCli path="/Busqueda/:nombre" exact component={Busqueda} />
+					<PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
+
+					<PrivateRoute
+						path="/carrito-compras"
+						exact
+						render={() => <CarritoCompras addCar={addCar} setAddCar={setAddCar} />}
+					/>
+					<PrivateRoute path="/carrito-compras/info-pago" exact component={InformacionPago} />
+					<PrivateRoute path="/carrito-compras/info-pago/pago" exact component={Pago} />
+				</>
 			</Switch>
 			{/* <Footer />  */}
 		</Router>
