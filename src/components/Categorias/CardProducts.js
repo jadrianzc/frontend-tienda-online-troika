@@ -24,6 +24,7 @@ function CardProducts({ id, filtro }) {
 
   return (
     <>
+      {console.log(filtro.marca + " " + filtro.modelo)}
       {documentos
         .filter((card) => {
           if (filtro.modelo === "" && filtro.marca === "") {

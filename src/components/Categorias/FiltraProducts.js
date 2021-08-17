@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function FiltraProducts({ id, onChange, filtro, handleChange, Limpiar }) {
+function FiltraProducts({
+  id,
+  onChange,
+  filtro,
+  handleChange,
+  Limpiar,
+  marcas,
+}) {
   const [documentos, setDocumentos] = useState([]);
+  const [modelos, setModelos] = useState([]);
   const newMarcas = [];
   const newModelos = [];
   const myObjMarca = {};
@@ -20,18 +28,39 @@ function FiltraProducts({ id, onChange, filtro, handleChange, Limpiar }) {
     };
     LoadData();
   }, [id]);
+
+  useEffect(() => {
+    const LoadDataModelos = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/filtramodeloauto/${marcas.marca}`
+        );
+        setModelos(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    LoadDataModelos();
+  }, [marcas]);
+
   return (
     <>
       {documentos.map((doc) => {
         if (!(doc.marca_auto in myObjMarca)) {
           // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
           myObjMarca[doc.marca_auto] = true;
-          newMarcas.push(doc.marca_auto);
+          if (doc.marca_auto) {
+            newMarcas.push(doc.marca_auto);
+          }
         }
+      })}
+      {modelos.map((doc) => {
         if (!(doc.modelo_auto in myObjModelo)) {
           // si no existe creamos ese valor y lo añadimos al array final, y si sí existe no lo añadimos
           myObjModelo[doc.modelo_auto] = true;
-          newModelos.push(doc.modelo_auto);
+          if (doc.modelo_auto) {
+            newModelos.push(doc.modelo_auto);
+          }
         }
       })}
       <form

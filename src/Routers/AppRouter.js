@@ -18,6 +18,7 @@ import CarritoCompras from '../components/CarritoCompras/CarritoCompras';
 
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import RouteCli from './RouteCli';
 import { useState } from 'react';
 
 export default function AppRouter() {
@@ -28,14 +29,14 @@ export default function AppRouter() {
 		<Router>
 			<NavBar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
 			<Switch>
-				<Route path="/" exact render={() => <Inicio setCantCar={setCantCar} />} />
-				<Route path="/Quienes-somos" exact component={QuienesSomos} />
-				<Route path="/Agencias" exact component={Agencias} />
+				<RouteCli path="/" exact render={() => <Inicio setCantCar={setCantCar} />} />
+				<RouteCli path="/Quienes-somos" exact component={QuienesSomos} />
+				<RouteCli path="/Agencias" exact component={Agencias} />
 				<PublicRoute path="/Login" exact component={Login} />
 				<PublicRoute path="/Registro" exact component={Registro} />
-				<Route path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
-				<Route path="/Categorías/:id" exact component={Categorias} />
-				<Route path="/Busqueda/:nombre" exact component={Busqueda} />
+				<RouteCli path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
+				<RouteCli path="/Categorías/:id" exact component={Categorias} />
+				<RouteCli path="/Busqueda/:nombre" exact component={Busqueda} />
 				<PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
 				<PrivateRoute hasRole="admin" path="/Admin" exact component={Administrador} />
 				<PrivateRoute hasRole="admin" path="/Admin/Usuario" exact component={Usuario} />
