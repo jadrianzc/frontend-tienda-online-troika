@@ -11,10 +11,7 @@ const Menu = () => {
 				<Link color="inherit" to={`/carrito-compras/info-pago`}>
 					Información
 				</Link>
-				<Link color="inherit" to={`/carrito-compras/info-pago`}>
-					Envíos
-				</Link>
-				<Link color="inherit" to={`/carrito-compras/info-pago`}>
+				<Link color="inherit" to={`/carrito-compras/info-pago/pago`}>
 					Pago
 				</Link>
 			</Breadcrumbs>

@@ -8,13 +8,14 @@ import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import './Producto.css';
 
-const Producto = () => {
+const Producto = ({ addCar, setAddCar }) => {
 	const { id } = useParams();
 	const cookies = new Cookies();
 	const idUserSession = cookies.get('id');
 
 	const [documentos, setDocumentos] = useState({});
 	const [openAlert, setOpenAlert] = useState(false);
+	const [openAlertErr, setOpenAlertErr] = useState(false);
 
 	useEffect(() => {
 		const LoadData = async () => {
@@ -39,13 +40,15 @@ const Producto = () => {
 			idUserSession: idUserSession,
 		};
 
-		await axios
-			.post(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, productoAdd)
-			.then((res) => {
-				setOpenAlert(true);
-				console.log('listo');
-			})
-			.catch((e) => console.log(e));
+		const resp = await axios.post(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, productoAdd);
+		if (resp.data.status === 'Guardado') {
+			setOpenAlert(true);
+			setAddCar(!addCar);
+			console.log('listo');
+		} else {
+			setOpenAlertErr(true);
+			console.log('error');
+		}
 	};
 
 	const handleClose = (event, reason) => {
@@ -54,6 +57,7 @@ const Producto = () => {
 		}
 
 		setOpenAlert(false);
+		setOpenAlertErr(false);
 	};
 
 	return (
@@ -62,6 +66,11 @@ const Producto = () => {
 				<Snackbar open={openAlert} autoHideDuration={5000} onClose={handleClose}>
 					<Alert variant="filled" onClose={handleClose} severity="success">
 						Producto añadido al carrito.
+					</Alert>
+				</Snackbar>
+				<Snackbar open={openAlertErr} autoHideDuration={5000} onClose={handleClose}>
+					<Alert variant="filled" onClose={handleClose} severity="error">
+						Para agregar al carrito debe iniciar sesión.
 					</Alert>
 				</Snackbar>
 				<Grid item className="grid-img grid-item" xs={6}>
@@ -86,7 +95,12 @@ const Producto = () => {
 									<button>{counter}</button>
 									<button onClick={() => increment(2)}>+</button>
 								</div>
-								<button className="btn-addCarrito" onClick={() => handleAddCar(idUserSession)}>
+								<button
+									className="btn-addCarrito"
+									onClick={() => {
+										handleAddCar(idUserSession);
+									}}
+								>
 									Añadir al carrito
 								</button>
 							</div>

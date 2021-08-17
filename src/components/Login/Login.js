@@ -43,7 +43,6 @@ const Login = () => {
 					if (res[0].contraseña_usuario === datos.password) {
 						//si los datos son correcto guarda session en las cookies e inicia
 						cookies.set('id', res[0]._id, { path: '/' });
-						cookies.set('cantCar', false);
 						cookies.set('coki', res[0], { path: '/' }); // aqui se guarda la session
 						if (res[0].rol_usuario === 'admin') {
 							window.location.href = '/Admin';

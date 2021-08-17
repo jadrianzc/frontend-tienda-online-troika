@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Grid, MenuItem, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import './InformacionPago.css';
-import Menu from '../Menu/Menu';
+import { Link } from 'react-router-dom';
 import { countries } from './countries';
+import Menu from '../Menu/Menu';
+import './InformacionPago.css';
 
 const InformacionPago = () => {
 	return (
@@ -114,7 +115,9 @@ const InformacionPago = () => {
 								/>
 							</div>
 							<Grid container justifyContent="flex-end" className="grid-item-infoContactDirec-btn">
-								<button>Continuar</button>
+								<Link to={`/carrito-compras/info-pago/pago`}>
+									<button>Continuar</button>
+								</Link>
 							</Grid>
 						</Grid>
 					</Grid>

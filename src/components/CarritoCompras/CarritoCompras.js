@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const CarritoCompras = () => {
+const CarritoCompras = ({ addCar, setAddCar }) => {
 	const classes = useStyles();
 	const [rows, setRows] = useState([]);
 	const [btn, setBtn] = useState(false);
@@ -63,9 +63,14 @@ const CarritoCompras = () => {
 
 	//Btn Delete
 	const handleBtnDelete = async (idProductoUnique) => {
-		const res = await axios.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
-			data: { idProductoUnique },
-		});
+		await axios
+			.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
+				data: { idProductoUnique },
+			})
+			.then((res) => {
+				setBtn(!btn);
+				setAddCar(!addCar);
+			});
 		// console.log(res.data);
 	};
 
@@ -116,7 +121,6 @@ const CarritoCompras = () => {
 														icon={faTimesCircle}
 														onClick={() => {
 															handleBtnDelete(row._id);
-															setBtn(!btn);
 														}}
 														className="iconCar btn-delete"
 													/>
