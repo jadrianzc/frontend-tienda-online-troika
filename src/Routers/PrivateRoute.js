@@ -6,6 +6,7 @@ export default function PrivateRoute({ hasRole: role, ...rest }) {
   const user = cookies.get("coki");
 
   if (role && user?.rol_usuario !== role) return <Redirect to="/" />;
+  //if (role) return <Redirect to="/Admin" />;
   if (!user) return <Redirect to="/" />;
   return <Route {...rest} />;
 }

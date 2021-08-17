@@ -26,11 +26,11 @@ function NavBuscar() {
     LoadData();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     let value = e.target.value;
     let busca = [];
     if (value.length > 2) {
-      busca = opcion.sort().filter((item) => {
+      busca = await opcion.sort().filter((item) => {
         if (item.descrip_producto.toLowerCase().includes(value.toLowerCase())) {
           setRespuesTxt(busca.length !== 0 ? true : false);
           return item;
@@ -65,7 +65,6 @@ function NavBuscar() {
   };
 
   const getBusqueda = () => {
-    console.log(respuesTxt);
     if (search.length === 0 && sugerencia !== "" && !respuesTxt) {
       return;
     }

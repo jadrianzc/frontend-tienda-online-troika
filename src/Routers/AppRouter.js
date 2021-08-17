@@ -17,21 +17,12 @@ import CarritoCompras from "../components/CarritoCompras/CarritoCompras";
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import RouteCli from "./RouteCli";
 
 export default function AppRouter() {
   return (
     <Router>
-      <NavBar />
       <Switch>
-        <Route path="/" exact component={Inicio} />
-        <Route path="/Quienes-somos" exact component={QuienesSomos} />
-        <Route path="/Agencias" exact component={Agencias} />
-        <PublicRoute path="/Login" exact component={Login} />
-        <PublicRoute path="/Registro" exact component={Registro} />\
-        <Route path="/Producto/:id" exact component={Producto} />
-        <Route path="/Categorías/:id" exact component={Categorias} />
-        <Route path="/Busqueda/:nombre" exact component={Busqueda} />
-        <PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
         <PrivateRoute
           hasRole="admin"
           path="/Admin"
@@ -44,16 +35,28 @@ export default function AppRouter() {
           exact
           component={Usuario}
         />
-        <PrivateRoute
-          path="/carrito-compras"
-          exact
-          component={CarritoCompras}
-        />
-        <PrivateRoute
-          path="/carrito-compras/info-pago"
-          exact
-          component={InformacionPago}
-        />
+        <>
+          <NavBar />
+          <RouteCli path="/" exact component={Inicio} />
+          <RouteCli path="/Quienes-somos" exact component={QuienesSomos} />
+          <RouteCli path="/Agencias" exact component={Agencias} />
+          <PublicRoute path="/Login" exact component={Login} />
+          <PublicRoute path="/Registro" exact component={Registro} />\
+          <RouteCli path="/Producto/:id" exact component={Producto} />
+          <RouteCli path="/Categorías/:id" exact component={Categorias} />
+          <RouteCli path="/Busqueda/:nombre" exact component={Busqueda} />
+          <PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
+          <PrivateRoute
+            path="/carrito-compras"
+            exact
+            component={CarritoCompras}
+          />
+          <PrivateRoute
+            path="/carrito-compras/info-pago"
+            exact
+            component={InformacionPago}
+          />
+        </>
       </Switch>
       {/* <Footer />  */}
     </Router>
