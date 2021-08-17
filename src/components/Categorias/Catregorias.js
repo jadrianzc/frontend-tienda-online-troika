@@ -11,11 +11,14 @@ function Categorias() {
   const { id } = useParams();
   const [filtro, setFiltro] = useState({ marca: "", modelo: "" });
   const [marca, setMarca] = useState({});
+  const [marcas, setMarcas] = useState({});
   const handleChange = (e) => {
     setFiltro({
       ...filtro,
       [e.target.name]: e.target.value,
     });
+    setMarcas({ ...marcas, [e.target.name]: e.target.value });
+    console.log(e.target.value);
   };
   useEffect(() => {
     setMarca({ marca: "", modelo: "" });
@@ -41,6 +44,7 @@ function Categorias() {
             handleChange={handleChange}
             filtro={filtro}
             Limpiar={Limpiar}
+            marcas={marcas}
           />
         </Grid>
         <Grid container spacing={3} className="GripContainer">
