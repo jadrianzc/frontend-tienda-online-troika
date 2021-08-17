@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Login.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import Container from '@material-ui/core/Container';
@@ -65,9 +64,7 @@ const Login = () => {
 		<Container className="container" maxWidth="xl">
 			<Grid container className="grid-container">
 				<Grid item className="grid-item" xs={6}>
-					<div className="container-img">
-						<img src="" alt="Imagen-Troika" />
-					</div>
+					<div className="container-img"></div>
 				</Grid>
 				<Grid item className="grid-item" xs={6}>
 					<div className="container-login">
