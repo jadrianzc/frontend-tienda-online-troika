@@ -27,6 +27,10 @@
 	background-image: url('../../assets/images/banner4.png');
 	border-top-left-radius: 30px;
 	border-bottom-left-radius: 30px;
+	background-repeat: no-repeat;
+	background-position: inherit;
+	background-attachment: inherit;
+	background-size: cover;
 }
 
 .container-img img {
