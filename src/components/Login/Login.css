@@ -126,6 +126,17 @@
 	}
 }
 
+@media (max-width: 959px) {
+	.grid-container .grid-item-img-login {
+		display: none;
+	}
+	.container-login {
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+	}
+}
+
 @media (min-width: 1100px) {
 	.grid-container {
 		width: 70% !important;

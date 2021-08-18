@@ -63,10 +63,10 @@ const Login = () => {
 	return (
 		<Container className="container" maxWidth="xl">
 			<Grid container className="grid-container">
-				<Grid item className="grid-item" xs={6}>
+				<Grid item className="grid-item grid-item-img-login" xs={12} md={6}>
 					<div className="container-img"></div>
 				</Grid>
-				<Grid item className="grid-item" xs={6}>
+				<Grid item className="grid-item" xs={12} md={6}>
 					<div className="container-login">
 						<form className="form" onSubmit={handleSubmit}>
 							<div className="container-title">

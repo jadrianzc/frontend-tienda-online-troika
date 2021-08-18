@@ -55,6 +55,11 @@
 	border-bottom: 5px solid #f2f2f2;
 }
 
+.NavBuscador-1 {
+	display: flex;
+	align-items: center;
+}
+
 .NavBuscador {
 	padding: 0 0.8em;
 	height: 32px;
@@ -97,7 +102,7 @@
 	border-radius: 1em;
 	width: 300px;
 	font-size: 14px;
-	background-color: #25a6d9;
+	background-color: transparent;
 	color: #f2f2f2;
 	font-family: 'DM Sans';
 }
@@ -285,6 +290,19 @@
 	font-size: 32px;
 }
 
+.ul-busqueda {
+	z-index: 2000000000000000000000000000000000000000;
+}
+
+.NavBotones {
+	display: flex;
+	justify-content: center;
+}
+
+.NavBotones .MenuSession-container nav {
+	z-index: 4;
+}
+
 /***responsive***/
 /* Si el tamaño de la pantalla es de 1920 px de ancho o más, establezca el tamaño de fuente de 23 px */
 @media all and (min-width: 1920px) {
@@ -299,7 +317,7 @@
 	}
 }
 /**/
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 	.NavBar {
 		display: flex;
 		list-style: none;
@@ -317,7 +335,7 @@
 		justify-content: space-around;
 		align-items: center;
 		flex-direction: column;
-		z-index: 99;
+		z-index: 10000000000;
 		transition: 0.5s all ease-in;
 	}
 	.toggle {
@@ -335,8 +353,7 @@
 	.min img {
 		height: 63px;
 	}
-	.gripi,
-	.NavBotones {
+	.gripi {
 		display: block;
 		width: 100%;
 		justify-content: space-around;

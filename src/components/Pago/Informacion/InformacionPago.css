@@ -1,6 +1,13 @@
 .container-infoPago {
+	display: flex;
+	align-items: center;
 	width: 90% !important;
 	background-color: #fff;
+	margin: 50px 0;
+}
+
+.container-infoPago .grid-container-user .grid-item-infoContact {
+	margin-top: 50px;
 }
 
 .grid-item-infoPago {
@@ -60,6 +67,12 @@
 @media (min-width: 720px) {
 	.container-infoPago {
 		width: 70% !important;
+	}
+}
+
+@media (max-width: 840px) {
+	.grid-item-infoContactDirec .InputRegistro-md {
+		width: 100%;
 	}
 }
 

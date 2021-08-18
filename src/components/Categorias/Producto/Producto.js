@@ -73,13 +73,19 @@ const Producto = ({ addCar, setAddCar }) => {
 						Para agregar al carrito debe iniciar sesión.
 					</Alert>
 				</Snackbar>
-				<Grid item className="grid-img grid-item" xs={6}>
-					<div className="container-imgs">
-						<img src={documentos.imgurl} alt="Imagen-Producto" />
-					</div>
-					<p>Imagen referencial</p>
+				<Grid item className="grid-img grid-content grid-item" xs={12} md={6}>
+					<Grid container className="grid-container-det">
+						<Grid item className="grid-container-det-1">
+							<div className="container-imgs">
+								<img src={documentos.imgurl} alt="Imagen-Producto" />
+							</div>
+						</Grid>
+						<Grid item className="grid-container-det-2">
+							<p>Imagen referencial</p>
+						</Grid>
+					</Grid>
 				</Grid>
-				<Grid item className="grid-content grid-item" xs={6}>
+				<Grid item className="grid-content grid-item" xs={12} md={6}>
 					<Grid container className="grid-container-det">
 						<Grid item xs={12} className="grid-item-descrip">
 							<h1>{documentos.descrip_producto}</h1>
@@ -105,9 +111,13 @@ const Producto = ({ addCar, setAddCar }) => {
 								</button>
 							</div>
 						</Grid>
-						<Grid item xs={12}>
+						<Grid item xs={12} className="container-descrip-product">
 							<h4>Descripción:</h4>
 							<p>{documentos.descrip_producto}</p>
+							<p>
+								<span>Marca: </span>
+								{documentos.modelo_producto}
+							</p>
 						</Grid>
 					</Grid>
 				</Grid>

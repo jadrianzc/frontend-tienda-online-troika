@@ -1,6 +1,10 @@
 .leaflet-container {
-	width: 500px;
-	height: 500px;
+	width: 90%;
+	height: 100%;
+}
+
+.container-agencia .TitleAgenci1 {
+	margin-bottom: 20px;
 }
 
 .AgenciasMapa {
@@ -29,4 +33,12 @@
 .txtAgencia h1,
 p {
 	font-family: 'DM Sans', sans-serif !important;
+}
+
+.ContAgencias {
+	height: calc(100vh - 63px);
+}
+
+.ContQuinesSomos .CardQuienesSomos {
+	box-sizing: border-box;
 }

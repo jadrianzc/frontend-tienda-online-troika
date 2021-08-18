@@ -10,9 +10,9 @@ import MapView from './MapView';
 
 function Agencias() {
 	return (
-		<div className="ContQuinesSomos">
+		<div className="ContQuinesSomos ContAgencias">
 			<Card className="CardQuienesSomos">
-				<CardContent>
+				<CardContent className="container-agencia">
 					<Typography className="TitleAgenci1" variant="h1">
 						Manta
 					</Typography>
@@ -29,7 +29,7 @@ function Agencias() {
 									Agencia Manta
 								</Typography>
 								<Typography>
-									Avenida 4 de Noviembre, entre calle J-12 y J-14 Instalaciones de Segurillanta S.A.
+									Avenida 4 de Noviembre, entre calle J-12 y J-14. Instalaciones de JanaBikes.
 									<br />
 									<br /> Contacto: grupotroika@gmail.com <br />
 									0998179005 <br />

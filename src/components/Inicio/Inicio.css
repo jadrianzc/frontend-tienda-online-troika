@@ -1,46 +1,48 @@
 .ContInicio {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  background: #f2f2f2;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	background: #f2f2f2;
 }
 .ContProducts {
-  padding: 40px 50px;
+	padding: 40px 50px;
 }
 .BannerInicio {
-  width: 100%;
+	width: 100%;
 }
 .BannerInicio img {
-  width: 100%;
+	width: 100%;
 }
 .LetraMasVendidos {
-  margin-top: 30px;
-  font-size: 14px;
+	margin-top: 30px;
+	font-size: 14px;
 }
 .GripContainer {
-  padding: 40px;
-  width: 100% !important;
-  margin: 0 !important;
-  background: #fff;
+	padding: 40px;
+	width: 100% !important;
+	margin: 0 !important;
+	background: #fff;
 }
 .CardMedia {
-  min-height: 130px;
-  background-size: contain !important;
+	min-height: 130px;
+	background-size: contain !important;
 }
 .MuiCardContent-root {
-  padding: 0px !important;
+	padding: 0px !important;
 }
 .CardProducts {
-  border: 1px solid #707070;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 20px 40px;
-  cursor: pointer;
+	border: 1px solid #707070;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+	padding: 20px 40px;
+	cursor: pointer;
+	box-sizing: border-box;
+	height: 100%;
 }
 .CardProducts h1,
 span {
-  font-size: 14px;
+	font-size: 14px;
 }
 .CardProducts p {
-  font-size: 13px;
-  margin: 0;
+	font-size: 13px;
+	margin: 0;
 }

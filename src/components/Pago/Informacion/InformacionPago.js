@@ -8,7 +8,7 @@ import './InformacionPago.css';
 
 const InformacionPago = () => {
 	return (
-		<Container className="container container-user container-infoPago">
+		<Container className="container-user container-infoPago">
 			<Grid container className="grid-container-user">
 				<Menu />
 				{/* <Grid item className="grid-item-infoPago"></Grid> */}

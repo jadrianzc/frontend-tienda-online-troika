@@ -26,9 +26,9 @@ function NavBar({ cantCar, setCantCar, addCar }) {
 
 				<NavMenu OpenMenu={OpenMenu} />
 
-				<NavBuscar />
+				<NavBuscar OpenMenu={OpenMenu} />
 
-				<NavBotones />
+				<NavBotones OpenMenu={OpenMenu} />
 
 				<NavCar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
 			</div>
