@@ -26,7 +26,7 @@ function ProductosMasVendidos() {
 					}
 				})
 				.map((card) => (
-					<Grid item xs={12} sm={12} md={6} lg={3} key={card._id}>
+					<Grid item xs={12} sm={12} md={6} lg={4} xl={3} key={card._id}>
 						<Link to={`/Producto/${card._id}`} className="LinkCardProducts">
 							{/*redirecciona al producto, enviando el id*/}
 							<Card className="CardProducts">
