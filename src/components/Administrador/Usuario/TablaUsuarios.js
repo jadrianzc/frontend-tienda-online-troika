@@ -260,7 +260,7 @@ function TablaUsuarios(stado) {
       </Grid>
       <TableContainer style={{ maxHeight: 300, width: "100%" }}>
         <Table stickyHeader>
-          <TableHead>
+          <TableHead className="TableHead">
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell>Nombres</TableCell>

@@ -15,6 +15,7 @@ import Pago from "../components/Pago/Pago/Pago";
 import CarritoCompras from "../components/CarritoCompras/CarritoCompras";
 
 import Administrador from "../components/Administrador/Administrador";
+import AdminProductos from "../components/Administrador/Productos/AdminProductos";
 import Usuario from "../components/Administrador/Usuario/Usuario";
 import AdminCategorias from "../components/Administrador/Categorias/AdminCategorias";
 
@@ -37,6 +38,12 @@ export default function AppRouter() {
           path="/Admin"
           exact
           component={Administrador}
+        />
+        <PrivateRoute
+          hasRole="admin"
+          path="/Admin/Productos"
+          exact
+          component={AdminProductos}
         />
         <PrivateRoute
           hasRole="admin"

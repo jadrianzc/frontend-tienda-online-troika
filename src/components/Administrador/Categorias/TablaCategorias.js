@@ -231,7 +231,7 @@ function TablaCategorias(stado) {
       </Grid>
       <TableContainer style={{ maxHeight: 250, width: "100%" }}>
         <Table stickyHeader>
-          <TableHead>
+          <TableHead className="TableHead">
             <TableRow>
               <TableCell>Nombre categoría</TableCell>
               <TableCell>Sub categorías</TableCell>
