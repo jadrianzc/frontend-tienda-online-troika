@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import Modal from "@material-ui/core/Modal";
+import { Grid, Modal, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import Snackbar from "@material-ui/core/Snackbar";
 import {
   Table,
   TableContainer,
@@ -13,23 +11,20 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 
-function TablaUsuarios(stado) {
+function TablaCategorias(stado) {
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [openAlertEdit, setOpenAlertEdit] = useState(false);
 
   const [documentos, setDocumentos] = useState([]);
-  const [tablaUser, setTablaUser] = useState([]);
+  const [tablaCategori, setTablaCategori] = useState([]);
 
-  const [iduser, setIduser] = useState("");
+  const [idcategori, setIdcategori] = useState("");
 
-  const [contUser, setContUser] = useState({
-    nomb_usuario: "",
-    apell_usuario: "",
-    ced_usuario: "",
-    email_usuario: "",
-    contraseña_usuario: "",
+  const [contCategori, setContCategori] = useState({
+    nombre_categoria: "",
+    sub_categoria: "",
   });
 
   const [estado, setEtado] = useState(stado);
@@ -39,9 +34,9 @@ function TablaUsuarios(stado) {
   useEffect(() => {
     const LoadData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/v1/usuarios`);
+        const res = await axios.get(`http://localhost:4000/api/v1/categorias`);
         setDocumentos(res.data);
-        setTablaUser(res.data);
+        setTablaCategori(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -49,32 +44,31 @@ function TablaUsuarios(stado) {
     LoadData();
   }, [stado, estado]);
 
-  /** */
+  /**Busqueda */
   const handleChangeBusqueda = (e) => {
     setBuscar(e.target.value);
     console.log(e.target.value);
   };
-
   const handleSubmitBusqueda = () => {
-    // e.preventDefault();
     FiltrarUsuarios(buscar);
   };
 
   const FiltrarUsuarios = (termino) => {
-    let resbusqueda = tablaUser.filter((doc) => {
-      if (doc.ced_usuario.toLowerCase().includes(termino.toLowerCase())) {
+    let resbusqueda = tablaCategori.filter((doc) => {
+      if (doc.nombre_categoria.toLowerCase().includes(termino.toLowerCase())) {
         return doc;
       }
     });
     setDocumentos(resbusqueda);
   };
-  /*** */
-
   /** */
 
-  const EliminaUsuario = async () => {
+  /**Eliminar */
+  const EliminaCategoria = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/usuarios/${iduser}`);
+      await axios.delete(
+        `http://localhost:4000/api/v1/categorias/${idcategori}`
+      );
       setEtado(!estado);
       setOpenModal(false);
       setOpenAlert(true);
@@ -85,57 +79,20 @@ function TablaUsuarios(stado) {
 
   const IdElimina = (doc) => {
     setOpenModal(true);
-    setIduser(doc);
-  };
-  /** */
-
-  /** */
-  const handlechangeUser = (e) => {
-    setContUser({
-      ...contUser,
-      [e.target.name]: e.target.value,
-    });
-    //console.log(contUser);
-  };
-  const IdEdit = async (doc) => {
-    setOpenModalEdit(true);
-    // setIduser(doc);
-    setContUser(doc);
-  };
-
-  const AcrualizaUser = async () => {
-    try {
-      await axios.put(
-        `http://localhost:4000/api/v1/usuarios/${contUser._id}`,
-        contUser
-      );
-      setEtado(!estado);
-      setOpenModalEdit(false);
-      setOpenAlertEdit(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  /** */
-
-  const handleCloseAlert = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpenAlert(false);
-    setOpenAlertEdit(false);
+    setIdcategori(doc);
   };
 
   const bodyElimi = (
     <div className="ModalRegistro">
-      <h2 id="simple-modal-title">Eliminar Usuario</h2>
-      <p id="simple-modal-description">¿Esta seguro de eliminar el usuario?</p>
+      <h2 id="simple-modal-title">Eliminar Categoría</h2>
+      <p id="simple-modal-description">
+        ¿Esta seguro de eliminar la categoría?
+      </p>
       <input
         type="button"
         className="btnPwd btnPwdAcep"
         value="Continuar"
-        onClick={EliminaUsuario}
+        onClick={EliminaCategoria}
       />
       <input
         type="button"
@@ -147,60 +104,64 @@ function TablaUsuarios(stado) {
       />
     </div>
   );
+  /** */
+
+  /**Edit */
+  const handlechangeCategori = (e) => {
+    setContCategori({
+      ...contCategori,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const AcrualizaCategori = async () => {
+    let newData = {
+      nombre_categoria: contCategori.nombre_categoria,
+      sub_categoria: contCategori.sub_categoria.toString().split(","),
+    };
+
+    try {
+      await axios.put(
+        `http://localhost:4000/api/v1/categorias/${contCategori._id}`,
+        newData
+      );
+      setEtado(!estado);
+      setOpenModalEdit(false);
+      setOpenAlertEdit(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const IdEdit = async (doc) => {
+    setOpenModalEdit(true);
+    // setIduser(doc);
+    setContCategori(doc);
+  };
 
   const bodyEdit = (
     <div className="ModalRegistro">
       <Grid item className="grid-item-user-data">
         <Grid container className="grid-container-user-data user-edit">
-          <h2 id="simple-modal-title">Usuario</h2>
+          <h2 id="simple-modal-title">Categoría</h2>
           <Grid item className="grid-item-info">
-            <label>Nombres</label>
+            <label>Nombre</label>
             <input
               type="text"
-              name="nomb_usuario"
-              value={contUser.nomb_usuario}
+              name="nombre_categoria"
+              value={contCategori.nombre_categoria}
               required
-              onChange={handlechangeUser}
+              onChange={handlechangeCategori}
             />
           </Grid>
           <Grid item className="grid-item-info">
             <label>Apellidos</label>
             <input
               type="text"
-              name="apell_usuario"
-              value={contUser.apell_usuario}
+              name="sub_categoria"
+              value={contCategori.sub_categoria}
               required
-              onChange={handlechangeUser}
-            />
-          </Grid>
-          <Grid item className="grid-item-info">
-            <label>Cédula/RUC</label>
-            <input
-              type="text"
-              name="ced_usuario"
-              value={contUser.ced_usuario}
-              required
-              onChange={handlechangeUser}
-            />
-          </Grid>
-          <Grid item className="grid-item-info">
-            <label>E-mail*</label>
-            <input
-              type="text"
-              name="email_usuario"
-              value={contUser.email_usuario}
-              required
-              onChange={handlechangeUser}
-            />
-          </Grid>
-          <Grid item className="grid-item-info">
-            <label>Contraseña </label>
-            <input
-              type="password"
-              name="contraseña_usuario"
-              value={contUser.contraseña_usuario}
-              required
-              onChange={handlechangeUser}
+              onChange={handlechangeCategori}
             />
           </Grid>
         </Grid>
@@ -210,7 +171,7 @@ function TablaUsuarios(stado) {
         type="button"
         className="btnPwd btnPwdAcep"
         value="Actualizar"
-        onClick={AcrualizaUser}
+        onClick={AcrualizaCategori}
       />
       <input
         type="button"
@@ -222,7 +183,17 @@ function TablaUsuarios(stado) {
       />
     </div>
   );
+  /** */
 
+  /** */
+  const handleCloseAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenAlert(false);
+    setOpenAlertEdit(false);
+  };
+  /** */
   return (
     <div style={{ height: 300, width: "100%" }}>
       <Grid
@@ -232,7 +203,7 @@ function TablaUsuarios(stado) {
         alignItems="center"
       >
         <Grid item className="grid-item-user-label">
-          <label>ID:</label>
+          <label>Nombre:</label>
         </Grid>
         <Grid item className="grid-item-user-input">
           <input
@@ -258,36 +229,26 @@ function TablaUsuarios(stado) {
           </button>
         </Grid>
       </Grid>
-      <TableContainer style={{ maxHeight: 300, width: "100%" }}>
+      <TableContainer style={{ maxHeight: 250, width: "100%" }}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Nombres</TableCell>
-              <TableCell>Apellidos</TableCell>
-              <TableCell>E-mail</TableCell>
-              <TableCell>Contraseña</TableCell>
+              <TableCell>Nombre categoría</TableCell>
+              <TableCell>Sub categorías</TableCell>
               <TableCell>Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {documentos
-              .filter((doc) => {
-                if (doc.rol_usuario === "admin") return doc;
-              })
-              .map((doc) => (
-                <TableRow key={doc._id}>
-                  <TableCell>{doc.ced_usuario}</TableCell>
-                  <TableCell>{doc.nomb_usuario}</TableCell>
-                  <TableCell>{doc.apell_usuario}</TableCell>
-                  <TableCell>{doc.email_usuario}</TableCell>
-                  <TableCell>**********</TableCell>
-                  <TableCell>
-                    <button onClick={() => IdEdit(doc)}>Edit</button>
-                    <button onClick={() => IdElimina(doc._id)}>Del</button>
-                  </TableCell>
-                </TableRow>
-              ))}
+            {documentos.map((doc) => (
+              <TableRow key={doc._id}>
+                <TableCell>{doc.nombre_categoria}</TableCell>
+                <TableCell>{doc.sub_categoria.toString()}</TableCell>
+                <TableCell>
+                  <button onClick={() => IdEdit(doc)}>Edit</button>
+                  <button onClick={() => IdElimina(doc._id)}>Del</button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -308,7 +269,7 @@ function TablaUsuarios(stado) {
         onClose={handleCloseAlert}
       >
         <Alert variant="filled" onClose={handleCloseAlert} severity="success">
-          El usuario se eliminó correctamente.
+          La categoría se eliminó correctamente.
         </Alert>
       </Snackbar>
 
@@ -328,11 +289,11 @@ function TablaUsuarios(stado) {
         onClose={handleCloseAlert}
       >
         <Alert variant="filled" onClose={handleCloseAlert} severity="success">
-          El usuario se actualizó correctamente.
+          La categoría se actualizó correctamente.
         </Alert>
       </Snackbar>
     </div>
   );
 }
 
-export default TablaUsuarios;
+export default TablaCategorias;

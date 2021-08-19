@@ -59,6 +59,15 @@
   border: 1px solid #707070;
   font-weight: 600;
 }
+.user-edit input {
+  height: 40px;
+  outline: none;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid #c1c1c1;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+}
 .grid-container-user-btn button {
   width: 90px;
   padding: 16px;
@@ -74,7 +83,7 @@
 }
 
 .grid-container-user-buscar {
-  width: 55% !important;
+  width: 60% !important;
 }
 
 .grid-container-user-buscar .grid-item-user-input input {
