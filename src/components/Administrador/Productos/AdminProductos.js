@@ -33,6 +33,29 @@ function AdminProductos() {
   });
   const [categorias, setCategorias] = useState([]);
 
+  const [buscarCodigo, setBuscarCodigo] = useState("");
+  const [buscar, setBuscar] = useState({});
+  const [valorBusqueda, setValorBusqueda] = useState({});
+
+  console.log("carga");
+  /**Busqueda */
+
+  // const handleChangeBusqueda = (e) => {
+  //   setBuscarCodigo(e.target.value);
+  // };
+
+  const handleSubmitBusqueda = (e) => {
+    e.preventDefault();
+    console.log("hola");
+    let codifso = e.target.buscodigo;
+    setValorBusqueda({
+      ...valorBusqueda,
+      [codifso.name]: codifso.value,
+    });
+  };
+
+  /** */
+
   const uploadImage = (e) => {
     setImg(e.target.files);
   };
@@ -183,7 +206,6 @@ function AdminProductos() {
                     </option>
                   ))
                 )}
-                {console.log(categorias)}
               </select>
             </Grid>
             <Grid item className="grid-item-info" xs={3}>
@@ -292,6 +314,39 @@ function AdminProductos() {
                 Búsqueda de producto
               </Typography>
             </div>
+            <Grid
+              container
+              className="grid-container-user-buscar"
+              alignItems="center"
+            >
+              <form onSubmit={handleSubmitBusqueda}>
+                <Grid item className="grid-item-user-label">
+                  <label>Codigo:</label>
+                </Grid>
+                <Grid item className="grid-item-user-input">
+                  <input type="text" name="buscodigo"></input>
+                </Grid>
+                <Grid
+                  item
+                  className="grid-container-user-btn"
+                  justifyContent="flex-end"
+                  alignItems="center"
+                >
+                  <button type="submit">Buscar</button>
+                  <button
+                    type="reset"
+                    defaultValue="Reset"
+                    onClick={() => {
+                      setStado(!stado);
+                      //setBuscar("");
+                      setValorBusqueda("");
+                    }}
+                  >
+                    Limpiar
+                  </button>
+                </Grid>
+              </form>
+            </Grid>
           </Grid>
         </Grid>
         <Grid item className="grid-item-produc-6">
@@ -300,7 +355,7 @@ function AdminProductos() {
               {openModal ? (
                 <h1>modal abierta</h1>
               ) : (
-                <TablaProductos stado={stado} />
+                <TablaProductos stado={stado} valorBusqueda={valorBusqueda} />
               )}
             </Grid>
           </Grid>

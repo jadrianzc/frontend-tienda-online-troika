@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 
-function TablaProductos(stado) {
+function TablaProductos(props) {
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
@@ -38,7 +38,25 @@ function TablaProductos(stado) {
   const [estado, setEtado] = useState(false);
 
   useEffect(() => {
-    console.log(stado);
+    if (props.valorBusqueda.buscodigo) {
+      const FiltrarUsuarios = (termino) => {
+        let resbusqueda = tablaCategori.filter((doc) => {
+          if (
+            doc.codigo_producto
+              .toLowerCase()
+              .includes(termino.toString().toLowerCase())
+          ) {
+            return doc;
+          }
+        });
+        setDocumentos(resbusqueda);
+      };
+      FiltrarUsuarios(props.valorBusqueda.buscodigo);
+    }
+  }, [props.valorBusqueda]);
+
+  useEffect(() => {
+    //console.log(stado);
     const LoadData = async () => {
       try {
         const res = await axios.get(`http://localhost:4000/api/v1/productos`);
@@ -49,7 +67,7 @@ function TablaProductos(stado) {
       }
     };
     LoadData();
-  }, [stado, estado]);
+  }, [props.stado, estado]);
 
   /**Eliminar */
   const EliminaProcuc = async () => {
@@ -203,7 +221,6 @@ function TablaProductos(stado) {
                   </option>
                 ))
               )}
-              {console.log(categorias)}
             </select>
           </Grid>
           <Grid item className="grid-item-info" xs={3}>
