@@ -10,12 +10,15 @@ import Producto from '../components/Categorias/Producto/Producto';
 import Categorias from '../components/Categorias/Catregorias';
 import Busqueda from '../components/Busqueda/Busqueda';
 import PerfilUsuario from '../components/PerfilUsuario/PerfilUsuario';
-import Administrador from '../components/Administrador/Administrador';
-import Usuario from '../components/Administrador/Usuario/Usuario';
-import CarritoCompras from '../components/CarritoCompras/CarritoCompras';
 import InformacionPago from '../components/Pago/Informacion/InformacionPago';
 import Pago from '../components/Pago/Pago/Pago';
 import PagoFinal from '../components/Pago/Pago/PagoFinal/PagoFinal';
+import CarritoCompras from '../components/CarritoCompras/CarritoCompras';
+
+import Administrador from '../components/Administrador/Administrador';
+import AdminProductos from '../components/Administrador/Productos/AdminProductos';
+import Usuario from '../components/Administrador/Usuario/Usuario';
+import AdminCategorias from '../components/Administrador/Categorias/AdminCategorias';
 
 import PrivateRoute from './PrivateRoute';
 import PrivateRouteRender from './PrivateRouteRender';
@@ -34,7 +37,9 @@ export default function AppRouter() {
 		<Router>
 			<Switch>
 				<PrivateRoute hasRole="admin" path="/Admin" exact component={Administrador} />
+				<PrivateRoute hasRole="admin" path="/Admin/Productos" exact component={AdminProductos} />
 				<PrivateRoute hasRole="admin" path="/Admin/Usuario" exact component={Usuario} />
+				<PrivateRoute hasRole="admin" path="/Admin/Categorias" exact component={AdminCategorias} />
 
 				<>
 					<NavBar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />

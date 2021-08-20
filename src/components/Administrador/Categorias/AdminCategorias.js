@@ -1,58 +1,38 @@
 import React, { useState } from "react";
 import { Container, Grid, Typography, Snackbar } from "@material-ui/core";
-import TablaUsuarios from "./TablaUsuarios";
-import "./Usuario.css";
+import "../Usuario/Usuario.css";
 import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
+import TablaCategorias from "./TablaCategorias";
 
-const Usuario = () => {
+function AdminCategorias() {
   const [openAlert, setOpenAlert] = useState(false);
-  const [datos, setDatos] = useState({
-    nomb_usuario: "",
-    apell_usuario: "",
-    ced_usuario: "",
-    email_usuario: "",
-    contraseña_usuario: "",
-    rol_usuario: "admin",
-  });
   const [stado, setStado] = useState(false);
+
+  const [datos, setDatos] = useState({
+    nombre_categoria: "",
+    sub_categoria: "",
+  });
+
   const handleInputChange = (e) => {
     setDatos({
       ...datos,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(datos);
+    let newData = {
+      nombre_categoria: datos.nombre_categoria,
+      sub_categoria: datos.sub_categoria.split(","),
+    };
     try {
-      await axios
-        .get(
-          "http://localhost:4000/api/v1/verificaUsuario/" + datos.email_usuario
-        )
-        .then((respp) => {
-          if (respp.data.length === 1) {
-            console.log("correo existe");
-          } else {
-            RegistrarUsuario();
-            e.target.name = "";
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const RegistrarUsuario = async () => {
-    try {
-      await axios.post("http://localhost:4000/api/v1/usuarios", datos);
+      await axios.post("http://localhost:4000/api/v1/categorias", newData);
       console.log("enviaso");
       setDatos({
-        nomb_usuario: "",
-        apell_usuario: "",
-        ced_usuario: "",
-        email_usuario: "",
-        contraseña_usuario: "",
-        rol_usuario: "admin",
+        nombre_categoria: "",
+        sub_categoria: "",
       });
       setStado(!stado);
       setOpenAlert(true);
@@ -60,6 +40,7 @@ const Usuario = () => {
       console.log(error);
     }
   };
+
   const handleCloseAlert = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -67,6 +48,7 @@ const Usuario = () => {
 
     setOpenAlert(false);
   };
+
   return (
     <Container className="container container-user">
       <Grid
@@ -77,59 +59,30 @@ const Usuario = () => {
         <Grid item className="grid-item-user-4">
           <div className="grid-item-title">
             <Typography className="title-usuario title">
-              Agregar usuario
+              Agregar categoría
             </Typography>
           </div>
           <Grid item className="grid-item-user-data">
             <form method="post" onSubmit={handleSubmit}>
               <Grid container className="grid-container-user-data">
                 <Grid item className="grid-item-info">
-                  <label>Nombres</label>
+                  <label>Categoria</label>
                   <input
                     type="text"
-                    name="nomb_usuario"
-                    value={datos.nomb_usuario}
+                    name="nombre_categoria"
+                    value={datos.nombre_categoria}
                     required
                     onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item className="grid-item-info">
-                  <label>Apellidos</label>
+                  <label>Sub categorias</label>
                   <input
                     type="text"
-                    name="apell_usuario"
-                    value={datos.apell_usuario}
+                    name="sub_categoria"
+                    value={datos.sub_categoria}
                     required
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-                <Grid item className="grid-item-info">
-                  <label>Cédula/RUC</label>
-                  <input
-                    type="text"
-                    name="ced_usuario"
-                    value={datos.ced_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-                <Grid item className="grid-item-info">
-                  <label>E-mail*</label>
-                  <input
-                    type="text"
-                    name="email_usuario"
-                    value={datos.email_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-                <Grid item className="grid-item-info">
-                  <label>Contraseña </label>
-                  <input
-                    type="password"
-                    name="contraseña_usuario"
-                    value={datos.contraseña_usuario}
-                    required
+                    placeholder="Pastilla,Disco,..."
                     onChange={handleInputChange}
                   />
                 </Grid>
@@ -148,12 +101,12 @@ const Usuario = () => {
         <Grid item className="grid-item-user-6">
           <div className="grid-item-title">
             <Typography className="title-usuario title">
-              Búsqueda de usuario
+              Búsqueda de categoría
             </Typography>
           </div>
           <Grid item className="grid-item-user-buscar">
             <Grid item className="grid-item-user-tabla">
-              <TablaUsuarios stado={stado} />
+              <TablaCategorias stado={stado} />
             </Grid>
           </Grid>
         </Grid>
@@ -164,11 +117,11 @@ const Usuario = () => {
         onClose={handleCloseAlert}
       >
         <Alert variant="filled" onClose={handleCloseAlert} severity="success">
-          El usuario se creó correctamente.
+          La categoría se creó correctamente.
         </Alert>
       </Snackbar>
     </Container>
   );
-};
+}
 
-export default Usuario;
+export default AdminCategorias;
