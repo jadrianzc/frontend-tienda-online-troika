@@ -57,8 +57,17 @@ export default function AppRouter() {
 						exact
 						render={() => <CarritoCompras addCar={addCar} setAddCar={setAddCar} />}
 					/>
-					<PrivateRoute path="/carrito-compras/info-pago" exact component={InformacionPago} />
-					<PrivateRoute path="/carrito-compras/info-pago/pago" exact component={Pago} />
+					<PrivateRoute
+						path="/carrito-compras/info-pago"
+						exact
+						render={() => <InformacionPago setDataInfo={setDataInfo} />}
+					/>
+					<PrivateRoute
+						path="/carrito-compras/info-pago/pago"
+						exact
+						render={() => <Pago dataInfo={dataInfo} menuState={menuState} />}
+					/>
+					<PrivateRoute path="/carrito-compras/info-pago/pago/envio" exact component={PagoFinal} />
 				</>
 			</Switch>
 			{/* <Footer />  */}
