@@ -1,27 +1,27 @@
 .admin {
-  height: 80%;
+	height: 80%;
 }
 
 .grid-item-admin .grid-item-title {
-  padding: 40px;
+	padding: 40px;
 }
 
 .div-logo {
-  background-color: #01619e;
-  padding: 15px;
-  border-radius: 30px;
+	background-color: #01619e;
+	padding: 15px;
+	border-radius: 30px;
 }
 .grid-item-admin img {
-  width: 131px;
-  height: 131px;
+	width: 131px;
+	height: 131px;
 }
 
 .grid-item-admin {
-  width: 100%;
+	width: 100%;
 }
 
 .underline2 {
-  width: 317px !important;
+	width: 317px !important;
 }
 
 /* .grid-item-admin-title,
@@ -34,72 +34,74 @@
 } */
 
 .grid-container-adminLogo {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 h3 {
-  text-align: center;
+	text-align: center;
 }
 /*VERIFICAR SI ESTA ESN EL ADMIN*/
 /* a:link, 
 a:visited,
 a:active {
 
+
+} */
 .grid-container-adminLogo a:link,
 .grid-container-adminLogo a:visited,
 .grid-container-adminLogo a:active {
 	text-decoration: none;
 	color: inherit;
-} */
+}
 
 .grid-item-admin-btn {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 40px;
-  box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 40px;
+	box-sizing: border-box;
 }
 
 .grid-item-admin-btn button {
-  width: 200px;
-  height: 40px;
-  background-color: #191919;
-  color: #fff;
-  text-align: center;
-  border-radius: 20px;
-  border: 1px solid #707070;
+	width: 200px;
+	height: 40px;
+	background-color: #191919;
+	color: #fff;
+	text-align: center;
+	border-radius: 20px;
+	border: 1px solid #707070;
 }
 
 .grid-item-admin-btn button:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 @media (max-width: 850px) {
-  .grid-item-admin-btn {
-    justify-content: center;
-    align-items: center;
-  }
+	.grid-item-admin-btn {
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 @media (max-width: 485px) {
-  .grid-item-title .title {
-    display: block;
-    text-align: center;
-  }
+	.grid-item-title .title {
+		display: block;
+		text-align: center;
+	}
 
-  .underline2 {
-    width: 100% !important;
-  }
+	.underline2 {
+		width: 100% !important;
+	}
 }
 
 @media (max-width: 410px) {
-  .container-admin {
-    height: 100vh;
-  }
-  .admin {
-    height: 100%;
-  }
+	.container-admin {
+		height: 100vh;
+	}
+	.admin {
+		height: 100%;
+	}
 }
