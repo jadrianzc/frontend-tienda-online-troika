@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NavBar from '../components/NavBar/NavBar';
 import Inicio from '../components/Inicio/Inicio';
@@ -21,7 +21,6 @@ import Usuario from '../components/Administrador/Usuario/Usuario';
 import AdminCategorias from '../components/Administrador/Categorias/AdminCategorias';
 
 import PrivateRoute from './PrivateRoute';
-import PrivateRouteRender from './PrivateRouteRender';
 import PublicRoute from './PublicRoute';
 import RouteCli from './RouteCli';
 import RouteCliCompo from './RouteCliCompo';
@@ -48,27 +47,18 @@ export default function AppRouter() {
 					<RouteCliCompo path="/Agencias" exact component={Agencias} />
 					<PublicRoute path="/Login" exact component={Login} />
 					<PublicRoute path="/Registro" exact component={Registro} />
-					<RouteCli path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
+					<Route path="/Producto/:id" exact render={() => <Producto addCar={addCar} setAddCar={setAddCar} />} />
 					<RouteCliCompo path="/Categorías/:id" exact component={Categorias} />
 					<RouteCliCompo path="/Busqueda/:nombre" exact component={Busqueda} />
 					<PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
 
-					<PrivateRouteRender
+					<Route
 						path="/carrito-compras"
 						exact
 						render={() => <CarritoCompras addCar={addCar} setAddCar={setAddCar} />}
 					/>
-					<RouteCli
-						path="/carrito-compras/info-pago"
-						exact
-						render={() => <InformacionPago setDataInfo={setDataInfo} />}
-					/>
-					<RouteCli
-						path="/carrito-compras/info-pago/pago"
-						exact
-						render={() => <Pago dataInfo={dataInfo} menuState={menuState} />}
-					/>
-					<PrivateRoute path="/carrito-compras/info-pago/pago/envio" exact component={PagoFinal} />
+					<PrivateRoute path="/carrito-compras/info-pago" exact component={InformacionPago} />
+					<PrivateRoute path="/carrito-compras/info-pago/pago" exact component={Pago} />
 				</>
 			</Switch>
 			{/* <Footer />  */}

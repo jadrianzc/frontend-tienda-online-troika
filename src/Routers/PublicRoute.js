@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookies from "universal-cookie";
 
@@ -9,7 +10,7 @@ export default function PublicRoute({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}
-      component={(props) => {
+      render={(props) => {
         if (user && user?.rol_usuario !== "cliente")
           return <Redirect to="/admin" />;
         if (user) return <Redirect to="/" />;
