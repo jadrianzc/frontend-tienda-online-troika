@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from "../components/NavBar/NavBar";
 import Inicio from "../components/Inicio/Inicio";
@@ -20,7 +20,6 @@ import Usuario from "../components/Administrador/Usuario/Usuario";
 import AdminCategorias from "../components/Administrador/Categorias/AdminCategorias";
 
 import PrivateRoute from "./PrivateRoute";
-import PrivateRouteRender from "./PrivateRouteRender";
 import PublicRoute from "./PublicRoute";
 import RouteCli from "./RouteCli";
 import RouteCliCompo from "./RouteCliCompo";
@@ -69,7 +68,7 @@ export default function AppRouter() {
           <RouteCliCompo path="/Agencias" exact component={Agencias} />
           <PublicRoute path="/Login" exact component={Login} />
           <PublicRoute path="/Registro" exact component={Registro} />
-          <RouteCli
+          <Route
             path="/Producto/:id"
             exact
             render={() => <Producto addCar={addCar} setAddCar={setAddCar} />}
@@ -78,7 +77,7 @@ export default function AppRouter() {
           <RouteCliCompo path="/Busqueda/:nombre" exact component={Busqueda} />
           <PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
 
-          <PrivateRouteRender
+          <Route
             path="/carrito-compras"
             exact
             render={() => (

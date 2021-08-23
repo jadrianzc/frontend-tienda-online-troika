@@ -11,7 +11,7 @@ export default function PrivateRoute({
   return (
     <Route
       {...rest}
-      component={(props) => {
+      render={(props) => {
         if (role && user?.rol_usuario !== role) return <Redirect to="/" />;
         //if (role) return <Redirect to="/Admin" />;
         if (!user) return <Redirect to="/" />;
