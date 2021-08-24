@@ -65,7 +65,7 @@ const Administrador = () => {
                 </div>
               </Grid>
             </Link>
-            <Link to={`/`}>
+            <Link to={`/Admin/Pedidos`}>
               <Grid item>
                 <div className="div-logo">
                   <img src={pedidosLogo} alt="Logo-usuario"></img>

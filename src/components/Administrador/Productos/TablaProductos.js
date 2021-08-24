@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 
 function TablaProductos(props) {
+  console.log("abre pro");
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
@@ -38,20 +39,34 @@ function TablaProductos(props) {
   const [estado, setEtado] = useState(false);
 
   useEffect(() => {
-    if (props.valorBusqueda.buscodigo) {
+    console.log(props.valorBusqueda.buscategori);
+    if (props.valorBusqueda.buscodigo || props.valorBusqueda.buscategori) {
+      console.log("busca");
       const FiltrarUsuarios = (termino) => {
+        console.log(termino);
         let resbusqueda = tablaCategori.filter((doc) => {
-          if (
-            doc.codigo_producto
-              .toLowerCase()
-              .includes(termino.toString().toLowerCase())
-          ) {
-            return doc;
+          if (termino.buscodigo) {
+            if (
+              doc.codigo_producto
+                .toLowerCase()
+                .includes(termino.buscodigo.toString().toLowerCase())
+            ) {
+              return doc;
+            }
+          } else if (termino.buscategori) {
+            if (
+              doc.categoria_producto
+                .toString()
+                .toLowerCase()
+                .includes(termino.buscategori.toString().toLowerCase())
+            ) {
+              return doc;
+            }
           }
         });
         setDocumentos(resbusqueda);
       };
-      FiltrarUsuarios(props.valorBusqueda.buscodigo);
+      FiltrarUsuarios(props.valorBusqueda);
     }
   }, [props.valorBusqueda]);
 
@@ -69,7 +84,9 @@ function TablaProductos(props) {
     LoadData();
   }, [props.stado, estado]);
 
-  /**Eliminar */
+  /*
+   * Eliminar
+   */
   const EliminaProcuc = async () => {
     try {
       await axios.delete(`http://localhost:4000/api/v1/productos/${idproduc}`);
@@ -107,7 +124,9 @@ function TablaProductos(props) {
   );
   /** */
 
-  /**Edit */
+  /*
+   *Edit
+   */
   const AbreElEdit = async (doc) => {
     setOpenModalEdit(true);
     setDatos(doc);

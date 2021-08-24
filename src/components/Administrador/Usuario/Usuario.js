@@ -7,24 +7,24 @@ import Alert from "@material-ui/lab/Alert";
 
 const Usuario = () => {
   const [openAlert, setOpenAlert] = useState(false);
-  const [datos, setDatos] = useState({
-    nomb_usuario: "",
-    apell_usuario: "",
-    ced_usuario: "",
-    email_usuario: "",
-    contraseña_usuario: "",
-    rol_usuario: "admin",
-  });
   const [stado, setStado] = useState(false);
-  const handleInputChange = (e) => {
-    setDatos({
-      ...datos,
-      [e.target.name]: e.target.value,
-    });
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(datos);
+    let nomb_usuario = e.target.nomb_usuario;
+    let apell_usuario = e.target.apell_usuario;
+    let ced_usuario = e.target.ced_usuario;
+    let email_usuario = e.target.email_usuario;
+    let contraseña_usuario = e.target.contraseña_usuario;
+    const datos = {
+      [nomb_usuario.name]: nomb_usuario.value,
+      [apell_usuario.name]: apell_usuario.value,
+      [ced_usuario.name]: ced_usuario.value,
+      [email_usuario.name]: email_usuario.value,
+      [contraseña_usuario.name]: contraseña_usuario.value,
+      rol_usuario: "admin",
+    };
+
     try {
       await axios
         .get(
@@ -34,32 +34,25 @@ const Usuario = () => {
           if (respp.data.length === 1) {
             console.log("correo existe");
           } else {
-            RegistrarUsuario();
-            e.target.name = "";
+            RegistrarUsuario(datos);
+            e.target.reset();
           }
         });
     } catch (error) {
       console.log(error);
     }
   };
-  const RegistrarUsuario = async () => {
+
+  const RegistrarUsuario = async (datos) => {
     try {
       await axios.post("http://localhost:4000/api/v1/usuarios", datos);
-      console.log("enviaso");
-      setDatos({
-        nomb_usuario: "",
-        apell_usuario: "",
-        ced_usuario: "",
-        email_usuario: "",
-        contraseña_usuario: "",
-        rol_usuario: "admin",
-      });
       setStado(!stado);
       setOpenAlert(true);
     } catch (error) {
       console.log(error);
     }
   };
+
   const handleCloseAlert = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -67,6 +60,7 @@ const Usuario = () => {
 
     setOpenAlert(false);
   };
+
   return (
     <Container className="container container-user">
       <Grid
@@ -85,53 +79,23 @@ const Usuario = () => {
               <Grid container className="grid-container-user-data">
                 <Grid item className="grid-item-info">
                   <label>Nombres</label>
-                  <input
-                    type="text"
-                    name="nomb_usuario"
-                    value={datos.nomb_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
+                  <input type="text" name="nomb_usuario" required />
                 </Grid>
                 <Grid item className="grid-item-info">
                   <label>Apellidos</label>
-                  <input
-                    type="text"
-                    name="apell_usuario"
-                    value={datos.apell_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
+                  <input type="text" name="apell_usuario" required />
                 </Grid>
                 <Grid item className="grid-item-info">
                   <label>Cédula/RUC</label>
-                  <input
-                    type="text"
-                    name="ced_usuario"
-                    value={datos.ced_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
+                  <input type="text" name="ced_usuario" required />
                 </Grid>
                 <Grid item className="grid-item-info">
                   <label>E-mail*</label>
-                  <input
-                    type="text"
-                    name="email_usuario"
-                    value={datos.email_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
+                  <input type="text" name="email_usuario" required />
                 </Grid>
                 <Grid item className="grid-item-info">
                   <label>Contraseña </label>
-                  <input
-                    type="password"
-                    name="contraseña_usuario"
-                    value={datos.contraseña_usuario}
-                    required
-                    onChange={handleInputChange}
-                  />
+                  <input type="password" name="contraseña_usuario" required />
                 </Grid>
               </Grid>
               <Grid

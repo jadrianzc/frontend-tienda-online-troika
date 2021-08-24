@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -10,78 +10,80 @@ import "../Usuario/Usuario.css";
 import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
 import TablaProductos from "./TablaProductos";
-// import TablaCategorias from "./TablaCategorias";
 
 function AdminProductos() {
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [stado, setStado] = useState(false);
 
-  const [img, setImg] = useState("");
-  const [urlimg, setUrlimg] = useState({ imgurl: "" });
-
-  const [datos, setDatos] = useState({
-    codigo_producto: "",
-    nom_producto: "",
-    descrip_producto: "",
-    categoria_producto: "",
-    precio_producto: "",
-    marca_auto: "",
-    modelo_auto: "",
-    modelo_producto: "",
-    cantidad_producto: "",
-  });
   const [categorias, setCategorias] = useState([]);
 
-  const [buscarCodigo, setBuscarCodigo] = useState("");
-  const [buscar, setBuscar] = useState({});
   const [valorBusqueda, setValorBusqueda] = useState({});
 
-  console.log("carga");
-  /**Busqueda */
+  /*
+   * Obtener Categorias
+   */
+  useEffect(() => {
+    const optenerCategori = async () => {
+      try {
+        const res = await axios.get("http://localhost:4000/api/v1/categorias");
+        setCategorias(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    optenerCategori();
+  }, []);
+  /** */
 
-  // const handleChangeBusqueda = (e) => {
-  //   setBuscarCodigo(e.target.value);
-  // };
+  /*
+   *Busqueda
+   */
 
   const handleSubmitBusqueda = (e) => {
     e.preventDefault();
-    console.log("hola");
     let codifso = e.target.buscodigo;
+    let buscategori = e.target.buscategori;
     setValorBusqueda({
       ...valorBusqueda,
       [codifso.name]: codifso.value,
+      [buscategori.name]: buscategori.value,
     });
   };
 
   /** */
 
-  const uploadImage = (e) => {
-    setImg(e.target.files);
-  };
-
   const AbreElIngreso = async () => {
     setOpenModal(true);
-    try {
-      const res = await axios.get("http://localhost:4000/api/v1/categorias");
-      setCategorias(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handlechangeProduc = async (e) => {
-    await setDatos({
-      ...datos,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let codigo_producto = e.target.codigo_producto;
+    let nom_producto = e.target.nom_producto;
+    let descrip_producto = e.target.descrip_producto;
+    let categoria_producto = e.target.categoria_producto;
+    let precio_producto = e.target.precio_producto;
+    let marca_auto = e.target.marca_auto;
+    let modelo_auto = e.target.modelo_auto;
+    let modelo_producto = e.target.modelo_producto;
+    let cantidad_producto = e.target.cantidad_producto;
+    let foto = e.target.foto.files;
+
+    const datos = {
+      [codigo_producto.name]: codigo_producto.value,
+      [nom_producto.name]: nom_producto.value,
+      [descrip_producto.name]: descrip_producto.value,
+      [categoria_producto.name]: categoria_producto.value,
+      [precio_producto.name]: precio_producto.value,
+      [marca_auto.name]: marca_auto.value,
+      [modelo_auto.name]: modelo_auto.value,
+      [modelo_producto.name]: modelo_producto.value,
+      [cantidad_producto.name]: cantidad_producto.value,
+    };
     const dataimg = new FormData();
-    dataimg.append("file", img[0]);
+    dataimg.append("file", foto[0]);
     dataimg.append("upload_preset", "jacbgyfs");
     try {
       await axios
@@ -93,30 +95,19 @@ function AdminProductos() {
           //setUrlimg({ imgurl: res.data.secure_url });
           let imgurl = { imgurl: res.data.secure_url };
           const nnewdata = Object.assign(datos, imgurl);
-          AgregaProduc(nnewdata);
+          AgregaProduc(nnewdata, e);
         });
     } catch (err) {
       console.error(err);
     }
   };
 
-  const AgregaProduc = async (nnewdata) => {
+  const AgregaProduc = async (nnewdata, e) => {
     try {
       await axios.post("http://localhost:4000/api/v1/productos", nnewdata);
       console.log("enviaso");
       setOpenModal(false);
-      setDatos({
-        codigo_producto: "",
-        nom_producto: "",
-        descrip_producto: "",
-        categoria_producto: "",
-        precio_producto: 0,
-        marca_auto: "",
-        modelo_auto: "",
-        modelo_producto: "",
-        cantidad_producto: 0,
-      });
-      setUrlimg({ imgurl: "" });
+      e.target.reset();
       setStado(!stado);
       setOpenAlert(true);
     } catch (error) {
@@ -134,70 +125,34 @@ function AdminProductos() {
               accept="image/*"
               name="foto"
               id="contained-button-file"
-              multiple
               type="file"
-              onChange={uploadImage}
+              required
             />
           </Grid>
           <Grid container item xs={9} spacing={3}>
             <Grid item className="grid-item-info" xs={6}>
               <label>Código:</label>
-              <input
-                type="text"
-                name="codigo_producto"
-                value={datos.codigo_producto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="codigo_producto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={3}>
               <label>Marca de auto:</label>
-              <input
-                type="text"
-                name="marca_auto"
-                value={datos.marca_auto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="marca_auto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={3}>
               <label>Modelo de auto:</label>
-              <input
-                type="text"
-                name="modelo_auto"
-                value={datos.modelo_auto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="modelo_auto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={6}>
               <label>Nombre:</label>
-              <input
-                type="text"
-                name="nom_producto"
-                value={datos.nom_producto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="nom_producto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={6}>
               <label>Modelo de producto:</label>
-              <input
-                type="text"
-                name="modelo_producto"
-                value={datos.modelo_producto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="modelo_producto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={6}>
               <label>Categoría:</label>
-              <select
-                name="categoria_producto"
-                id="categoria_producto"
-                value={datos.categoria_producto}
-                onChange={handlechangeProduc}
-              >
+              <select name="categoria_producto" id="categoria_producto">
                 <option aria-label="None" value="" />
                 {categorias.map((mar) =>
                   mar.sub_categoria.map((sub) => (
@@ -210,61 +165,34 @@ function AdminProductos() {
             </Grid>
             <Grid item className="grid-item-info" xs={3}>
               <label>Stock:</label>
-              <input
-                type="number"
-                name="cantidad_producto"
-                value={datos.cantidad_producto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="number" name="cantidad_producto" required />
             </Grid>
             <Grid item className="grid-item-info" xs={3}>
               <label>Precio:</label>
               <input
                 type="number"
                 name="precio_producto"
-                value={datos.precio_producto}
+                placeholder="0.00"
+                step="0.01"
+                pattern="^\d+(?:\.\d{1,2})?$"
                 required
-                onChange={handlechangeProduc}
               />
             </Grid>
             <Grid item className="grid-item-info" xs={12}>
               <label>Descripción</label>
-              <input
-                type="text"
-                name="descrip_producto"
-                value={datos.descrip_producto}
-                required
-                onChange={handlechangeProduc}
-              />
+              <input type="text" name="descrip_producto" required />
             </Grid>
           </Grid>
         </Grid>
 
+        <input type="submit" className="btnPwd btnPwdAcep" value="Agregar" />
         <input
-          type="submit"
-          className="btnPwd btnPwdAcep"
-          value="Agregar"
-          //onClick={AcrualizaCategori}
-        />
-        <input
-          type="button"
+          type="reset"
+          defaultValue="Reset"
           className=" btnPwd btnPwdCan"
           value="Cancelar"
           onClick={() => {
             setOpenModal(false);
-            setDatos({
-              imgurl: "",
-              codigo_producto: "",
-              nom_producto: "",
-              descrip_producto: "",
-              categoria_producto: "",
-              precio_producto: "",
-              marca_auto: "",
-              modelo_auto: "",
-              modelo_producto: "",
-              cantidad_producto: "",
-            });
           }}
         />
       </form>
@@ -280,17 +208,8 @@ function AdminProductos() {
 
   return (
     <Container className="container container-user">
-      <Grid
-        container
-        justifyContent="space-between"
-        className="grid-container-add-user"
-      >
-        <Grid
-          item
-          container
-          justifyContent="space-between"
-          className="grid-item-produc-4"
-        >
+      <Grid container>
+        <Grid item container className="grid-item-produc-4" xs={12}>
           <Grid item className="grip-agrega-produc">
             <div className="grid-item-title">
               <Typography className="title-usuario title">
@@ -314,24 +233,27 @@ function AdminProductos() {
                 Búsqueda de producto
               </Typography>
             </div>
-            <Grid
-              container
-              className="grid-container-user-buscar"
-              alignItems="center"
-            >
-              <form onSubmit={handleSubmitBusqueda}>
-                <Grid item className="grid-item-user-label">
-                  <label>Codigo:</label>
-                </Grid>
-                <Grid item className="grid-item-user-input">
-                  <input type="text" name="buscodigo"></input>
-                </Grid>
-                <Grid
-                  item
-                  className="grid-container-user-btn"
-                  justifyContent="flex-end"
-                  alignItems="center"
-                >
+            <Grid container alignItems="center">
+              <form
+                onSubmit={handleSubmitBusqueda}
+                style={{ display: "contents" }}
+              >
+                <label>Código:</label>
+                <input type="text" name="buscodigo"></input>
+
+                <label>Categoria:</label>
+                <select name="buscategori" id="buscategori">
+                  <option aria-label="None" value="" />
+                  {categorias.map((mar) =>
+                    mar.sub_categoria.map((sub) => (
+                      <option key={sub} value={sub}>
+                        {sub}
+                      </option>
+                    ))
+                  )}
+                </select>
+
+                <Grid item className="grid-container-user-btn">
                   <button type="submit">Buscar</button>
                   <button
                     type="reset"
@@ -349,15 +271,9 @@ function AdminProductos() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item className="grid-item-produc-6">
-          <Grid item className="grid-item-user-buscar">
-            <Grid item className="grid-item-user-tabla">
-              {openModal ? (
-                <h1>modal abierta</h1>
-              ) : (
-                <TablaProductos stado={stado} valorBusqueda={valorBusqueda} />
-              )}
-            </Grid>
+        <Grid item className="grid-item-produc-6" xs={12}>
+          <Grid item className="grid-item-user-tabla">
+            <TablaProductos stado={stado} valorBusqueda={valorBusqueda} />
           </Grid>
         </Grid>
       </Grid>

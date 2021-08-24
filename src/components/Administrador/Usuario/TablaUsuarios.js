@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 
 function TablaUsuarios(stado) {
+  console.log("se ejec");
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);

@@ -26,7 +26,7 @@ function NavCatregorias() {
         <ul>
           {categorias.map((item) => (
             <li key={item._id} className="LiCategori">
-              {item.descrip_categoria}
+              {item.nombre_categoria}
               <ul>
                 {item.sub_categoria.map((sub) => (
                   <li key={sub} className="LiSubCategori">
