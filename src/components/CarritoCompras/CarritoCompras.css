@@ -18,14 +18,15 @@
 }
 
 .grid-item-btn-table .grid-item-admin-btn {
-	padding: 40px 0 40px 40px;
+	padding: 40px 0 0px 40px;
 }
 
 .grid-item-btn-table .grid-item-admin-btn button {
 	background-color: #01619e;
 }
 
-.btn-delete {
+.btn-delete,
+.btn-carVacio {
 	color: #953030;
 	font-size: 30px;
 }
@@ -59,4 +60,10 @@
 
 .row-items-producto-car .row-item-producto-btns {
 	width: 15%;
+}
+
+.row-item-producto-vacio {
+	width: 100%;
+	height: 200px;
+	border: 1px solid #000;
 }

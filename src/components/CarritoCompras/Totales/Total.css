@@ -10,6 +10,7 @@
 .grid-item-title-carrito {
 	display: block;
 	text-align: end;
+	margin: 0;
 }
 
 .grid-item-total .div-item-total {

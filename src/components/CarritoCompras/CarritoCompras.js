@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const CarritoCompras = ({ addCar, setAddCar }) => {
+const CarritoCompras = ({ addCar, setAddCar, setEstadoProduCar, estadoProduCar }) => {
 	const classes = useStyles();
 	const [rows, setRows] = useState([]);
 	const [btn, setBtn] = useState(false);
@@ -52,14 +52,17 @@ const CarritoCompras = ({ addCar, setAddCar }) => {
 		const LoadData = async (idUserSession) => {
 			try {
 				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`);
-				setRows(res.data);
+				const dataFilter = res.data.filter((dato) =>
+					dato.idUserSession === idUserSession && dato.estado ? dato : null
+				);
+				setRows(dataFilter);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		LoadData(idUserSession);
 		// window.scrollTo(0, 0);
-	}, [idUserSession, btn]);
+	}, [idUserSession, btn, estadoProduCar]);
 
 	//Btn Delete
 	const handleBtnDelete = async (idProductoUnique) => {
@@ -72,6 +75,21 @@ const CarritoCompras = ({ addCar, setAddCar }) => {
 				setAddCar(!addCar);
 			});
 		// console.log(res.data);
+	};
+
+	const handleCarVacio = () => {
+		if (rows.length === 0) {
+			return (
+				<Grid container className="row-item-producto-vacio" justifyContent="center" alignItems="center">
+					<Grid item>
+						<Grid container direction="column" alignItems="center">
+							<Typography variant="h4">CARRITO VACÍO</Typography>
+							<FontAwesomeIcon icon={faExclamationCircle} className="iconCar btn-carVacio" />
+						</Grid>
+					</Grid>
+				</Grid>
+			);
+		}
 	};
 
 	return (
@@ -108,51 +126,52 @@ const CarritoCompras = ({ addCar, setAddCar }) => {
 							</TableHead>
 							<TableBody>
 								{rows.map((row) => {
-									if (row.idUserSession === idUserSession) {
-										return (
-											<StyledTableRow key={row._id} className="row-items-producto-car">
-												<StyledTableCell
-													align="center"
-													component="th"
-													scope="row"
-													className="row-item-producto-btn-delete"
-												>
-													<FontAwesomeIcon
-														icon={faTimesCircle}
-														onClick={() => {
-															handleBtnDelete(row._id);
-														}}
-														className="iconCar btn-delete"
-													/>
-												</StyledTableCell>
-												<StyledTableCell align="center" className="row-item-producto-img">
-													<img src={row.imgurl} alt="Imagen-Producto"></img>
-												</StyledTableCell>
-												<StyledTableCell align="center" className="item-table-size row-item-producto-descr">
-													{row.descrip_producto}
-												</StyledTableCell>
-												<StyledTableCell align="center" className="item-table-size row-item-producto-precio">
-													$ {row.precio_producto}
-												</StyledTableCell>
-												<StyledTableCell align="center" className="row-item-producto-btns">
-													<BotonesAddSub
-														cantidad={row.cantidad_producto}
-														document={row}
-														idUserSession={idUserSession}
-														setBtn={setBtn}
-														btn={btn}
-													/>
-												</StyledTableCell>
-												<StyledTableCell align="center" className="item-table-size row-item-producto-total">
-													$ {(row.cantidad_producto * row.precio_producto).toFixed(2)}
-												</StyledTableCell>
-											</StyledTableRow>
-										);
-									}
+									return (
+										<StyledTableRow key={row._id} className="row-items-producto-car">
+											<StyledTableCell
+												align="center"
+												component="th"
+												scope="row"
+												className="row-item-producto-btn-delete"
+											>
+												<FontAwesomeIcon
+													icon={faTimesCircle}
+													onClick={() => {
+														handleBtnDelete(row._id);
+													}}
+													className="iconCar btn-delete"
+												/>
+											</StyledTableCell>
+											<StyledTableCell align="center" className="row-item-producto-img">
+												<img src={row.imgurl} alt="Imagen-Producto"></img>
+											</StyledTableCell>
+											<StyledTableCell align="center" className="item-table-size row-item-producto-descr">
+												{row.descrip_producto}
+											</StyledTableCell>
+											<StyledTableCell align="center" className="item-table-size row-item-producto-precio">
+												$ {row.precio_producto}
+											</StyledTableCell>
+											<StyledTableCell align="center" className="row-item-producto-btns">
+												<BotonesAddSub
+													cantidad={row.cantidad_producto}
+													document={row}
+													idUserSession={idUserSession}
+													setBtn={setBtn}
+													btn={btn}
+													estadoProduCar={estadoProduCar}
+												/>
+											</StyledTableCell>
+											<StyledTableCell align="center" className="item-table-size row-item-producto-total">
+												$ {(row.cantidad_producto * row.precio_producto).toFixed(2)}
+											</StyledTableCell>
+										</StyledTableRow>
+									);
 								})}
 							</TableBody>
 						</Table>
 					</TableContainer>
+
+					{handleCarVacio()}
 				</Grid>
 				<Grid item className="grid-item-totalCarrito-table">
 					<Total rows={rows} idUserSession={idUserSession} />

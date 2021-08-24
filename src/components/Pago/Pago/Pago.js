@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -10,12 +13,20 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import './Pago.css';
 
-const Pago = ({ dataInfo, menuState }) => {
+const useStyles = makeStyles((theme) => ({
+	backdrop: {
+		zIndex: theme.zIndex.drawer + 1,
+		color: '#fff',
+	},
+}));
+
+const Pago = ({ dataInfo, menuState, setAddCar, addCar }) => {
 	const history = useHistory();
 	const [rows, setRows] = useState([]);
 	const [dataProd, setDataProd] = useState([]);
 	const cookies = new Cookies();
 	const idUserSession = cookies.get('id');
+
 	useEffect(() => {
 		const LoadData = async (idUserSession) => {
 			try {
@@ -30,7 +41,21 @@ const Pago = ({ dataInfo, menuState }) => {
 		// window.scrollTo(0, 0);
 	}, [idUserSession]);
 
+	// Cargando
+	const classes = useStyles();
+	const [open, setOpen] = React.useState(false);
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const handleToggle = () => {
+		setOpen(!open);
+	};
+
+	// HandleSubmit
 	const handleSubmit = async () => {
+		handleToggle();
 		const info = rows.map((row) => {
 			return {
 				idProd: row.idProd,
@@ -47,14 +72,29 @@ const Pago = ({ dataInfo, menuState }) => {
 		history.push('/carrito-compras/info-pago/pago/envio');
 	};
 
+	console.log(rows);
+
 	const postData = async (idUserSession, data) => {
 		const resp = await axios.post(`http://localhost:4000/api/v1/usuarios/${idUserSession}/orden-compra`, data);
-		console.log(resp.data);
+		console.log(resp.data.status);
+
+		rows.map(async (row) => {
+			const newRow = { ...row, estado: false };
+			const res = await axios.put(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, newRow);
+			console.log(res.data.status);
+		});
+
+		setAddCar(!addCar);
+		// console.log(newDataCar);
 	};
 
 	return (
 		<Container className="container-user container-pago">
 			<Grid container className="grid-container-user" alignItems="flex-start">
+				<Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+					<CircularProgress size={100} />
+				</Backdrop>
+
 				<Grid item>
 					<Menu menuState={menuState} />
 				</Grid>

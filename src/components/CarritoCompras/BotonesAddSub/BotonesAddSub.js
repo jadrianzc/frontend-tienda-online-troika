@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useCounter } from '../../../hooks/useCounter';
 import axios from 'axios';
 
-const BotonesAddSub = ({ cantidad, document, idUserSession, setBtn, btn }) => {
+const BotonesAddSub = ({ cantidad, document, idUserSession, setBtn, btn, estadoProduCar }) => {
 	const { counter, increment, decrement } = useCounter(cantidad);
 	useEffect(() => {
 		const UpdateData = async () => {
 			const newData = { ...document, cantidad_producto: counter };
+			// console.log(newData);
 			try {
 				const res = await axios.put(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, newData);
 				console.log(res.data);
