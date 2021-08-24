@@ -91,7 +91,8 @@
   font-weight: 600;
 }
 .user-edit input,
-.user-edit select {
+.user-edit select,
+.user-edit textarea {
   width: 100%;
   height: 40px;
   outline: none;
