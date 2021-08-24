@@ -19,11 +19,15 @@ function TablaPedidos(props) {
 
   const [documentos, setDocumentos] = useState([]);
   const [tablaPedidos, setTablaPedidos] = useState([]);
+  const [datos, setDatos] = useState({ carrito_usuario: [] });
 
   useEffect(() => {
     const LoadData = async () => {
+      console.log(props.valueRadio);
       try {
-        const res = await axios.get(`http://localhost:4000/api/v1/pedidos`);
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/pedidos/${props.valueRadio}`
+        );
         setDocumentos(res.data);
         setTablaPedidos(res.data);
       } catch (error) {
@@ -31,7 +35,138 @@ function TablaPedidos(props) {
       }
     };
     LoadData();
-  }, [props.stado, estado]);
+  }, [props.stado, props.valueRadio, estado]);
+
+  /*
+   *Pagado
+   */
+  const Pagado = async (data) => {
+    let pago = { estado: data.estado === "pendiente" ? "pagado" : "entregado" };
+    try {
+      await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
+      setEtado(!estado);
+      setOpenModal(!openModal);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  /** */
+
+  /*
+   *Detalle
+   */
+  const bodyDetalle = (
+    <div className="ModalAgregaProduct">
+      <h1 className="title-usuario title-Produc">Actualizar producto</h1>
+      <Grid container className="grid-container-user-data user-edit">
+        <Grid container item xs={12} spacing={3}>
+          <Grid container item xs={6} spacing={3}>
+            <Grid item className="grid-item-info" xs={12}>
+              <label>Cedula:</label>
+              <input
+                type="text"
+                //name="codigo_producto"
+                value={datos.ced_usuario}
+                disabled
+              />
+            </Grid>
+            <Grid item className="grid-item-info" xs={12}>
+              <label>Nombre Cliente:</label>
+              <input
+                type="text"
+                //name="marca_auto"
+                value={datos.nomb_usuario}
+                disabled
+              />
+            </Grid>
+          </Grid>
+          <Grid container item xs={6} spacing={3}>
+            <Grid item className="grid-item-info" xs={12} direction="row">
+              <label>Productos:</label>
+              <input
+                type="text"
+                //name="modelo_producto"
+                value={""}
+                disabled
+              />
+            </Grid>
+          </Grid>
+          <Grid container item xs={6} spacing={3}>
+            <Grid item className="grid-item-info" xs={12}>
+              <label>Celular:</label>
+              <input
+                type="text"
+                //name="modelo_auto"
+                value={datos.cel_usuario}
+                disabled
+              />
+            </Grid>
+            <Grid item className="grid-item-info" xs={12}>
+              <label>Direccion:</label>
+              <input
+                type="text"
+                //name="nom_producto"
+                value={datos.direcc_usuario}
+                disabled
+              />
+            </Grid>
+          </Grid>
+          <Grid container item xs={6} spacing={3}>
+            <Grid item className="grid-item-info" xs={6}>
+              <label>Cantidad:</label>
+              <input
+                type="text"
+                //name="modelo_producto"
+                value={datos.carrito_usuario.length}
+                disabled
+              />
+            </Grid>
+            <Grid item className="grid-item-info" xs={6}>
+              <label>Precio:</label>
+              <input
+                type="number"
+                //name="cantidad_producto"
+                value={datos.total_carrito}
+                disabled
+              />
+            </Grid>
+            <Grid item className="grid-item-info" xs={6}>
+              <label>Fecha:</label>
+              <input
+                type="text"
+                //name="precio_producto"
+                value={datos.f_creacion_ordenCompra}
+                disabled
+              />
+            </Grid>
+            <Grid item className="grid-item-info" xs={6}>
+              <label>Estado:</label>
+              <input
+                type="text"
+                //name="descrip_producto"
+                value={datos.estado}
+                disabled
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <input
+        type="button"
+        className="btnPwd btnPwdAcep"
+        value={datos.estado === "pagado" ? "Entregado" : "Pagado"}
+        onClick={() => Pagado(datos)}
+      />
+      <input
+        type="button"
+        className=" btnPwd btnPwdCan"
+        value="Cancelar"
+        onClick={() => setOpenModal(false)}
+      />
+    </div>
+  );
+  /** */
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -54,29 +189,35 @@ function TablaPedidos(props) {
                 <TableCell>{doc.ced_usuario}</TableCell>
                 <TableCell>{doc.carrito_usuario.length}</TableCell>
                 <TableCell>
-                  {doc.carrito_usuario.map((prod) =>
-                    prod.descrip_producto.toString()
+                  {doc.carrito_usuario.map(
+                    (prod) => prod.descrip_producto.toString() + " || "
                   )}
                 </TableCell>
                 <TableCell>{doc.total_carrito}</TableCell>
                 <TableCell>{doc.f_creacion_ordenCompra}</TableCell>
                 <TableCell>
-                  {doc.estado ? (
-                    <span style={{ color: "green" }}>Pagado</span>
+                  {doc.estado === "pagado" ? (
+                    <span style={{ color: "darkorange", fontWeight: "bold" }}>
+                      Pagado
+                    </span>
+                  ) : doc.estado === "entregado" ? (
+                    <span style={{ color: "green", fontWeight: "bold" }}>
+                      Entregado
+                    </span>
                   ) : (
-                    <span style={{ color: "red" }}>Pendiente</span>
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      Pendiente
+                    </span>
                   )}
                 </TableCell>
                 <TableCell>
                   <button
-                  //onClick={() => AbreElEdit(doc)}
+                    onClick={() => {
+                      setOpenModal(true);
+                      setDatos(doc);
+                    }}
                   >
                     Ver Detalle
-                  </button>
-                  <button
-                  //onClick={() => IdElimina(doc._id)}
-                  >
-                    Del
                   </button>
                 </TableCell>
               </TableRow>
@@ -84,6 +225,25 @@ function TablaPedidos(props) {
           </TableBody>
         </Table>
       </TableContainer>
+      {/* Modal Detalle */}
+      <Modal
+        open={openModal}
+        //onClose={handleClose}
+        className="ModalPadreRegi"
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {bodyDetalle}
+      </Modal>
+      {/* <Snackbar
+        open={openAlert}
+        autoHideDuration={3000}
+        onClose={handleCloseAlert}
+      >
+        <Alert variant="filled" onClose={handleCloseAlert} severity="success">
+          El producto se actualizó correctamente.
+        </Alert>
+      </Snackbar> */}
     </div>
   );
 }

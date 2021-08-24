@@ -36,6 +36,10 @@
   width: 70%;
   padding: 20px;
 }
+.grip-busca-pedido {
+  width: 100%;
+  padding: 20px;
+}
 .TableHead th {
   font-weight: bold;
 }
@@ -62,18 +66,6 @@
 .title-Produc {
   margin-bottom: 20px !important;
 }
-
-/* .grid-item-user-4 .grid-item-title,
-.grid-item-user-4 .grid-item-user-btn,
-.grid-item-user-6 .grid-item-title,
-.grid-item-user-6 .grid-item-user-buscar {
-  height: 10%;
-}
-
-.grid-item-user-4 .grid-item-user-data,
-.grid-item-user-6 .grid-item-user-tabla {
-  height: 80%;
-} */
 
 .grid-item-user-data .grid-container-user-data {
   height: 100%;
