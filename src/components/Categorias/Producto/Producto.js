@@ -14,6 +14,7 @@ const Producto = ({ addCar, setAddCar }) => {
 	const idUserSession = cookies.get('id');
 
 	const [documentos, setDocumentos] = useState({});
+	const [estado, setEstado] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
 	const [openAlertErr, setOpenAlertErr] = useState(false);
 
@@ -38,6 +39,7 @@ const Producto = ({ addCar, setAddCar }) => {
 			...documentos,
 			cantidad_producto: counter,
 			idUserSession: idUserSession,
+			estado,
 		};
 
 		const resp = await axios.post(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, productoAdd);
