@@ -69,6 +69,17 @@ function NavBotones({ OpenMenu }) {
 									Perfil de Troika
 								</Link>
 							</li>
+							<li>
+								<Link
+									to="/HistorialTransacciones"
+									onClick={() => {
+										onClick();
+										OpenMenu();
+									}}
+								>
+									Historial de transacciones
+								</Link>
+							</li>
 						</ul>
 						<input type="button" className="BtnCerrarSession" onClick={cerrarseccion} value="Cerrar sesión" />
 					</nav>
