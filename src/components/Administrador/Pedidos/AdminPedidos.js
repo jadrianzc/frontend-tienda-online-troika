@@ -22,6 +22,19 @@ function AdminPedidos() {
   const [valorBusqueda, setValorBusqueda] = useState({});
   const [valueRadio, setValueRadio] = useState("pendiente");
 
+  const handleSubmitBusqueda = (e) => {
+    e.preventDefault();
+    let busCedula = e.target.busCedula;
+    let busFechaIni = e.target.busFechaIni;
+    let busFechaFin = e.target.busFechaFin;
+    setValorBusqueda({
+      ...valorBusqueda,
+      [busCedula.name]: busCedula.value,
+      [busFechaIni.name]: new Date(busFechaIni.value),
+      [busFechaFin.name]: new Date(busFechaFin.value),
+    });
+  };
+
   const handleRadioChange = (e) => {
     console.log(e.target.value);
     setValueRadio(e.target.value);
@@ -38,27 +51,46 @@ function AdminPedidos() {
               </Typography>
             </div>
             <Grid container>
-              <Grid item alignItems="center" xs={8}>
+              <Grid container item alignItems="center" xs={8}>
                 <form
-                  //onSubmit={handleSubmitBusqueda}
-                  style={{ display: "flex", flexDirection: "row" }}
+                  onSubmit={handleSubmitBusqueda}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
                 >
-                  <label>Código:</label>
-                  <input type="text" name="buscodigo"></input>
-
-                  <Grid item className="grid-container-user-btn">
-                    <button type="submit">Buscar</button>
-                    <button
-                      type="reset"
-                      defaultValue="Reset"
-                      // onClick={() => {
-                      //   setStado(!stado);
-                      //   //setBuscar("");
-                      //   setValorBusqueda("");
-                      // }}
-                    >
-                      Limpiar
-                    </button>
+                  <Grid container item xs={8}>
+                    <Grid item xs={12}>
+                      <label>Cédula:</label>
+                      <input type="text" name="busCedula"></input>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <label>Fecha desde:</label>
+                      <input type="date" name="busFechaIni"></input>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <label>Fecha hasta:</label>
+                      <input type="date" name="busFechaFin"></input>
+                    </Grid>
+                  </Grid>
+                  <Grid container item xs={4}>
+                    <Grid item xs={12} className="grid-container-user-btn">
+                      <button type="submit" className="BtnBuscarAdmin">
+                        Buscar
+                      </button>
+                      <button
+                        type="reset"
+                        defaultValue="Reset"
+                        onClick={() => {
+                          setStado(!stado);
+                          //setBuscar("");
+                          setValorBusqueda("");
+                        }}
+                      >
+                        Limpiar
+                      </button>
+                    </Grid>
                   </Grid>
                 </form>
               </Grid>
@@ -69,20 +101,21 @@ function AdminPedidos() {
                   name="position"
                   value={valueRadio}
                   onChange={handleRadioChange}
+                  style={{ alignItems: "flex-end", height: "100%" }}
                 >
                   <FormControlLabel
                     value="pendiente"
-                    control={<Radio />}
+                    control={<Radio color="primary" />}
                     label="Pendiente"
                   />
                   <FormControlLabel
                     value="pagado"
-                    control={<Radio />}
+                    control={<Radio color="primary" />}
                     label="Pagado"
                   />
                   <FormControlLabel
                     value="entregado"
-                    control={<Radio />}
+                    control={<Radio color="primary" />}
                     label="Entregado"
                   />
                 </RadioGroup>

@@ -42,7 +42,7 @@ function TablaProductos(props) {
     console.log(props.valorBusqueda.buscategori);
     if (props.valorBusqueda.buscodigo || props.valorBusqueda.buscategori) {
       console.log("busca");
-      const FiltrarUsuarios = (termino) => {
+      const FiltrarProductos = (termino) => {
         console.log(termino);
         let resbusqueda = tablaCategori.filter((doc) => {
           if (termino.buscodigo) {
@@ -66,7 +66,7 @@ function TablaProductos(props) {
         });
         setDocumentos(resbusqueda);
       };
-      FiltrarUsuarios(props.valorBusqueda);
+      FiltrarProductos(props.valorBusqueda);
     }
   }, [props.valorBusqueda]);
 
@@ -347,8 +347,20 @@ function TablaProductos(props) {
                   <TableCell>{doc.modelo_producto}</TableCell>
                   <TableCell>{doc.cantidad_producto}</TableCell>
                   <TableCell>
-                    <button onClick={() => AbreElEdit(doc)}>Edit</button>
-                    <button onClick={() => IdElimina(doc._id)}>Del</button>
+                    <div className="contAccioAdmin">
+                      <button
+                        className="btnEditAdmin"
+                        onClick={() => AbreElEdit(doc)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btnElimAdmin"
+                        onClick={() => IdElimina(doc._id)}
+                      >
+                        Del
+                      </button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

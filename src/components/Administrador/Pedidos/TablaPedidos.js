@@ -22,6 +22,42 @@ function TablaPedidos(props) {
   const [datos, setDatos] = useState({ carrito_usuario: [] });
 
   useEffect(() => {
+    if (props.valorBusqueda.busCedula || props.valorBusqueda.busFechaIni) {
+      const FiltrarPedidos = (termino) => {
+        const fechaInicial = `${termino.busFechaIni.getFullYear()}-${
+          termino.busFechaIni.getMonth() + 1
+        }-${termino.busFechaIni.getDate() + 1}`;
+
+        const fechaFinal = `${termino.busFechaFin.getFullYear()}-${
+          termino.busFechaFin.getMonth() + 1
+        }-${termino.busFechaFin.getDate() + 2}`;
+
+        let resbusqueda = tablaPedidos.filter((doc) => {
+          if (termino.busCedula) {
+            if (
+              doc.ced_usuario
+                .toLowerCase()
+                .includes(termino.busCedula.toString().toLowerCase())
+            ) {
+              return doc;
+            }
+          } else if (termino.busFechaIni) {
+            if (
+              doc.f_creacion_ordenCompra >= fechaInicial &&
+              doc.f_creacion_ordenCompra < fechaFinal
+            ) {
+              console.log(fechaFinal);
+              return doc;
+            }
+          }
+        });
+        setDocumentos(resbusqueda);
+      };
+      FiltrarPedidos(props.valorBusqueda);
+    }
+  }, [props.valorBusqueda]);
+
+  useEffect(() => {
     const LoadData = async () => {
       console.log(props.valueRadio);
       try {
@@ -46,6 +82,18 @@ function TablaPedidos(props) {
       await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
       setEtado(!estado);
       setOpenModal(!openModal);
+      setOpenAlert(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const CancelaPago = async (data) => {
+    let pago = { estado: data.estado === "pagado" ? "pendiente" : "" };
+    try {
+      await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
+      setEtado(!estado);
+      setOpenModal(!openModal);
+      setOpenAlert(true);
     } catch (error) {
       console.log(error);
     }
@@ -161,21 +209,55 @@ function TablaPedidos(props) {
           </Grid>
         </Grid>
       </Grid>
+      {datos.estado !== "entregado" ? (
+        datos.estado === "pagado" ? (
+          <Grid container style={{ width: "50%", margin: "auto" }}>
+            <Grid item xs={4} style={{ padding: "5px" }}>
+              <input
+                type="button"
+                className="btnPedidoPago btnCancelPago"
+                value="Cancelar Pago"
+                onClick={() => CancelaPago(datos)}
+              />
+            </Grid>
+            <Grid item xs={8} style={{ padding: "5px" }}>
+              <input
+                type="button"
+                className="btnPedidoPago btnPwdAcep"
+                value={datos.estado === "pagado" ? "Entregado" : "Pagado"}
+                onClick={() => Pagado(datos)}
+              />
+            </Grid>
+          </Grid>
+        ) : (
+          <input
+            type="button"
+            className="btnPwd btnPwdAcep"
+            value={datos.estado === "pagado" ? "Entregado" : "Pagado"}
+            onClick={() => Pagado(datos)}
+          />
+        )
+      ) : (
+        <></>
+      )}
 
       <input
         type="button"
-        className="btnPwd btnPwdAcep"
-        value={datos.estado === "pagado" ? "Entregado" : "Pagado"}
-        onClick={() => Pagado(datos)}
-      />
-      <input
-        type="button"
         className=" btnPwd btnPwdCan"
-        value="Cancelar"
+        value="Salir"
         onClick={() => setOpenModal(false)}
       />
     </div>
   );
+  /** */
+
+  /** */
+  const handleCloseAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenAlert(false);
+  };
   /** */
 
   return (
@@ -231,6 +313,7 @@ function TablaPedidos(props) {
                       setOpenModal(true);
                       setDatos(doc);
                     }}
+                    className="btnPronciAdmin"
                   >
                     Ver Detalle
                   </button>
@@ -250,15 +333,15 @@ function TablaPedidos(props) {
       >
         {bodyDetalle}
       </Modal>
-      {/* <Snackbar
+      <Snackbar
         open={openAlert}
         autoHideDuration={3000}
         onClose={handleCloseAlert}
       >
         <Alert variant="filled" onClose={handleCloseAlert} severity="success">
-          El producto se actualizó correctamente.
+          Proceso realizado con exito.
         </Alert>
-      </Snackbar> */}
+      </Snackbar>
     </div>
   );
 }

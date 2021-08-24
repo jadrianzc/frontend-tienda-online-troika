@@ -196,38 +196,28 @@ function TablaCategorias(stado) {
   /** */
   return (
     <div style={{ height: 300, width: "100%" }}>
-      <Grid
-        container
-        className="grid-container-user-buscar"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Grid item className="grid-item-user-label">
+      <Grid container alignItems="center">
+        <from style={{ display: "contents" }}>
           <label>Nombre:</label>
-        </Grid>
-        <Grid item className="grid-item-user-input">
           <input
             type="text"
             value={buscar}
             onChange={handleChangeBusqueda}
           ></input>
-        </Grid>
-        <Grid
-          item
-          className="grid-container-user-btn"
-          justifyContent="flex-end"
-          alignItems="center"
-        >
-          <button onClick={handleSubmitBusqueda}>Buscar</button>
-          <button
-            onClick={() => {
-              setEtado(!estado);
-              setBuscar("");
-            }}
-          >
-            Limpiar
-          </button>
-        </Grid>
+          <Grid item className="grid-container-user-btn">
+            <button onClick={handleSubmitBusqueda} className="BtnBuscarAdmin">
+              Buscar
+            </button>
+            <button
+              onClick={() => {
+                setEtado(!estado);
+                setBuscar("");
+              }}
+            >
+              Limpiar
+            </button>
+          </Grid>
+        </from>
       </Grid>
       <TableContainer style={{ maxHeight: 250, width: "100%" }}>
         <Table stickyHeader>
@@ -244,8 +234,20 @@ function TablaCategorias(stado) {
                 <TableCell>{doc.nombre_categoria}</TableCell>
                 <TableCell>{doc.sub_categoria.toString()}</TableCell>
                 <TableCell>
-                  <button onClick={() => IdEdit(doc)}>Edit</button>
-                  <button onClick={() => IdElimina(doc._id)}>Del</button>
+                  <div className="contAccioAdmin">
+                    <button
+                      className="btnEditAdmin"
+                      onClick={() => IdEdit(doc)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btnElimAdmin"
+                      onClick={() => IdElimina(doc._id)}
+                    >
+                      Del
+                    </button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

@@ -254,7 +254,9 @@ function AdminProductos() {
                 </select>
 
                 <Grid item className="grid-container-user-btn">
-                  <button type="submit">Buscar</button>
+                  <button type="submit" className="BtnBuscarAdmin">
+                    Buscar
+                  </button>
                   <button
                     type="reset"
                     defaultValue="Reset"

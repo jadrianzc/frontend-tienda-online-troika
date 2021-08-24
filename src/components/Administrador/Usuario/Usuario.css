@@ -107,7 +107,8 @@
   padding: 16px;
   background-color: #01619e;
   color: #fff;
-  border: 1px solid #707070;
+  border: none;
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -133,6 +134,35 @@
   background-color: #01619e;
   color: #fff;
   padding: 16px;
-  border: 1px solid #707070;
+  border: none;
   border-radius: 10px;
+  margin: 0 5px;
+}
+.contAccioAdmin {
+  display: flex;
+}
+.btnPronciAdmin {
+  padding: 5px;
+  background-color: #01619e;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.btnEditAdmin {
+  padding: 11px;
+  background-color: #01619e;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.btnElimAdmin {
+  padding: 11px;
+  background-color: #191919;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.BtnBuscarAdmin {
+  margin: 0 10px;
 }
