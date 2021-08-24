@@ -32,7 +32,8 @@ export default function AppRouter() {
   const [addCar, setAddCar] = useState(false);
   const [dataInfo, setDataInfo] = useState({});
   const [menuState, setMenuState] = useState(true);
-
+  const [estadoProduCar, setEstadoProduCar] = useState(false);
+  console.log(cantCar);
   return (
     <Router>
       <Switch>
@@ -81,7 +82,13 @@ export default function AppRouter() {
           <Route
             path="/Producto/:id"
             exact
-            render={() => <Producto addCar={addCar} setAddCar={setAddCar} />}
+            render={() => (
+              <Producto
+                addCar={addCar}
+                setAddCar={setAddCar}
+                setEstadoProduCar={setEstadoProduCar}
+              />
+            )}
           />
           <RouteCliCompo path="/Categorías/:id" exact component={Categorias} />
           <RouteCliCompo path="/Busqueda/:nombre" exact component={Busqueda} />
@@ -91,7 +98,12 @@ export default function AppRouter() {
             path="/carrito-compras"
             exact
             render={() => (
-              <CarritoCompras addCar={addCar} setAddCar={setAddCar} />
+              <CarritoCompras
+                addCar={addCar}
+                setAddCar={setAddCar}
+                setEstadoProduCar={setEstadoProduCar}
+                estadoProduCar={estadoProduCar}
+              />
             )}
           />
           <PrivateRoute
@@ -102,7 +114,14 @@ export default function AppRouter() {
           <PrivateRoute
             path="/carrito-compras/info-pago/pago"
             exact
-            render={() => <Pago dataInfo={dataInfo} menuState={menuState} />}
+            render={() => (
+              <Pago
+                dataInfo={dataInfo}
+                menuState={menuState}
+                setAddCar={setAddCar}
+                addCar={addCar}
+              />
+            )}
           />
           <PrivateRoute
             path="/carrito-compras/info-pago/pago/envio"

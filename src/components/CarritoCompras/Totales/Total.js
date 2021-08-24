@@ -29,13 +29,13 @@ const Total = ({ rows, idUserSession }) => {
 			<Grid item className="grid-item-total">
 				<div className="div-item-total">
 					<div className="div-item div-item-title">Subtotal</div>
-					<div className="div-item">$ {subtotal}</div>
+					<div className="div-item">$ {subtotal.toFixed(2)}</div>
 					<div className="div-item div-item-title">Envío</div>
 					<div className="div-item">$ {envio.toFixed(2)}</div>
 					<div className="div-item div-item-title">Descuento</div>
 					<div className="div-item">$ {dsct.toFixed(2)}</div>
 					<div className="div-item div-item-title">IVA</div>
-					<div className="div-item">$ {iva}</div>
+					<div className="div-item">$ {iva.toFixed(2)}</div>
 					<div className="div-item div-item-title">Total</div>
 					<div className="div-item div-item-title">$ {total.toFixed(2)}</div>
 				</div>

@@ -8,13 +8,13 @@ import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import './Producto.css';
 
-const Producto = ({ addCar, setAddCar }) => {
+const Producto = ({ addCar, setAddCar, setEstadoProduCar }) => {
 	const { id } = useParams();
 	const cookies = new Cookies();
 	const idUserSession = cookies.get('id');
 
 	const [documentos, setDocumentos] = useState({});
-	const [estado, setEstado] = useState(false);
+	const [estado, setEstado] = useState(true);
 	const [openAlert, setOpenAlert] = useState(false);
 	const [openAlertErr, setOpenAlertErr] = useState(false);
 

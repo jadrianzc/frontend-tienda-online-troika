@@ -14,7 +14,9 @@ function NavCar({ cantCar, setCantCar, addCar }) {
 			try {
 				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`);
 				const datos = res.data;
-				const dataFilter = datos.filter((dato) => (dato.idUserSession === idUserSession ? dato : null));
+				const dataFilter = datos.filter((dato) =>
+					dato.idUserSession === idUserSession && dato.estado === true ? dato : null
+				);
 				setCantCar(dataFilter.length);
 			} catch (error) {
 				console.log(error);
