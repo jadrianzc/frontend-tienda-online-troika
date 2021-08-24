@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Modal, Snackbar } from "@material-ui/core";
+import { Grid, Modal, Snackbar, TextareaAutosize } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {
   Table,
@@ -83,11 +83,21 @@ function TablaPedidos(props) {
           <Grid container item xs={6} spacing={3}>
             <Grid item className="grid-item-info" xs={12} direction="row">
               <label>Productos:</label>
-              <input
-                type="text"
-                //name="modelo_producto"
-                value={""}
+              <TextareaAutosize
+                maxRows={7}
+                minRows={7}
                 disabled
+                style={{ resize: "none" }}
+                defaultValue={datos.carrito_usuario
+                  .map(
+                    (prod) =>
+                      "(" +
+                      prod.cantidad_producto.toString() +
+                      ") " +
+                      prod.descrip_producto.toString() +
+                      "\n\n"
+                  )
+                  .join("")}
               />
             </Grid>
           </Grid>
@@ -188,10 +198,15 @@ function TablaPedidos(props) {
               <TableRow key={doc._id}>
                 <TableCell>{doc.ced_usuario}</TableCell>
                 <TableCell>{doc.carrito_usuario.length}</TableCell>
-                <TableCell>
-                  {doc.carrito_usuario.map(
-                    (prod) => prod.descrip_producto.toString() + " || "
-                  )}
+                <TableCell style={{ maxHeight: "50px" }}>
+                  {doc.carrito_usuario.slice(0, 3).map((prod) => (
+                    <p style={{ margin: "0" }}>
+                      {"(" +
+                        prod.cantidad_producto.toString() +
+                        ") " +
+                        prod.descrip_producto.toString()}
+                    </p>
+                  ))}
                 </TableCell>
                 <TableCell>{doc.total_carrito}</TableCell>
                 <TableCell>{doc.f_creacion_ordenCompra}</TableCell>
