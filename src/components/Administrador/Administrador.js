@@ -20,7 +20,7 @@ const Administrador = () => {
     }
   };
   return (
-    <Container className="container-admin">
+    <Container className="container-user container-admin">
       <Grid container className="grid-container-user">
         <Grid item className="grid-item-admin grid-item-admin-title">
           <div className="grid-item-title">
