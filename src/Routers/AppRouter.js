@@ -136,9 +136,9 @@ export default function AppRouter() {
             exact
             component={PagoFinal}
           />
-
           <Route path="*" component={Error404} />
         </>
+        <Route path="*" component={Error404} />
       </Switch>
     </Router>
   );
