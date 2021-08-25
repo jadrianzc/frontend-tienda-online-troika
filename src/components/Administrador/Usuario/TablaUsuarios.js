@@ -226,44 +226,30 @@ function TablaUsuarios(stado) {
 
   return (
     <div style={{ height: 300, width: "100%" }}>
-      <Grid
-        container
-        className="grid-container-user-buscar"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Grid item className="grid-item-user-label">
-          <label>ID:</label>
-        </Grid>
-        <Grid item className="grid-item-user-input">
-          <input
-            type="text"
-            value={buscar}
-            onChange={handleChangeBusqueda}
-          ></input>
-        </Grid>
-        <Grid
-          item
-          className="grid-container-user-btn"
-          justifyContent="flex-end"
-          alignItems="center"
-        >
-          <button onClick={handleSubmitBusqueda}>Buscar</button>
-          <button
-            onClick={() => {
-              setEtado(!estado);
-              setBuscar("");
-            }}
-          >
-            Limpiar
-          </button>
-        </Grid>
+      <Grid container alignItems="center">
+        <from style={{ display: "contents" }}>
+          <label>CI. Usuario:</label>
+          <input type="text" value={buscar} onChange={handleChangeBusqueda} />
+          <Grid item className="grid-container-user-btn">
+            <button onClick={handleSubmitBusqueda} className="BtnBuscarAdmin">
+              Buscar
+            </button>
+            <button
+              onClick={() => {
+                setEtado(!estado);
+                setBuscar("");
+              }}
+            >
+              Limpiar
+            </button>
+          </Grid>
+        </from>
       </Grid>
       <TableContainer style={{ maxHeight: 300, width: "100%" }}>
         <Table stickyHeader>
           <TableHead className="TableHead">
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>CI. Usuario</TableCell>
               <TableCell>Nombres</TableCell>
               <TableCell>Apellidos</TableCell>
               <TableCell>E-mail</TableCell>
@@ -284,8 +270,20 @@ function TablaUsuarios(stado) {
                   <TableCell>{doc.email_usuario}</TableCell>
                   <TableCell>**********</TableCell>
                   <TableCell>
-                    <button onClick={() => IdEdit(doc)}>Edit</button>
-                    <button onClick={() => IdElimina(doc._id)}>Del</button>
+                    <div className="contAccioAdmin">
+                      <button
+                        className="btnEditAdmin"
+                        onClick={() => IdEdit(doc)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btnElimAdmin"
+                        onClick={() => IdElimina(doc._id)}
+                      >
+                        Del
+                      </button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Modal, Snackbar } from "@material-ui/core";
+import {
+  Grid,
+  Modal,
+  Snackbar,
+  Backdrop,
+  CircularProgress,
+} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {
   Table,
@@ -10,9 +16,23 @@ import {
   TableRow,
 } from "@material-ui/core";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
+}));
 
 function TablaProductos(props) {
-  console.log("abre pro");
+  const classes = useStyles();
+  const [openCarga, setOpenCarga] = React.useState(false);
+
+  const openAbreCarga = () => {
+    setOpenCarga(!openCarga);
+  };
+
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
@@ -42,7 +62,7 @@ function TablaProductos(props) {
     console.log(props.valorBusqueda.buscategori);
     if (props.valorBusqueda.buscodigo || props.valorBusqueda.buscategori) {
       console.log("busca");
-      const FiltrarUsuarios = (termino) => {
+      const FiltrarProductos = (termino) => {
         console.log(termino);
         let resbusqueda = tablaCategori.filter((doc) => {
           if (termino.buscodigo) {
@@ -66,17 +86,24 @@ function TablaProductos(props) {
         });
         setDocumentos(resbusqueda);
       };
-      FiltrarUsuarios(props.valorBusqueda);
+      FiltrarProductos(props.valorBusqueda);
     }
   }, [props.valorBusqueda]);
 
   useEffect(() => {
     //console.log(stado);
+    setOpenCarga(true);
+    console.log("abre");
     const LoadData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/v1/productos`);
-        setDocumentos(res.data);
-        setTablaCategori(res.data);
+        await axios
+          .get(`http://localhost:4000/api/v1/productos`)
+          .then((res) => {
+            setDocumentos(res.data);
+            setTablaCategori(res.data);
+            setOpenCarga(false);
+            console.log("cierra");
+          });
       } catch (error) {
         console.log(error);
       }
@@ -317,6 +344,9 @@ function TablaProductos(props) {
 
   return (
     <div style={{ height: 400, width: "100%" }}>
+      <Backdrop className={classes.backdrop} open={openCarga}>
+        <CircularProgress size={100} />
+      </Backdrop>
       {openModalEdit ? (
         <h1>modal abierta</h1>
       ) : (
@@ -347,8 +377,20 @@ function TablaProductos(props) {
                   <TableCell>{doc.modelo_producto}</TableCell>
                   <TableCell>{doc.cantidad_producto}</TableCell>
                   <TableCell>
-                    <button onClick={() => AbreElEdit(doc)}>Edit</button>
-                    <button onClick={() => IdElimina(doc._id)}>Del</button>
+                    <div className="contAccioAdmin">
+                      <button
+                        className="btnEditAdmin"
+                        onClick={() => AbreElEdit(doc)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btnElimAdmin"
+                        onClick={() => IdElimina(doc._id)}
+                      >
+                        Del
+                      </button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

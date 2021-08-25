@@ -147,11 +147,28 @@
   display: block;
   margin: 20px auto;
 }
+.btnPedidoPago {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 0em 1em;
+  width: 100%;
+  height: 50px;
+  color: #f2f2f2;
+  font-family: "DM Sans";
+  font-size: medium;
+  display: block;
+  margin: 20px auto 0 auto;
+}
 .btnPwdAcep {
   background-color: #25a6d9;
 }
 .btnPwdCan {
   background-color: #3e3f40;
+}
+.btnCancelPago {
+  background-color: #dd4552;
 }
 
 @media (max-width: 1279px) {
