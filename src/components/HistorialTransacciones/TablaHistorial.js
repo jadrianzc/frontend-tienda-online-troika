@@ -19,6 +19,35 @@ function TablaHistorial(props) {
 	const idUserSession = cookies.get('id');
 
 	useEffect(() => {
+		if (props.valorBusqueda.busCedula || props.valorBusqueda.busFechaIni) {
+			const FiltrarPedidos = (termino) => {
+				const fechaInicial = `${termino.busFechaIni.getFullYear()}-${termino.busFechaIni.getMonth() + 1}-${
+					termino.busFechaIni.getDate() + 1
+				}`;
+
+				const fechaFinal = `${termino.busFechaFin.getFullYear()}-${termino.busFechaFin.getMonth() + 1}-${
+					termino.busFechaFin.getDate() + 2
+				}`;
+
+				let resbusqueda = tablaPedidos.filter((doc) => {
+					if (termino.busCedula) {
+						if (doc.ced_usuario.toLowerCase().includes(termino.busCedula.toString().toLowerCase())) {
+							return doc;
+						}
+					} else if (termino.busFechaIni) {
+						if (doc.f_creacion_ordenCompra >= fechaInicial && doc.f_creacion_ordenCompra < fechaFinal) {
+							console.log(fechaFinal);
+							return doc;
+						}
+					}
+				});
+				setDocumentos(resbusqueda);
+			};
+			FiltrarPedidos(props.valorBusqueda);
+		}
+	}, [props.valorBusqueda]);
+
+	useEffect(() => {
 		const LoadData = async () => {
 			console.log(props.valueRadio);
 			try {
@@ -31,21 +60,6 @@ function TablaHistorial(props) {
 		};
 		LoadData();
 	}, [props.stado, props.valueRadio, estado]);
-
-	/*
-	 *Pagado
-	 */
-	// const Pagado = async (data) => {
-	// 	let pago = { estado: data.estado === 'pendiente' ? 'pagado' : 'entregado' };
-	// 	try {
-	// 		await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
-	// 		setEtado(!estado);
-	// 		setOpenModal(!openModal);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// };
-	/** */
 
 	/*
 	 *Detalle
@@ -153,7 +167,7 @@ function TablaHistorial(props) {
 				</Grid>
 			</Grid>
 
-			<input type="button" className=" btnPwd btnPwdCan" value="Cancelar" onClick={() => setOpenModal(false)} />
+			<input type="button" className=" btnPwd btnPwdCan" value="Cerrar" onClick={() => setOpenModal(false)} />
 		</div>
 	);
 	/** */
@@ -202,6 +216,7 @@ function TablaHistorial(props) {
 											setOpenModal(true);
 											setDatos(doc);
 										}}
+										className="btnPronciAdmin"
 									>
 										Ver Detalle
 									</button>
