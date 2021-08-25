@@ -9,9 +9,12 @@ import {
 import "../Usuario/Usuario.css";
 import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
+
 import TablaProductos from "./TablaProductos";
 
 function AdminProductos() {
+  // Cargando
+
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [stado, setStado] = useState(false);
