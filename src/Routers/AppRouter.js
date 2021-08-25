@@ -34,7 +34,7 @@ export default function AppRouter() {
 	const [dataInfo, setDataInfo] = useState({});
 	const [menuState, setMenuState] = useState(true);
 	const [estadoProduCar, setEstadoProduCar] = useState(false);
-	console.log(cantCar);
+
 	return (
 		<Router>
 			<Switch>
@@ -86,7 +86,6 @@ export default function AppRouter() {
 					<PrivateRoute path="/carrito-compras/info-pago/pago/envio" exact component={PagoFinal} />
 				</>
 			</Switch>
-			{/* <Footer />  */}
 		</Router>
 	);
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import NavCatregorias from '../NavCategorias';
 import './Producto.css';
 
 const Producto = ({ addCar, setAddCar, setEstadoProduCar }) => {
@@ -63,68 +64,75 @@ const Producto = ({ addCar, setAddCar, setEstadoProduCar }) => {
 	};
 
 	return (
-		<Container className="container-producto">
-			<Grid container className="grid-container-producto">
-				<Snackbar open={openAlert} autoHideDuration={5000} onClose={handleClose}>
-					<Alert variant="filled" onClose={handleClose} severity="success">
-						Producto añadido al carrito.
-					</Alert>
-				</Snackbar>
-				<Snackbar open={openAlertErr} autoHideDuration={5000} onClose={handleClose}>
-					<Alert variant="filled" onClose={handleClose} severity="error">
-						Para agregar al carrito debe iniciar sesión.
-					</Alert>
-				</Snackbar>
-				<Grid item className="grid-img grid-content grid-item" xs={12} md={6}>
-					<Grid container className="grid-container-det">
-						<Grid item className="grid-container-det-1">
-							<div className="container-imgs">
-								<img src={documentos.imgurl} alt="Imagen-Producto" />
-							</div>
-						</Grid>
-						<Grid item className="grid-container-det-2">
-							<p>Imagen referencial</p>
-						</Grid>
-					</Grid>
-				</Grid>
-				<Grid item className="grid-content grid-item" xs={12} md={6}>
-					<Grid container className="grid-container-det">
-						<Grid item xs={12} className="grid-item-descrip">
-							<h1>{documentos.descrip_producto}</h1>
-						</Grid>
-						<Grid item xs={12} className="grid-item-precio">
-							$ {documentos.precio_producto}
-						</Grid>
-						<Grid item xs={12} className="grid-item-btn">
-							<div className="container-btn">
-								<p>Cantidad:</p>
-								<div className="btn-cantidad">
-									<button onClick={() => decrement(2)}>-</button>
-									<button>{counter}</button>
-									<button onClick={() => increment(2)}>+</button>
-								</div>
-								<button
-									className="btn-addCarrito"
-									onClick={() => {
-										handleAddCar(idUserSession);
-									}}
-								>
-									Añadir al carrito
-								</button>
-							</div>
-						</Grid>
-						<Grid item xs={12} className="container-descrip-product">
-							<h4>Descripción:</h4>
-							<p>{documentos.descrip_producto}</p>
-							<p>
-								<span>Marca: </span>
-								{documentos.modelo_producto}
-							</p>
-						</Grid>
-					</Grid>
-				</Grid>
+		<Grid container>
+			<Grid item xs={2}>
+				<NavCatregorias />
 			</Grid>
-		</Container>
+			<Grid item xs={10}>
+				<Container className="container-producto">
+					<Grid container className="grid-container-producto">
+						<Snackbar open={openAlert} autoHideDuration={5000} onClose={handleClose}>
+							<Alert variant="filled" onClose={handleClose} severity="success">
+								Producto añadido al carrito.
+							</Alert>
+						</Snackbar>
+						<Snackbar open={openAlertErr} autoHideDuration={5000} onClose={handleClose}>
+							<Alert variant="filled" onClose={handleClose} severity="error">
+								Para agregar al carrito debe iniciar sesión.
+							</Alert>
+						</Snackbar>
+						<Grid item className="grid-img grid-content grid-item" xs={12} md={6}>
+							<Grid container className="grid-container-det">
+								<Grid item className="grid-container-det-1">
+									<div className="container-imgs">
+										<img src={documentos.imgurl} alt="Imagen-Producto" />
+									</div>
+								</Grid>
+								<Grid item className="grid-container-det-2">
+									<p>Imagen referencial</p>
+								</Grid>
+							</Grid>
+						</Grid>
+						<Grid item className="grid-content grid-item" xs={12} md={6}>
+							<Grid container className="grid-container-det">
+								<Grid item xs={12} className="grid-item-descrip">
+									<h1>{documentos.descrip_producto}</h1>
+								</Grid>
+								<Grid item xs={12} className="grid-item-precio">
+									$ {documentos.precio_producto}
+								</Grid>
+								<Grid item xs={12} className="grid-item-btn">
+									<div className="container-btn">
+										<p>Cantidad:</p>
+										<div className="btn-cantidad">
+											<button onClick={() => decrement(2)}>-</button>
+											<button>{counter}</button>
+											<button onClick={() => increment(2)}>+</button>
+										</div>
+										<button
+											className="btn-addCarrito"
+											onClick={() => {
+												handleAddCar(idUserSession);
+											}}
+										>
+											Añadir al carrito
+										</button>
+									</div>
+								</Grid>
+								<Grid item xs={12} className="container-descrip-product">
+									<h4>Descripción:</h4>
+									<p>{documentos.descrip_producto}</p>
+									<p>
+										<span>Marca: </span>
+										{documentos.modelo_producto}
+									</p>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Container>
+			</Grid>
+		</Grid>
 	);
 };
 
