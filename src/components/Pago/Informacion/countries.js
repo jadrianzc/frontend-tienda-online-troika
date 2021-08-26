@@ -248,3 +248,5 @@ export const countries = [
 	// { code: 'ZM', label: 'Zambia' },
 	// { code: 'ZW', label: 'Zimbabwe' },
 ];
+
+export const city = [{ code: 'MA', label: 'Manta' }];

@@ -83,7 +83,7 @@ const CarritoCompras = ({ addCar, setAddCar, setEstadoProduCar, estadoProduCar }
 				<Grid container className="row-item-producto-vacio" justifyContent="center" alignItems="center">
 					<Grid item>
 						<Grid container direction="column" alignItems="center">
-							<Typography variant="h4">CARRITO VACÍO</Typography>
+							<Typography variant="h5">Carrito vacío</Typography>
 							<FontAwesomeIcon icon={faExclamationCircle} className="iconCar btn-carVacio" />
 						</Grid>
 					</Grid>

@@ -85,7 +85,7 @@ function TablaHistorial(props) {
 							<input
 								type="text"
 								//name="marca_auto"
-								value={datos.nomb_usuario}
+								value={datos.nomb_usuario + datos.apell_usuario}
 								disabled
 							/>
 						</Grid>

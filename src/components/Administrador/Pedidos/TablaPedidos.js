@@ -108,7 +108,7 @@ function TablaPedidos(props) {
 							<input
 								type="text"
 								//name="marca_auto"
-								value={datos.nomb_usuario}
+								value={datos.nomb_usuario + datos.apell_usuario}
 								disabled
 							/>
 						</Grid>
@@ -164,7 +164,7 @@ function TablaPedidos(props) {
 							<input
 								type="number"
 								//name="cantidad_producto"
-								value={datos.total_carrito}
+								value={`$ ${datos.total_carrito}`}
 								disabled
 							/>
 						</Grid>

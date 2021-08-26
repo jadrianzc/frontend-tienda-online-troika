@@ -12,7 +12,7 @@ const Footer = () => {
 		<div className="container-footer">
 			<div className="container-footer-item1">
 				<div className="item1-footer">
-					<div>
+					<div className="item1-footer-img">
 						<img src={ImgGrupoTroika} alt="logo-grupoTroika" />
 					</div>
 				</div>
@@ -53,7 +53,7 @@ const Footer = () => {
 				<div className="item1-footer">
 					<h5>CONTACTO</h5>
 					<ul>
-						<li>
+						<li className="item1-footer-li-contacto">
 							<div className="item1-footer-contacto">
 								<img src={ImgMapMarker} alt="logo-map-marker" />
 								<p>Av. 4 de Noviembre, entre calle J-12 y J-14</p>

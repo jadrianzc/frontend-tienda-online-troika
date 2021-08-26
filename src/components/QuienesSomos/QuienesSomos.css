@@ -1,51 +1,56 @@
 .ContQuinesSomos {
-  padding-top: 63px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f2f2f2;
+	padding-top: 63px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f2f2f2;
 }
 .CardQuienesSomos {
-  width: 80%;
-  padding: 2em 5em !important;
-  margin: 40px 0 !important;
+	width: 80%;
+	padding: 2em 5em !important;
+	margin: 40px 0 !important;
 }
 .CardQuienesSomos h1,
 p {
-  font-family: "DM Sans", sans-serif !important;
+	font-family: 'DM Sans', sans-serif !important;
 }
 .GridQuienes img {
-  width: 100%;
+	width: 100%;
 }
 .TitleQuienes {
-  margin-top: 0 !important;
-  color: #3e3f40;
-  font-size: 30px !important;
-  border-bottom: 3px solid #25a6d9;
-  display: block;
-  width: -moz-fit-content;
-  width: fit-content;
+	margin-top: 0 !important;
+	color: #3e3f40;
+	font-size: 30px !important;
+	border-bottom: 3px solid #25a6d9;
+	display: block;
+	width: -moz-fit-content;
+	width: fit-content;
 }
 .CardQuienesSomos p {
-  color: #3e3f40;
+	color: #3e3f40;
 }
 .logoQuienes {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0 50px 0;
+	display: flex;
+	justify-content: center;
+	margin: 20px 0 50px 0;
 }
 .logoQuienes img {
-  width: 250px;
+	width: 250px;
 }
 .GridQuienes {
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 }
 .QuienesBanner1 {
-  padding-right: 50px;
+	padding-right: 50px;
 }
 .QuienesBanner2 {
-  padding-left: 50px;
+	padding-left: 50px;
 }
 .txtQuienes {
-  margin: auto !important;
+	margin: auto !important;
+}
+
+.txtQuienes p {
+	text-align: justify;
+	font-size: 20px;
 }
