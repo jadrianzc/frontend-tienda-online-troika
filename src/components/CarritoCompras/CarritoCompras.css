@@ -1,69 +1,69 @@
 .container-carrito {
-	min-width: 95% !important;
+  min-width: 95% !important;
 }
 
 .grid-container-carrito {
-	padding: 50px;
+  padding: 50px;
 }
 
 .grid-item-carrito-title,
 .grid-item-carrito-table,
 .grid-item-totalCarrito-table,
 .grid-item-btn-table {
-	width: 100%;
+  width: 100%;
 }
 
 .grid-item-totalCarrito-table {
-	margin-top: 30px !important;
+  margin-top: 30px !important;
 }
 
 .grid-item-btn-table .grid-item-admin-btn {
-	padding: 40px 0 0px 40px;
+  padding: 40px 0 0px 40px;
 }
 
 .grid-item-btn-table .grid-item-admin-btn button {
-	background-color: #01619e;
+  background-color: #01619e;
 }
 
 .btn-delete,
 .btn-carVacio {
-	color: #953030;
-	font-size: 30px;
+  color: #953030;
+  font-size: 30px;
 }
 
 .btn-delete:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .row-item-producto-img img {
-	width: 180px;
-	height: 150px;
+  width: 180px;
+  height: 150px;
 }
 
 .item-table-size {
-	font-size: 16px !important;
+  font-size: 16px !important;
 }
 
 .row-items-producto-car {
-	width: 100%;
+  width: 100%;
 }
 
 .row-items-producto-car .row-item-producto-btn-delete {
-	width: 5%;
+  width: 5%;
 }
 
 .row-items-producto-car .row-item-producto-img,
 .row-items-producto-car .row-item-producto-precio,
 .row-items-producto-car .row-item-producto-total {
-	width: 10%;
+  width: 10%;
 }
 
 .row-items-producto-car .row-item-producto-btns {
-	width: 15%;
+  width: 15%;
 }
 
 .row-item-producto-vacio {
-	width: 100%;
-	height: 200px;
-	border: 1px solid #000;
+  width: 100%;
+  height: 200px;
+  border: 1px solid #000;
 }

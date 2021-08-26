@@ -62,7 +62,7 @@ const Usuario = () => {
   };
 
   return (
-    <Container className="container container-user">
+    <Container className="container container-user container-admin">
       <Grid
         container
         justifyContent="space-between"

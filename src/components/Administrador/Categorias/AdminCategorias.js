@@ -50,7 +50,7 @@ function AdminCategorias() {
   };
 
   return (
-    <Container className="container container-user">
+    <Container className="container container-user container-admin">
       <Grid
         container
         justifyContent="space-between"

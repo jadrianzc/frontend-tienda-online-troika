@@ -1,111 +1,120 @@
 .container-pago {
-	height: calc(100vh - 63px);
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
+  padding: 2em 0 !important;
+  height: calc(100vh - 63px);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container-pago .grid-item-pago-img {
-	height: 20%;
-	width: 50%;
-	align-items: center;
-	justify-content: center;
+  height: 20%;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 .container-pago .grid-item-pago-img img {
-	width: 50%;
-	height: 50%;
+  width: 50%;
+  height: 50%;
 }
 
 .container-pago .grid-item-pago-info {
-	height: 60%;
+  height: 60%;
 }
 
 .grid-item-title-pago {
-	padding: 24px;
+  padding: 24px;
 }
 
 .underline-pago {
-	width: 60px !important;
+  width: 60px !important;
 }
 
 .grid-item-metodoPago .grid-item-metodoPago-form {
-	padding: 0 20%;
+  padding: 0 20%;
 }
 
-.grid-item-metodoPago .grid-item-metodoPago-form .grid-item-metodoPago-form-label {
-	height: 20%;
-	display: flex;
+.grid-item-metodoPago
+  .grid-item-metodoPago-form
+  .grid-item-metodoPago-form-label {
+  height: 20%;
+  display: flex;
 }
 
-.grid-item-metodoPago .grid-item-metodoPago-form .grid-item-metodoPago-form-label span {
-	font-size: 40px;
+.grid-item-metodoPago
+  .grid-item-metodoPago-form
+  .grid-item-metodoPago-form-label
+  span {
+  font-size: 40px;
 }
 
 .grid-item-metodoPago .grid-item-metodoPago-form .grid-item-metodoPago-form-p {
-	font-size: 20px;
-	text-align: justify;
-	padding: 20px;
+  font-size: 20px;
+  text-align: justify;
+  padding: 20px;
 }
 
 .container-pago .grid-container-user .grid-item-btn-table {
-	display: flex;
-	align-items: flex-end;
+  display: flex;
+  align-items: flex-end;
 }
 
 .container-pago .grid-container-user .grid-item-btn-table .grid-item-admin-btn {
-	padding: 0 20%;
+  padding: 0 20%;
 }
 
 .grid-item-pago-info {
-	align-items: center;
-	justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .grid-item-pago-info .grid-item-pago-info-p,
 .grid-item-pago-info .grid-item-pago-info-btn {
-	width: 100%;
-	height: 50%;
-	align-items: center;
-	justify-content: center;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 .grid-item-pago-info .grid-item-pago-info-p .grid-item-metodoPago-form {
-	height: 100%;
-	align-items: center;
+  height: 100%;
+  align-items: center;
 }
 
-.grid-item-pago-info .grid-item-pago-info-p .grid-item-metodoPago-form .grid-item-metodoPago-form-p {
-	width: 100%;
-	text-align: center;
-	font-size: 30px;
+.grid-item-pago-info
+  .grid-item-pago-info-p
+  .grid-item-metodoPago-form
+  .grid-item-metodoPago-form-p {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
 }
 
 .grid-item-pago-info .grid-item-pago-info-btn .grid-item-pago-info-btn-content {
-	align-items: center;
-	justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 485px) {
-	.underline-pago {
-		width: 100% !important;
-	}
+  .underline-pago {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 550px) {
-	.container-pago {
-		height: calc(100% - 63px);
-	}
+  .container-pago {
+    height: calc(100vh - 63px);
+  }
 }
 
 @media (max-height: 660px) {
-	.container-pago {
-		height: calc(100% - 63px);
-	}
+  .container-pago {
+    height: calc(100vh - 63px);
+  }
 }
 
 @media (max-width: 850px) {
-	.container-pago .grid-container-user .grid-item-btn-table {
-		align-items: center;
-	}
+  .container-pago .grid-container-user .grid-item-btn-table {
+    align-items: center;
+  }
 }
