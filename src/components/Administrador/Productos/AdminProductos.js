@@ -210,7 +210,7 @@ function AdminProductos() {
   };
 
   return (
-    <Container className="container container-user">
+    <Container className="container container-user container-admin">
       <Grid container>
         <Grid item container className="grid-item-produc-4" xs={12}>
           <Grid item className="grip-agrega-produc">

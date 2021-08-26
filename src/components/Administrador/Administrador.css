@@ -1,6 +1,8 @@
 .container-admin {
   height: 100vh;
   background-color: #f2f2f2;
+  padding: 2em 0 !important;
+  display: flex !important;
 }
 .grid-item-admin .grid-item-title {
   padding: 40px;

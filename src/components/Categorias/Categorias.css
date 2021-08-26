@@ -1,79 +1,81 @@
 .GipFiltro {
-	background: #fff;
-	padding: 40px;
-	margin-bottom: 40px;
+  background: #fff;
+  padding: 40px;
+  margin-bottom: 40px;
 }
 .formControlFiltra {
-	display: flex;
-	width: 100%;
+  display: flex;
+  width: 100%;
 }
 .DivSelectFiltra {
-	width: 100%;
-	display: grid;
-	grid-template-columns: auto 1fr;
-	grid-template-rows: 50px 50px;
-	align-items: center;
-	margin-right: 40px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 50px 50px;
+  align-items: center;
+  margin-right: 40px;
 }
 .DivSelectFiltra label {
-	margin-right: 20px;
+  margin-right: 20px;
 }
 .DivSelectFiltra select {
-	height: 40px;
-	border-color: #707070;
+  height: 40px;
+  border-color: #707070;
 }
 .DivBtnFiltra {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .CargandoProducts {
-	height: 100vh;
-	font-size: x-large;
+  height: 100vh;
+  font-size: x-large;
 }
 .LinkCardProducts {
-	text-decoration: none;
+  text-decoration: none;
 }
 .ContCategoria {
-	width: 280px;
-	background: #fff;
+  width: 280px;
+  background: #fff;
 }
 .CategoriaStatico {
-	position: sticky;
-	top: 20px;
+  position: sticky;
+  top: 63px;
+  overflow-y: scroll;
+  height: calc(100vh - 63px);
 }
 .ContCategoria h1 {
-	font-size: 14px;
-	padding: 20px;
-	margin: 0;
+  font-size: 14px;
+  padding: 20px;
+  margin: 0;
 }
 .ContCategoria ul {
-	list-style: none;
+  list-style: none;
 }
 .ContCategoria li {
-	display: block;
-	padding: 9px 10px;
+  display: block;
+  padding: 9px 10px;
 }
 .LiCategori {
-	font-weight: bold;
+  font-weight: bold;
 }
 .LiSubCategori {
-	font-weight: normal;
+  font-weight: normal;
 }
 .Categoria-links {
-	color: #191919;
-	text-decoration: none;
+  color: #191919;
+  text-decoration: none;
 }
 .Categoria-links:hover {
-	border-bottom: 2px solid #25a6d9;
+  border-bottom: 2px solid #25a6d9;
 }
 .check {
-	visibility: hidden;
+  visibility: hidden;
 }
 .check-Active {
-	visibility: visible;
+  visibility: visible;
 }
 .CategoriaLink-Active {
-	border-bottom: 2px solid #25a6d9;
+  border-bottom: 2px solid #25a6d9;
 }
