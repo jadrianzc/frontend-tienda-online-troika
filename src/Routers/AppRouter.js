@@ -37,23 +37,29 @@ export default function AppRouter() {
 	const [dataInfo, setDataInfo] = useState({});
 	const [menuState, setMenuState] = useState(true);
 	const [estadoProduCar, setEstadoProduCar] = useState(false);
-
-	const cookies = new Cookies();
-	const user = cookies.get('coki');
+	const [user, setUser] = useState();
+	const [login, setLogin] = useState(false);
 
 	return (
 		<Router>
 			{user && user.rol_usuario === 'admin' ? (
 				<></>
 			) : (
-				<NavBar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
+				<NavBar
+					cantCar={cantCar}
+					setCantCar={setCantCar}
+					addCar={addCar}
+					setUser={setUser}
+					login={login}
+					setLogin={setLogin}
+				/>
 			)}
 			<Switch>
 				{/* Normal */}
 				<RouteCli exact path="/" render={() => <Inicio setCantCar={setCantCar} />} />
 				<RouteCliCompo exact path="/Quienes-somos" component={QuienesSomos} />
 				<RouteCliCompo exact path="/Agencias" component={Agencias} />
-				<PublicRoute exact path="/Login" component={Login} />
+				<RouteCli exact path="/Login" render={() => <Login setUser={setUser} />} />
 				<PublicRoute exact path="/Registro" component={Registro} />
 				<Route
 					exact
@@ -91,7 +97,7 @@ export default function AppRouter() {
 				{/*  */}
 
 				{/* Administracion */}
-				<PrivateRoute exact hasRole="admin" path="/Admin" component={Administrador} />
+				<PrivateRoute exact hasRole="admin" path="/Admin" render={() => <Administrador setUser={setUser} />} />
 				<PrivateRoute exact hasRole="admin" path="/Admin/Productos" component={AdminProductos} />
 				<PrivateRoute exact hasRole="admin" path="/Admin/Usuario" component={Usuario} />
 				<PrivateRoute exact hasRole="admin" path="/Admin/Categorias" component={AdminCategorias} />

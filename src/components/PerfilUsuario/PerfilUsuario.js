@@ -116,7 +116,7 @@ const PerfilUsuario = () => {
 				setOpenAlert(true);
 				cookies.remove('id', { path: '/' });
 				cookies.remove('coki', { path: '/' });
-				window.location.href = '/#/Login';
+				window.location.hash = '/Login';
 			});
 	};
 	//

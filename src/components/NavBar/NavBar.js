@@ -10,7 +10,7 @@ import NavBuscar from './NavBuscar';
 import NavBotones from './NavBotones';
 import NavCar from './NavCar';
 
-function NavBar({ cantCar, setCantCar, addCar }) {
+function NavBar({ cantCar, setCantCar, addCar, setUser, login, setLogin }) {
 	const [open, setOpen] = useState(false);
 
 	const OpenMenu = () => {
@@ -28,7 +28,7 @@ function NavBar({ cantCar, setCantCar, addCar }) {
 
 				<NavBuscar OpenMenu={OpenMenu} />
 
-				<NavBotones OpenMenu={OpenMenu} />
+				<NavBotones OpenMenu={OpenMenu} setUsers={setUser} login={login} setLogin={setLogin} />
 
 				<NavCar cantCar={cantCar} setCantCar={setCantCar} addCar={addCar} />
 			</div>

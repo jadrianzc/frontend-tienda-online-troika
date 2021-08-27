@@ -8,7 +8,7 @@ import pedidosLogo from '../../assets/images/pedidos_vector.png';
 import './Administrador.css';
 import Cookies from 'universal-cookie';
 
-const Administrador = () => {
+const Administrador = ({ setUser }) => {
 	const cookies = new Cookies();
 
 	const cerrarseccion = () => {
@@ -16,7 +16,9 @@ const Administrador = () => {
 			//sino encuentra ninguna session abierta
 			cookies.remove('id', { path: '/' });
 			cookies.remove('coki', { path: '/' });
-			window.location.href = '/#/Login';
+			window.location.hash = '/Login';
+			setUser({});
+			// window.location.reload();
 			//setLogiado('Ingresar')
 		}
 	};

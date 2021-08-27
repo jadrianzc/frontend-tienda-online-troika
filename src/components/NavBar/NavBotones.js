@@ -6,9 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-function NavBotones({ OpenMenu }) {
+function NavBotones({ OpenMenu, setUsers, login, setLogin }) {
 	const cookies = new Cookies();
-	const [login, setLogin] = useState(false);
 	const [user, setUser] = useState({});
 
 	const dropdownRef = useRef(null);
@@ -31,14 +30,18 @@ function NavBotones({ OpenMenu }) {
 			}
 		};
 		session();
-	}, []);
+	}, [cookies.get('id')]);
 
 	const cerrarseccion = () => {
 		if (cookies.get('id')) {
 			//sino encuentra ninguna session abierta
 			cookies.remove('id', { path: '/' });
 			cookies.remove('coki', { path: '/' });
-			window.location.href = '/#/Login';
+			// window.location.href = '#/Login';
+			window.location.hash = '/Login';
+			setUsers({});
+			setLogin(false);
+			// window.location.reload();
 			//setLogiado('Ingresar')
 		}
 	};
