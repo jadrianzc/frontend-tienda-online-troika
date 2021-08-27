@@ -38,7 +38,7 @@ function NavBotones({ OpenMenu }) {
 			//sino encuentra ninguna session abierta
 			cookies.remove('id', { path: '/' });
 			cookies.remove('coki', { path: '/' });
-			window.location.href = '/Login';
+			window.location.href = '/#/Login';
 			//setLogiado('Ingresar')
 		}
 	};
