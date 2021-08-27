@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import './PerfilUsuario.css';
 import TextField from '@material-ui/core/TextField';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -15,10 +15,8 @@ import {
 	CampoPassword2,
 } from '../Registro/VerificaRegistro';
 import Modal from '@material-ui/core/Modal';
-import './PerfilUsuario.css';
 
 const PerfilUsuario = () => {
-	const history = useHistory();
 	const cookies = new Cookies();
 	const [openModal, setOpenModal] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
@@ -118,7 +116,7 @@ const PerfilUsuario = () => {
 				setOpenAlert(true);
 				cookies.remove('id', { path: '/' });
 				cookies.remove('coki', { path: '/' });
-				history.push('/Login');
+				window.location.href = '/Login';
 			});
 	};
 	//

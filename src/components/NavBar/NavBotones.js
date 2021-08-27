@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import './NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import './NavBar.css';
 
 function NavBotones({ OpenMenu }) {
-	const history = useHistory();
 	const cookies = new Cookies();
 	const [login, setLogin] = useState(false);
 	const [user, setUser] = useState({});
@@ -40,7 +38,7 @@ function NavBotones({ OpenMenu }) {
 			//sino encuentra ninguna session abierta
 			cookies.remove('id', { path: '/' });
 			cookies.remove('coki', { path: '/' });
-			history.push('/Login');
+			window.location.href = '/Login';
 			//setLogiado('Ingresar')
 		}
 	};

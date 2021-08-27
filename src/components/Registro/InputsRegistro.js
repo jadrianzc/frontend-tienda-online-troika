@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { useHistory } from 'react-router-dom';
+import './Registro.css';
 import { CampoNombre, CampoApellido, CampoCedula, CampoEmail, CampoPassword, CampoPassword2 } from './VerificaRegistro';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import Modal from '@material-ui/core/Modal';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
-import './Registro.css';
 
 function InputsRegistro() {
-	const history = useHistory();
 	const cookies = new Cookies();
 	const [openModal, setOpenModal] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
@@ -101,6 +99,7 @@ function InputsRegistro() {
 				.then((resp) => {
 					cookies.set('id', resp[0]._id, { path: '/' });
 					cookies.set('coki', resp[0], { path: '/' }); // aqui se guarda la session
+					//window.location.href = "/";
 				});
 		}
 	};
@@ -114,7 +113,7 @@ function InputsRegistro() {
 				className="btnRegistro"
 				value="Continuar"
 				onClick={() => {
-					history.push('/');
+					window.location.href = '/';
 				}}
 			/>
 		</div>
