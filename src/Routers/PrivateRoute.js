@@ -12,8 +12,7 @@ export default function PrivateRoute({ component: Component, render: Render, has
 				//if (role) return <Redirect to="/Admin" />;
 				if (!user) return <Redirect to="/Login" />;
 				if (Render) return <Render {...props} />;
-
-				return <Component {...props} />;
+				if (Component) return <Component {...props} />;
 			}}
 		/>
 	);
