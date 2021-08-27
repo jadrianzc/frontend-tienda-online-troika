@@ -99,7 +99,7 @@ function InputsRegistro() {
 				.then((resp) => {
 					cookies.set('id', resp[0]._id, { path: '/' });
 					cookies.set('coki', resp[0], { path: '/' }); // aqui se guarda la session
-					//window.location.href = "/";
+					window.location.hash = '/';
 				});
 		}
 	};
