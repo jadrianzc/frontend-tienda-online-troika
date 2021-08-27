@@ -76,7 +76,7 @@ function TablaProductos(props) {
 		console.log('abre');
 		const LoadData = async () => {
 			try {
-				await axios.get(`http://localhost:4000/api/v1/productos`).then((res) => {
+				await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/productos`).then((res) => {
 					setDocumentos(res.data);
 					setTablaCategori(res.data);
 					setOpenCarga(false);
@@ -94,7 +94,7 @@ function TablaProductos(props) {
 	 */
 	const EliminaProcuc = async () => {
 		try {
-			await axios.delete(`http://localhost:4000/api/v1/productos/${idproduc}`);
+			await axios.delete(`https://server-tienda-troika.herokuapp.com/api/v1/productos/${idproduc}`);
 			setEtado(!estado);
 			setOpenModal(false);
 			setOpenAlert(true);
@@ -131,7 +131,7 @@ function TablaProductos(props) {
 		setOpenModalEdit(true);
 		setDatos(doc);
 		try {
-			const res = await axios.get('http://localhost:4000/api/v1/categorias');
+			const res = await axios.get('https://server-tienda-troika.herokuapp.com/api/v1/categorias');
 			setCategorias(res.data);
 		} catch (error) {
 			console.log(error);
@@ -147,7 +147,7 @@ function TablaProductos(props) {
 
 	const AcrualizaProduc = async () => {
 		try {
-			await axios.put(`http://localhost:4000/api/v1/productos/${datos._id}`, datos);
+			await axios.put(`https://server-tienda-troika.herokuapp.com/api/v1/productos/${datos._id}`, datos);
 			setEtado(!estado);
 			setOpenModalEdit(false);
 			setOpenAlertEdit(true);

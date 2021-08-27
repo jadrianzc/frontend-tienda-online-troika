@@ -27,7 +27,7 @@ function TablaCategorias(stado) {
 	useEffect(() => {
 		const LoadData = async () => {
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/categorias`);
+				const res = await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/categorias`);
 				setDocumentos(res.data);
 				setTablaCategori(res.data);
 			} catch (error) {
@@ -59,7 +59,7 @@ function TablaCategorias(stado) {
 	/**Eliminar */
 	const EliminaCategoria = async () => {
 		try {
-			await axios.delete(`http://localhost:4000/api/v1/categorias/${idcategori}`);
+			await axios.delete(`https://server-tienda-troika.herokuapp.com/api/v1/categorias/${idcategori}`);
 			setEtado(!estado);
 			setOpenModal(false);
 			setOpenAlert(true);
@@ -105,7 +105,7 @@ function TablaCategorias(stado) {
 		};
 
 		try {
-			await axios.put(`http://localhost:4000/api/v1/categorias/${contCategori._id}`, newData);
+			await axios.put(`https://server-tienda-troika.herokuapp.com/api/v1/categorias/${contCategori._id}`, newData);
 			setEtado(!estado);
 			setOpenModalEdit(false);
 			setOpenAlertEdit(true);

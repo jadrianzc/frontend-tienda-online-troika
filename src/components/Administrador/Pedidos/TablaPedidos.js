@@ -48,7 +48,7 @@ function TablaPedidos(props) {
 		const LoadData = async () => {
 			console.log(props.valueRadio);
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/pedidos/${props.valueRadio}`);
+				const res = await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/pedidos/${props.valueRadio}`);
 				setDocumentos(res.data);
 				setTablaPedidos(res.data);
 			} catch (error) {
@@ -64,7 +64,7 @@ function TablaPedidos(props) {
 	const Pagado = async (data) => {
 		let pago = { estado: data.estado === 'pendiente' ? 'pagado' : 'entregado' };
 		try {
-			await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
+			await axios.put(`https://server-tienda-troika.herokuapp.com/api/v1/pedidos/${data._id}`, pago);
 			setEtado(!estado);
 			setOpenModal(!openModal);
 			setOpenAlert(true);
@@ -75,7 +75,7 @@ function TablaPedidos(props) {
 	const CancelaPago = async (data) => {
 		let pago = { estado: data.estado === 'pagado' ? 'pendiente' : '' };
 		try {
-			await axios.put(`http://localhost:4000/api/v1/pedidos/${data._id}`, pago);
+			await axios.put(`https://server-tienda-troika.herokuapp.com/api/v1/pedidos/${data._id}`, pago);
 			setEtado(!estado);
 			setOpenModal(!openModal);
 			setOpenAlert(true);

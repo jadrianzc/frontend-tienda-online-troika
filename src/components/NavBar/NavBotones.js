@@ -20,7 +20,9 @@ function NavBotones({ OpenMenu }) {
 			//verificar si hay alguna session
 			if (cookies.get('id')) {
 				try {
-					const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${cookies.get('id')}`);
+					const res = await axios.get(
+						`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${cookies.get('id')}`
+					);
 					setUser(res.data);
 				} catch (error) {
 					console.log(error);

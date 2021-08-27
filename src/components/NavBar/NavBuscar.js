@@ -17,7 +17,7 @@ function NavBuscar({ OpenMenu }) {
 	useEffect(() => {
 		const LoadData = async () => {
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/productos`);
+				const res = await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/productos`);
 				setOpcion(res.data);
 			} catch (error) {
 				console.log(error);

@@ -45,7 +45,7 @@ const PerfilUsuario = () => {
 	useEffect(() => {
 		const LoadData = async () => {
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${cookies.get('id')}`);
+				const res = await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${cookies.get('id')}`);
 				setDatos(res.data);
 			} catch (error) {
 				console.log(error);
@@ -70,10 +70,12 @@ const PerfilUsuario = () => {
 		//console.log(apellido);
 
 		if (nombre === false && apellido === false && cedula === false && email === false) {
-			await axios.put('http://localhost:4000/api/v1/usuarios/' + cookies.get('id'), datos).then((res) => {
-				setOpenAlert(true);
-				console.log('listo');
-			});
+			await axios
+				.put('https://server-tienda-troika.herokuapp.com/api/v1/usuarios/' + cookies.get('id'), datos)
+				.then((res) => {
+					setOpenAlert(true);
+					console.log('listo');
+				});
 		} else {
 			console.log('error');
 		}
@@ -108,12 +110,14 @@ const PerfilUsuario = () => {
 
 	const CambiaPwd = async () => {
 		const nuevapwd = Object.assign(datos, datosPwd);
-		await axios.put('http://localhost:4000/api/v1/usuarios/' + cookies.get('id'), nuevapwd).then((res) => {
-			setOpenAlert(true);
-			cookies.remove('id', { path: '/' });
-			cookies.remove('coki', { path: '/' });
-			window.location.href = '/Login';
-		});
+		await axios
+			.put('https://server-tienda-troika.herokuapp.com/api/v1/usuarios/' + cookies.get('id'), nuevapwd)
+			.then((res) => {
+				setOpenAlert(true);
+				cookies.remove('id', { path: '/' });
+				cookies.remove('coki', { path: '/' });
+				window.location.href = '/Login';
+			});
 	};
 	//
 

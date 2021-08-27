@@ -51,7 +51,7 @@ function TablaHistorial(props) {
 		const LoadData = async () => {
 			console.log(props.valueRadio);
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/pedidos/user/${idUserSession}`);
+				const res = await axios.get(`https://server-tienda-troika.herokuapp.com/api/v1/pedidos/user/${idUserSession}`);
 				setDocumentos(res.data);
 				setTablaPedidos(res.data);
 			} catch (error) {

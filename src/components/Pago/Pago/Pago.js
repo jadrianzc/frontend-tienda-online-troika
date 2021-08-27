@@ -30,7 +30,9 @@ const Pago = ({ dataInfo, menuState, setAddCar, addCar }) => {
 	useEffect(() => {
 		const LoadData = async (idUserSession) => {
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`);
+				const res = await axios.get(
+					`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/carrito-compra`
+				);
 				const dataCarUser = res.data.filter((data) =>
 					data.idUserSession === idUserSession && data.estado ? data : null
 				);
@@ -77,12 +79,18 @@ const Pago = ({ dataInfo, menuState, setAddCar, addCar }) => {
 	console.log(rows);
 
 	const postData = async (idUserSession, data) => {
-		const resp = await axios.post(`http://localhost:4000/api/v1/usuarios/${idUserSession}/orden-compra`, data);
+		const resp = await axios.post(
+			`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/orden-compra`,
+			data
+		);
 		console.log(resp.data.status);
 
 		rows.map(async (row) => {
 			const newRow = { ...row, estado: false };
-			const res = await axios.put(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, newRow);
+			const res = await axios.put(
+				`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/carrito-compra`,
+				newRow
+			);
 			console.log(res.data.status);
 		});
 

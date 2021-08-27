@@ -23,7 +23,7 @@ function AdminProductos() {
 	useEffect(() => {
 		const optenerCategori = async () => {
 			try {
-				const res = await axios.get('http://localhost:4000/api/v1/categorias');
+				const res = await axios.get('https://server-tienda-troika.herokuapp.com/api/v1/categorias');
 				setCategorias(res.data);
 			} catch (error) {
 				console.log(error);
@@ -96,7 +96,7 @@ function AdminProductos() {
 
 	const AgregaProduc = async (nnewdata, e) => {
 		try {
-			await axios.post('http://localhost:4000/api/v1/productos', nnewdata);
+			await axios.post('https://server-tienda-troika.herokuapp.com/api/v1/productos', nnewdata);
 			console.log('enviaso');
 			setOpenModal(false);
 			e.target.reset();

@@ -51,7 +51,9 @@ const CarritoCompras = ({ addCar, setAddCar, setEstadoProduCar, estadoProduCar }
 	useEffect(() => {
 		const LoadData = async (idUserSession) => {
 			try {
-				const res = await axios.get(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`);
+				const res = await axios.get(
+					`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/carrito-compra`
+				);
 				const dataFilter = res.data.filter((dato) =>
 					dato.idUserSession === idUserSession && dato.estado ? dato : null
 				);
@@ -67,7 +69,7 @@ const CarritoCompras = ({ addCar, setAddCar, setEstadoProduCar, estadoProduCar }
 	//Btn Delete
 	const handleBtnDelete = async (idProductoUnique) => {
 		await axios
-			.delete(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, {
+			.delete(`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/carrito-compra`, {
 				data: { idProductoUnique },
 			})
 			.then((res) => {

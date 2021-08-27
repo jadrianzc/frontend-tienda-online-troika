@@ -9,7 +9,10 @@ const BotonesAddSub = ({ cantidad, document, idUserSession, setBtn, btn, estadoP
 			const newData = { ...document, cantidad_producto: counter };
 			// console.log(newData);
 			try {
-				const res = await axios.put(`http://localhost:4000/api/v1/usuarios/${idUserSession}/carrito-compra`, newData);
+				const res = await axios.put(
+					`https://server-tienda-troika.herokuapp.com/api/v1/usuarios/${idUserSession}/carrito-compra`,
+					newData
+				);
 				console.log(res.data);
 			} catch (error) {
 				console.log(error);
