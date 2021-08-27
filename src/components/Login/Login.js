@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +12,7 @@ import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 
 const Login = () => {
+	const history = useHistory();
 	const cookies = new Cookies();
 	const [openAlert, setOpenAlert] = useState(false);
 	const [datos, setDatos] = useState({
@@ -44,9 +46,9 @@ const Login = () => {
 						cookies.set('id', res[0]._id, { path: '/' });
 						cookies.set('coki', res[0], { path: '/' }); // aqui se guarda la session
 						if (res[0].rol_usuario === 'admin') {
-							window.location.href = '/Admin';
+							history.push('/Admin');
 						} else {
-							window.location.href = '/';
+							history.push('/');
 						}
 					} else {
 						setOpenAlert(true);
