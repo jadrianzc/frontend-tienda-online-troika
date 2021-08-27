@@ -16,7 +16,7 @@ import {
 } from '../Registro/VerificaRegistro';
 import Modal from '@material-ui/core/Modal';
 
-const PerfilUsuario = () => {
+const PerfilUsuario = ({ setLogin }) => {
 	const cookies = new Cookies();
 	const [openModal, setOpenModal] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
@@ -79,7 +79,6 @@ const PerfilUsuario = () => {
 		} else {
 			console.log('error');
 		}
-		console.log(datos);
 	};
 
 	//contraseña
@@ -95,8 +94,6 @@ const PerfilUsuario = () => {
 	};
 
 	const BtnPwd = () => {
-		console.log(datosPwd.pwdActual);
-		console.log(datos.contraseña_usuario);
 		if (datosPwd.pwdActual !== datos.contraseña_usuario) {
 			console.log('contraseña no iguales');
 			setPwdActual(true);
@@ -117,6 +114,7 @@ const PerfilUsuario = () => {
 				cookies.remove('id', { path: '/' });
 				cookies.remove('coki', { path: '/' });
 				window.location.hash = '/Login';
+				setLogin(false);
 			});
 	};
 	//

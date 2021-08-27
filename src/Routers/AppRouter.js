@@ -68,7 +68,7 @@ export default function AppRouter() {
 				/>
 				<RouteCliCompo path="/Categorías/:id" exact component={Categorias} />
 				<RouteCliCompo path="/Busqueda/:nombre" exact component={Busqueda} />
-				<PrivateRoute path="/PerfilUsuario" exact component={PerfilUsuario} />
+				<PrivateRoute path="/PerfilUsuario" exact render={() => <PerfilUsuario setLogin={setLogin} />} />
 				<PrivateRoute exact path="/HistorialTransacciones" component={HistorialTransacciones} />
 
 				<Route

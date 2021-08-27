@@ -23,13 +23,10 @@ const Login = ({ setUser }) => {
 			...datos,
 			[e.target.name]: e.target.value,
 		});
-		console.log(datos);
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log('inica');
-		console.log(datos.email);
 		await axios
 			.get('https://server-tienda-troika.herokuapp.com/api/v1/verificaUsuario/' + datos.email)
 			.then((res) => {
@@ -37,7 +34,6 @@ const Login = ({ setUser }) => {
 			})
 			.then((res) => {
 				if (res.length > 0) {
-					console.log(res[0].rol_usuario);
 					//setErroruser(false);
 					if (res[0].contraseña_usuario === datos.password) {
 						//si los datos son correcto guarda session en las cookies e inicia

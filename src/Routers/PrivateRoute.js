@@ -4,8 +4,7 @@ import Cookies from 'universal-cookie';
 export default function PrivateRoute({ component: Component, render: Render, hasRole: role, ...rest }) {
 	const cookies = new Cookies();
 	const user = cookies.get('coki');
-	console.log(user);
-	console.log(role);
+
 	return (
 		<Route
 			{...rest}
