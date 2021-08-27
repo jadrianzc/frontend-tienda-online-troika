@@ -12,7 +12,7 @@ function NavBotones({ OpenMenu, setUsers, login, setLogin }) {
 
 	const dropdownRef = useRef(null);
 	const [isActive, setIsActive] = useState(false);
-	const onClick = () => setIsActive(!isActive);
+	// const onClick = () => setIsActive(!isActive);
 
 	useEffect(() => {
 		const session = async () => {
@@ -39,17 +39,19 @@ function NavBotones({ OpenMenu, setUsers, login, setLogin }) {
 			cookies.remove('coki', { path: '/' });
 			// window.location.href = '#/Login';
 			window.location.hash = '/Login';
+			setIsActive(false);
 			setUsers({});
 			setLogin(false);
 			// window.location.reload();
 			//setLogiado('Ingresar')
 		}
 	};
+
 	return (
 		<div className="NavBotones">
 			{login ? (
 				<div className="MenuSession-container">
-					<button onClick={onClick} className="MenuSession-trigger">
+					<button onClick={() => setIsActive(!isActive)} className="MenuSession-trigger">
 						<img src={user.imgurl} alt="User avatar" />
 						<span>{user.apell_usuario + ' ' + user.nomb_usuario}</span>
 						<FontAwesomeIcon icon={faAngleDown} />
@@ -67,7 +69,7 @@ function NavBotones({ OpenMenu, setUsers, login, setLogin }) {
 								<Link
 									to="/PerfilUsuario"
 									onClick={() => {
-										onClick();
+										setIsActive(false);
 										OpenMenu();
 									}}
 								>
@@ -78,7 +80,7 @@ function NavBotones({ OpenMenu, setUsers, login, setLogin }) {
 								<Link
 									to="/HistorialTransacciones"
 									onClick={() => {
-										onClick();
+										setIsActive(false);
 										OpenMenu();
 									}}
 								>

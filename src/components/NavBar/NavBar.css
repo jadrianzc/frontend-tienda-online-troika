@@ -171,6 +171,12 @@
 	transform: translateY(0);
 }
 
+.MenuSession.inactive {
+	/* opacity: 1; */
+	visibility: hidden;
+	/* transform: translateY(0); */
+}
+
 .MenuSession ul {
 	list-style: none;
 	padding: 0;
