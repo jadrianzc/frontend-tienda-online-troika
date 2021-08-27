@@ -8,7 +8,7 @@ import Modal from '@material-ui/core/Modal';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 
-function InputsRegistro() {
+function InputsRegistro({ setLogin }) {
 	const cookies = new Cookies();
 	const [openModal, setOpenModal] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
@@ -88,6 +88,7 @@ function InputsRegistro() {
 
 	const RegistrarUsuario = async () => {
 		const res = await axios.post('https://server-tienda-troika.herokuapp.com/api/v1/usuarios', datos);
+		console.log(res);
 		if (res.status === 200) {
 			//si se registro entonces inicia secion
 			setOpenModal(true);
@@ -99,7 +100,6 @@ function InputsRegistro() {
 				.then((resp) => {
 					cookies.set('id', resp[0]._id, { path: '/' });
 					cookies.set('coki', resp[0], { path: '/' }); // aqui se guarda la session
-					window.location.hash = '/';
 				});
 		}
 	};
@@ -113,7 +113,8 @@ function InputsRegistro() {
 				className="btnRegistro"
 				value="Continuar"
 				onClick={() => {
-					window.location.href = '/';
+					window.location.hash = '/';
+					setLogin(true);
 				}}
 			/>
 		</div>
@@ -126,7 +127,7 @@ function InputsRegistro() {
 					Este correo ya existe, por favor utilice otro.
 				</Alert>
 			</Collapse>
-			<form className="FormRegistro" method="post" onSubmit={handleSubmit}>
+			<form className="FormRegistro" method="post" onSubmit={(e) => handleSubmit(e)}>
 				<div className="ContInputRegistro1">
 					<TextField
 						required

@@ -60,7 +60,7 @@ export default function AppRouter() {
 				<RouteCliCompo exact path="/Quienes-somos" component={QuienesSomos} />
 				<RouteCliCompo exact path="/Agencias" component={Agencias} />
 				<RouteCli exact path="/Login" render={() => <Login setUser={setUser} />} />
-				<PublicRoute exact path="/Registro" component={Registro} />
+				<PublicRoute exact path="/Registro" render={() => <Registro setLogin={setLogin} />} />
 				<Route
 					exact
 					path="/Producto/:id"
